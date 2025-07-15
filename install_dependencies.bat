@@ -26,4 +26,11 @@ if %errorlevel%==0 (
 
 cls
 echo Dependências instaladas!
-pause
+
+timeout /t 2 >nul
+echo Configurando variáveis de ambiente
+python setup.py >nul 2>&1
+timeout /t 2 >nul
+
+echo Pressione qualquer tecla para finalizar...
+pause >nul
