@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCL</title>
+    <link rel="stylesheet" href="registrar.css">
+</head>
+<body>
+    <!-- aqui vai o componente do header -->
+    <div id="header"></div>
+
+        <div id="registrarForm">
+                <h2>Registrar-se</h2>
+        
+                <div class="form-item">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Usuário" />
+                </div>
+                <div class="form-item">
+                    <label for="username">Nome de Usuário</label>
+                    <input type="text" id="username" name="username" placeholder="@username" />
+                </div>
+                <div class="form-item">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" name="email" placeholder="exemplo@dominio.com" />
+                </div>
+                <div class="form-item">
+                    <label for="nascimento">Nascimento</label>
+                    <input type="text" id="nascimento" name="nascimento" placeholder="DD/MM/YYYY" />
+                </div>
+                <div class="form-item">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" placeholder="XXXXX-XXX" />
+                </div>
+                <div class="form-item">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" />
+                </div>
+                <div class="form-item">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Senha" />
+                    <p class="password-hint">A senha deve conter pelo menos 8 caracteres, com ao menos um número</p>
+                </div>
+
+    <!-- componentes dos botoes-->
+    <div id="botao-continuar"></div>
+    <div id="botao-fazerlogin"></div>
+</body>
+</html>
