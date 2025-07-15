@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #000000;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+    
+  .body1 {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+  
+  .header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  
+  }
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+  }
+  .anunciar {
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 200px 150px;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 70px;
+  }
+  .hero-text p {
+    margin: 20px 0;
+  }
+  .btn-explorar {
+    background: black;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  .img-latinhas {
+    border-radius: 15px;
+  }
+  .middle-section {
+    background: gray;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .middle-section h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+  }
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 10px;
+  }
+  .marketplace {
+    padding: 40px 20px;
+  }
+  .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .item img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .item h3 {
+    font-size: 16px;
+    margin: 10px 0 5px;
+  }
+  .item p {
+    font-size: 14px;
+    color: #555;
+  }
+  .price {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  .item button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .ver-mais {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  footer {
+    background: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .btn-anunciar {
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .produto-container {
+    display: flex;
+    padding: 40px;
+    gap: 40px;
+  }
+  
+  .galeria {
+    flex: 1;
+  }
+  
+  .imagem-principal {
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+  
+  .miniaturas {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .miniaturas img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .seta {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .detalhes-produto {
+    flex: 1;
+  }
+  
+  .detalhes-produto h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .avaliacao {
+    color: #444;
+  }
+  
+  .reviews {
+    color: #007aff;
+  }
+  
+  .preco {
+    background: #f1f1f1;
+    padding: 10px;
+    margin: 20px 0;
+  }
+  
+  .preco-atual {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+  }
+  
+  select {
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .acoes .btn {
+    background: black;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  details {
+    margin-top: 20px;
+  }
+  
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
