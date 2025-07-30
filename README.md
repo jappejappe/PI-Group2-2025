@@ -1,9 +1,6 @@
 # Projeto Integrador 2025
 
 <p align="center">
-    <img src="./assets/images/logos/logo_branca.png" width="200px">
-    <br>
-    <br>
     <img src="./assets/images/recycle.gif" width="80px">
 
 </p>
@@ -17,7 +14,7 @@ Confira também nosso artigo.
 <br><br>
 
 # **Tecnologias e ferramentas**
-<img src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white"><img src="https://img.shields.io/badge/Figma-333230?style=flat&logo=figma&logoColor=red"><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-333230?style=flat&logo=javascript&logoColor=F7DF1E"><img src="https://img.shields.io/badge/Python-3670A0?style=flat&logo=python&logoColor=ffdd54"><img src="https://img.shields.io/badge/LaTeX-008080?style=flat&logo=latex&logoColor=white"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white">
+<img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"><img src="https://img.shields.io/badge/Figma-333230?style=for-the-badge&logo=figma&logoColor=red"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-333230?style=for-the-badge&logo=javascript&logoColor=F7DF1E"><img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"><img src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white"><img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white">
 
 <br><br>
 
