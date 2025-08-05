@@ -110,23 +110,38 @@ app = Flask(__name__)
 
 @app.route('/') # Rota principal que carrega o index.html
 def home():
-    return render_template('index.html')
+    return render_template('pages/index.html')
 
 
 @app.route('/carrinho') # Rota para o carrinho
 def carrinho():
-    return render_template('carrinho.html')
+    return render_template('pages/carrinho.html')
 
 
 @app.route('/registrar') # Rota para registrar um novo usuário
 def registrar():
-    return render_template('registrar.html')
+    return render_template('pages/registrar.html')
 
 
 @app.route('/login') # Rota para login
 def login():
-    return render_template('login.html')
+    return render_template('pages/login.html')
 
+@app.route('/anunciar') # Rota para anunciar
+def anunciar():
+    return render_template('pages/anunciar.html')
+
+@app.route('/anuncio') # Rota para anúncio
+def anuncio():
+    return render_template('pages/anuncio.html')
+
+@app.route('/cadastroVendedor') # Rota para cadastrar vendedor
+def cadastroVendedor():
+    return render_template('pages/cadastroVendedor.html')
+
+@app.route('/perfil') # Rota para perfil
+def perfil():
+    return render_template('pages/perfil.html')
 
 ##################################################################
 
@@ -151,5 +166,5 @@ def addCarrinho():
 
 
 # Inicia o servidor Flask
-# if __name__ == '__main__':
-#     app.run(debug=True, use_reloader=False)
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=False)

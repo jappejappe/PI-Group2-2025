@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anunciar Desktop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div id="bodyanunciar"></div>
+        <header id="header"></header>
+        <main>
+            <h1 class="main-title">Anuncie seu resíduo reciclável<br>com facilidade!</h1>
+            <section class="form-container">
+                <form>
+                    <div class="form-section">
+                        <h2>1- Identificação do produto</h2>
+                        <label>Qual o material do resíduo?</label>
+                        <select>
+                            <option value="" disabled selected>Selecione o tipo de material</option>
+                            <option>Plástico</option>
+                            <option>Ferroso</option>
+                            <option>Não Ferroso</option>
+                            <option>Papel e Papelão</option>
+                            <option>Vidro</option>
+                            <option>Madeira</option>
+                            <option>Eletrônico</option>
+                            <option>Sucata de Veículos</option>
+                            <option>Outro</option>
+                        </select>
+                        <label>Descreva o produto</label>
+                        <textarea maxlength="5000" placeholder="Digite a descrição do produto"></textarea>
+                        <small>Máximo 5000 caracteres</small>
+                        <div class="radio-group">
+                            <span>É resíduo pós-consumo ou pós-industrial?</span>
+                            <div>
+                                <label><input type="radio" name="tipo-residuo"> Pós-consumo</label>
+                                <label><input type="radio" name="tipo-residuo"> Pós-industrial</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2>2- Quantidade</h2>
+                        <label>Qual a quantidade disponível?</label>
+                        <div class="inline-group">
+                            <input type="number" placeholder="Digite qual a quantidade" min="0">
+                            <select>
+                                <option>Kg</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="form-section">
+                        <h2>3- Condições</h2>
+                        <label>Qual o preço desejado?</label>
+                        <input type="number" placeholder="Digite o preço" min="0" step="0.01">
+                    </div>
+                    <div class="form-section">
+                        <h2>4- Fotos</h2>
+                        <label>Envie fotos do resíduo no estilo .jpg (mínimo 8 fotos)</label>
+                        <div class="upload-box">
+                            <span class="upload-icon">⤴</span>
+                        </div>
+                        <small>mínimo 8 fotos</small>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-secondary">Enviar e fazer mais um</button>
+                        <button type="button" class="btn-primary">Enviar e sair</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>    
+</body>
+</html>
