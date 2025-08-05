@@ -44,9 +44,16 @@
                 </div>
             </div>
         </div>
-        <!-- componentes dos botoes-->
-        <div id="botao-continuar"></div>
-        <div id="botao-fazerlogin"></div>
+
+        <!-- botao continuar -->
+        {% set corBotao = 'black' %}
+        {% set textoBotao = 'Continuar' %}
+        {% include "components/button.html" with context %}
+
+        <!-- botao fazer login -->
+        {% set corBotao = 'white' %}
+        {% set textoBotao = 'Fazer Login' %}
+        {% include "components/button.html" with context %}
     </div>
 </body>
 </html>

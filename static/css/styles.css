@@ -422,21 +422,38 @@ summary {
 .form-item input::placeholder {
   color: #999;
 }
-.button-black{
-background-color: #000;
-color: #fff;
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-font-size: 14px;
 
-display: flex;
-align-items: center;
-justify-content: center;
-height: 38px;
-margin-left: 12px;
+.button-black{
+  font-family: "Istok Web", sans-serif;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 60px;
+  font-size: 14px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  margin-left: 12px;
 }
 
+.button-white{
+  font-family: "Istok Web", sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border: solid black 1px;
+  border-radius: 60px;
+  font-size: 14px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  margin-left: 12px;
+}
 
 
 
