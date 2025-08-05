@@ -1,6 +1,20 @@
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../assets/fonts/IstokWeb-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../assets/fonts/IstokWeb-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 #bodyanunciar {
-    background: #181A1B;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f5f5;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -46,12 +60,13 @@
 }
 
 .main-title {
-    color: #222;
+    color: #000000;
     text-align: center;
     margin-top: 48px;
     margin-bottom: 32px;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: bold;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 
 .form-container {
@@ -78,45 +93,64 @@ input[type=number] {
     margin-bottom: 32px;
 }
 .form-section h2 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    margin-bottom: 12px;
-    color: #222;
+    margin-bottom: 16px;
+    color: #000000;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 label {
     display: block;
-    margin-bottom: 6px;
-    color: #222;
+    margin-bottom: 8px;
+    color: #333333;
     font-size: 1rem;
+    font-weight: normal;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 select, input[type="text"], input[type="number"], textarea {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 14px;
-    border: 1px solid #bbb;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #cccccc;
     border-radius: 4px;
     font-size: 1rem;
-    background: #f7f7f7;
-    color: #222;
+    background: #ffffff;
+    color: #333333;
     box-sizing: border-box;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
+
+select::placeholder, input::placeholder, textarea::placeholder {
+    color: #aaaaaa;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
 textarea {
-    min-height: 60px;
+    min-height: 80px;
     resize: vertical;
 }
 .radio-group {
-    margin-bottom: 14px;
-    color: #222;
-    font-size: 0.98rem;
+    margin-bottom: 16px;
+    color: #333333;
+    font-size: 1rem;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+.radio-group span {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: normal;
+    color: #333333;
 }
 .radio-group label {
     display: inline-block;
-    margin-right: 18px;
+    margin-right: 24px;
     font-weight: normal;
+    color: #333333;
+    margin-bottom: 0;
 }
 .inline-group {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
 }
 .inline-group select {
@@ -124,7 +158,7 @@ textarea {
     margin-bottom: 0;
 }
 .upload-box {
-    border: 2px dashed #bbb;
+    border: 2px dashed #cccccc;
     border-radius: 8px;
     width: 60px;
     height: 60px;
@@ -136,38 +170,50 @@ textarea {
 }
 .upload-icon {
     font-size: 2rem;
-    color: #888;
+    color: #888888;
 }
 .form-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: 32px;
 }
 .btn-secondary, .btn-primary {
-    padding: 10px 22px;
+    padding: 12px 24px;
     border-radius: 4px;
-    border: none;
+    border: 1px solid #cccccc;
     font-size: 1rem;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: normal;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    color: #333333;
+    background: #f7f7f7;
 }
 .btn-secondary {
     background: #f7f7f7;
-    color: #222;
-    border: 1px solid #bbb;
+    color: #333333;
+    border: 1px solid #cccccc;
 }
 .btn-primary {
-    background: #222;
-    color: #fff;
-    border: 1px solid #222;
+    background: #f7f7f7;
+    color: #333333;
+    border: 1px solid #cccccc;
 }
+
+/* Estilo para texto pequeno informativo */
+.form-section small {
+    font-size: 0.875rem;
+    color: #888888;
+    font-weight: normal;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
 @media (max-width: 700px) {
     .form-container {
         padding: 18px 6vw;
     }
     .main-title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
     .header {
         flex-direction: column;
