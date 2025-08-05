@@ -728,3 +728,13 @@ form input:focus{
 form input::placeholder{
   color: #999;
 }
+
+/* Header */
+.direita{
+  justify-content: end;
+}
+header{
+  max-width: 100%;
+  min-width: 100%;
+  border-bottom: solid black;
+}
