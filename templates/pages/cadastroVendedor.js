@@ -5,7 +5,7 @@ document.getElementById("outrosCheckbox").addEventListener("change", function ()
     } else {
         outrosInput.style.display = "none";
         outrosInput.value = "";
-  }
+    }
 });
 
 
