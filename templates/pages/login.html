@@ -24,9 +24,15 @@
             </div>
         </div>
 
-        <!-- componentes dos botoes-->
-        <div id="botao-continuar"></div>
-        <div id="botao-criarconta"></div>
+        <!-- botao continuar -->
+        {% set corBotao = 'black' %}
+        {% set textoBotao = 'Continuar' %}
+        {% include "components/button.html" with context %}
+
+        <!-- botao criar conta -->
+        {% set corBotao = 'white' %}
+        {% set textoBotao = 'Criar Conta' %}
+        {% include "components/button.html" with context %}
     </div>
 </body>
 </html>
