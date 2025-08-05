@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anunciar Desktop</title>
     <link rel="stylesheet" href="anunciar.css">
+    <link rel="stylesheet" href="../assets/static/css/styles.css">
 </head>
 <body>
     <div id="bodyanunciar"></div>
@@ -17,7 +18,7 @@
                         <h2>1- Identificação do produto</h2>
                         <label>Qual o material do resíduo?</label>
                         <select>
-                            <option value="" disabled selected>Selecione o material</option>
+                            <option value="" disabled selected>Selecione o tipo de material</option>
                             <option>Plástico</option>
                             <option>Ferroso</option>
                             <option>Não Ferroso</option>
@@ -29,7 +30,8 @@
                             <option>Outro</option>
                         </select>
                         <label>Descreva o produto</label>
-                        <textarea maxlength="5000" placeholder="Máximo 5000 caracteres"></textarea>
+                        <textarea maxlength="5000" placeholder="Digite a descrição do produto"></textarea>
+                        <small>Máximo 5000 caracteres</small>
                         <div class="radio-group">
                             <span>É resíduo pós-consumo ou pós-industrial?</span>
                             <div>
@@ -60,6 +62,7 @@
                         <div class="upload-box">
                             <span class="upload-icon">⤴</span>
                         </div>
+                        <small>mínimo 8 fotos</small>
                     </div>
                     <div class="form-buttons">
                         <button type="submit" class="btn-secondary">Enviar e fazer mais um</button>
