@@ -22,3 +22,26 @@ Confira também nosso artigo.
 ## **Pré-requisitos**
 
 <img src="https://img.shields.io/badge/Python-3.13%20+-blue?logo=python&logoColor=white"><img src="https://img.shields.io/badge/PiP-23.2.1%20+-blue?logo=pypi&logoColor=white"><img src="https://img.shields.io/badge/PSQL-17.5%20+-blue?logo=postgresql&logoColor=white">
+
+
+## **Passo a passo**
+
+Execute o arquivo `install_dependencies.bat`, o mesmo criará o arquivo `.env`, o qual deverá ser aberto e editado.
+
+Você verá o seguinte:
+```
+DB_HOST="localhost"
+DB_NAME="postgres"
+DB_USER="postgres"
+DB_PASSWORD=""
+DB_PORT="5432"
+```
+Repare que o campo `DB_PASSWORD=""` está vazio. Preencha-o com a sua senha padrão do PostgreSQL e salve.
+
+<br><br>
+# Como utilizar
+No terminal, já no diretório equivalente, rode o `main.py` utilizando o _Python_.
+```
+python main.py
+```
+Acesse o link _http://127.0.0.1:5000_ exibido no terminal para navegar no site.
