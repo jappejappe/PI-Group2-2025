@@ -392,9 +392,6 @@
     margin-top: 5px;
 }
 
-.form-item {
-    margin-bottom: 20px;
-}
 
 .form-item label {
     display: block;
@@ -436,4 +433,188 @@
   justify-content: center;
   height: 38px;
   margin-left: 12px;
+}
+
+
+
+
+
+/* PÁGINA DE PERFIL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }  
+
+  .body2 {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+
+  }
+  .header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .logo {
+    align-items: center;
+    color: #000;
+    display: inline-block;
+  }
+
+  .body2 {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #000;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.navbar nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.anunciar {
+  background-color: black;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  margin-right: 10px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.foto-perfil {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-right: 15px;
+}
+
+.info-perfil h2 {
+  margin: 0;
+}
+
+.info-perfil p {
+  margin: 5px 0;
+}
+
+.bio {
+  font-size: 14px;
+}
+
+.seguir {
+  background: black;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+h1 {
+  margin-top: 40px;
+}
+
+.item {
+  display: flex;
+  border: 1px solid #999;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 0;
+  background: #f5f5f5;
+}
+
+.item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.detalhes {
+  flex-grow: 1;
+}
+
+.titulo-preco {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.peso {
+  color: #888;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comprar, .ver {
+  padding: 8px 20px;
+  margin-right: 10px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.comprar {
+  background: black;
+  color: white;
+}
+
+.ver {
+  background: white;
+  border: 1px solid black;
+}
+
+.preco2 {
+  font-weight: bold;
+  margin-left: auto;
+}
+
+.ver-mais2 {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 30px;
+  border: none;
+  background: #ccc;
+  border-radius: 10px;
+  cursor: pointer;
 }
