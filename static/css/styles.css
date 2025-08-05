@@ -1,257 +1,258 @@
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #ffffff;
-    color: #000000;
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-  }
-    
-  .body1 {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    color: #000;
-  }
-  
-  .header1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-  }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  color: #000000;
+}
 
-  nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: black;
-  }
-  .anunciar {
-    background: black;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-  }
-  .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 200px 150px;
-  }
-  .hero-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 70px;
-  }
-  .hero-text p {
-    margin: 20px 0;
-  }
-  .btn-explorar {
-    background: black;
-    color: white;
-    border: none;
-    padding: 15px 25px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  .img-latinhas {
-    border-radius: 15px;
-  }
-  .middle-section {
-    background: gray;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  .middle-section h2 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 10px;
-  }
-  .icons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 10px;
-  }
-  .marketplace {
-    padding: 40px 20px;
-  }
-  .items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  .item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 10px;
-  }
-  .item img {
-    width: 100%;
-    border-radius: 5px;
-  }
-  .item h3 {
-    font-size: 16px;
-    margin: 10px 0 5px;
-  }
-  .item p {
-    font-size: 14px;
-    color: #555;
-  }
-  .price {
-    margin: 10px 0;
-    font-weight: bold;
-  }
-  .item button {
-    background: black;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .ver-mais {
-    text-align: center;
-    margin-top: 30px;
-  }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+  
+.body1 {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #000;
+}
 
-  footer {
-    background: black;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: bold;
-  }
+.header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
 
-  .btn-anunciar {
-    background: black;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  .produto-container {
-    display: flex;
-    padding: 40px;
-    gap: 40px;
-  }
-  
-  .galeria {
-    flex: 1;
-  }
-  
-  .imagem-principal {
-    width: 100%;
-    border: 1px solid #ccc;
-  }
-  
-  .miniaturas {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .miniaturas img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .seta {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .detalhes-produto {
-    flex: 1;
-  }
-  
-  .detalhes-produto h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-  
-  .avaliacao {
-    color: #444;
-  }
-  
-  .reviews {
-    color: #007aff;
-  }
-  
-  .preco {
-    background: #f1f1f1;
-    padding: 10px;
-    margin: 20px 0;
-  }
-  
-  .preco-atual {
-    font-size: 24px;
-    font-weight: bold;
-    display: block;
-  }
-  
-  select {
-    padding: 10px;
-    width: 100%;
-    margin: 10px 0;
-    background-color: #f1f1f1;
-  }
-  
-  .acoes {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .acoes .btn {
-    background: black;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-  }
-  
-  details {
-    margin-top: 20px;
-  }
-  
-  summary {
-    font-weight: bold;
-    cursor: pointer;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-  }
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: black;
+}
+.anunciar {
+  background: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 200px 150px;
+}
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 70px;
+}
+.hero-text p {
+  margin: 20px 0;
+}
+.btn-explorar {
+  background: black;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.img-latinhas {
+  border-radius: 15px;
+}
+.middle-section {
+  background: gray;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.middle-section h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 10px;
+}
+.marketplace {
+  padding: 40px 20px;
+}
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+}
+.item img {
+  width: 100%;
+  border-radius: 5px;
+}
+.item h3 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+.item p {
+  font-size: 14px;
+  color: #555;
+}
+.price {
+  margin: 10px 0;
+  font-weight: bold;
+}
+.item button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.ver-mais {
+  text-align: center;
+  margin-top: 30px;
+}
+
+footer {
+  background: black;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.btn-anunciar {
+  background: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.produto-container {
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+}
+
+.galeria {
+  flex: 1;
+}
+
+.imagem-principal {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.miniaturas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.miniaturas img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.seta {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.detalhes-produto {
+  flex: 1;
+}
+
+.detalhes-produto h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.avaliacao {
+  color: #444;
+}
+
+.reviews {
+  color: #007aff;
+}
+
+.preco {
+  background: #f1f1f1;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.preco-atual {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+}
+
+select {
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: #f1f1f1;
+}
+
+.acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.acoes .btn {
+  background: black;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+details {
+  margin-top: 20px;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
 
 
 
@@ -263,81 +264,81 @@
 /* PAGINA DE REGISTRO */
 
 #registrarBody > * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #registrarBody {
-    font-family: "Istok Web", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 #registrarForm {
-    background: white;
-    border: 1px solid #888;
-    border-radius: 12px;
-    padding: 40px;
-    max-width: 480px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  border: 1px solid #888;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #registrarForm h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 25px;
-    font-weight: 400;
-    color: #000;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 400;
+  color: #000;
 }
 
 #registrarForm > * {
-    display: grid;
-    place-content: center;
+  display: grid;
+  place-content: center;
 }
 
 .password-hint {
-    font-size: 12px;
-    color: #666;
-    margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
 }
 
 .form-item {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-item label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #000;
-    font-weight: 400;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
 }
 
 .form-item input {
-    width: 360px;
-    padding: 16px 16px;
-    border: 1px solid #888;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: inherit;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  width: 360px;
+  padding: 16px 16px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-item input:focus {
-    outline: none;
-    border-color: #333;
-    box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
+  outline: none;
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
 }
 
 .form-item input::placeholder {
-    color: #999;
+  color: #999;
 }
 
 
@@ -348,92 +349,92 @@
 /* PAGINA DE LOGIN */
 
 #loginBody > * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #loginBody {
-    font-family: "Istok Web", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 #loginForm {
-    background: white;
-    border: 1px solid #888;
-    border-radius: 12px;
-    padding: 40px;
-    max-width: 480px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  border: 1px solid #888;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #loginForm h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 25px;
-    font-weight: 400;
-    color: #000;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 400;
+  color: #000;
 }
 
 #loginForm > * {
-    display: grid;
-    place-content: center;
+  display: grid;
+  place-content: center;
 }
 
 .password-hint {
-    font-size: 12px;
-    color: #666;
-    margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
 }
 
 
 .form-item label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #000;
-    font-weight: 400;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
 }
 
 .form-item input {
-    width: 360px;
-    padding: 16px 16px;
-    border: 1px solid #888;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: inherit;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  width: 360px;
+  padding: 16px 16px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-item input:focus {
-    outline: none;
-    border-color: #333;
-    box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
+  outline: none;
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
 }
 
 .form-item input::placeholder {
-    color: #999;
+  color: #999;
 }
 .button-black{
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 38px;
-  margin-left: 12px;
+background-color: #000;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+font-size: 14px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+height: 38px;
+margin-left: 12px;
 }
 
 
@@ -443,34 +444,34 @@
 /* PÁGINA DE PERFIL */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}  
 
-  .body2 {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    color: #000;
+.body2 {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #000;
 
-  }
-  .header1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-  }
+}
+.header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
 
-  .logo {
-    align-items: center;
-    color: #000;
-    display: inline-block;
-  }
+.logo {
+  align-items: center;
+  color: #000;
+  display: inline-block;
+}
 
-  .body2 {
+.body2 {
   font-family: Arial, sans-serif;
   background: #fff;
   color: #000;
@@ -530,7 +531,7 @@
 }
 
 .info-perfil p {
-  margin: 5px 0;
+  margin: 5px 0; 
 }
 
 .bio {
@@ -618,4 +619,112 @@ h1 {
   background: #ccc;
   border-radius: 10px;
   cursor: pointer;
+}
+
+/* cadastroVendedor */
+fieldset{
+  border: none !important;
+  width: 100%;
+}
+
+
+fieldset legend{
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  align-self: start !important;
+}
+
+
+fieldset input{
+  margin-bottom: 6px;
+}
+
+
+fieldset label{
+  display: flex;
+  flex-direction: row;
+}
+
+
+fieldset:last-of-type input{
+  max-width: 10px;
+  margin-right: 5px;
+}
+
+
+#outrosInput{
+  max-width: 150px;
+}
+
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  background: white;
+  border: 1px solid #888;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 33vw;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+form h2{
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 400;
+  color: #000;
+}
+
+
+form > *{
+  margin-bottom: 20px;
+}
+
+
+form label{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  align-self: start;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+}
+
+
+form input{
+  width: 100%;
+  padding: 16px 16px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+form input:focus{
+  outline: none;
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
+}
+
+
+form input::placeholder{
+  color: #999;
 }
