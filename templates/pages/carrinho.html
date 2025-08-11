@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seu Carrinho - Recicla Marketplace</title>
+  <link rel="stylesheet" href="../../static/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<div class="body1">
+<body>
+  <div class="header1">
+  <header>
+    <div class="logo">RCL</div>
+    <nav>
+      <a href="#">Marketplace</a>
+      <a href="#">Vender</a>
+      <a href="#">Sobre</a>
+    </nav>
+    <div>
+      <button class="anunciar">Anunciar</button>
+
+    </div>
+  </header>
+  </div>
+
+  <main class="carrinho-container">
+    <h1 class="carrinho-titulo">Seu Carrinho</h1>
+    
+    <div class="produtos-lista">
+      <div class="produto-item" id="produto1">
+        <div class="produto-checkbox">
+          <input type="checkbox" id="check1" checked>
+        </div>
+        
+        <div class="produto-imagem">
+          <img src="../../images/recycle.gif" alt="Latas de alumínio">
+        </div>
+        
+        <div class="produto-info">
+          <p class="produto-descricao">Latas de alumínio</p>
+        </div>
+        
+        <div class="produto-quantidade">
+          <div class="quantidade-controles">
+            <button class="btn-quantidade" onclick="diminuirQuantidade(1)">-</button>
+            <input type="number" value="1" min="1" class="quantidade-input" id="qtd1" onchange="atualizarPreco(1)">
+            <button class="btn-quantidade" onclick="aumentarQuantidade(1)">+</button>
+          </div>
+        </div>
+        
+        <div class="produto-preco">
+          <span class="preco-valor" id="preco1">R$ 22,00</span>
+        </div>
+        
+        <div class="produto-acoes">
+          <button class="btn-remover" onclick="removerProduto(1)">×</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="carrinho-footer">
+      <div class="resumo-carrinho">
+        <div class="total-info">
+          <span class="total-itens" id="totalItens">Total de itens: 1</span>
+          <span class="subtotal" id="subtotal">Subtotal: R$ 22,00</span>
+        </div>
+        <button class="btn-continuar">Continuar</button>
+      </div>
+    </div>
+  </main>
+</body>
+</div>
+
+<script>
+function diminuirQuantidade(produtoId) {
+  const input = document.getElementById(`qtd${produtoId}`);
+  if (input.value > 1) {
+    input.value--;
+    atualizarPreco(produtoId);
+  }
+}
+
+function aumentarQuantidade(produtoId) {
+  const input = document.getElementById(`qtd${produtoId}`);
+  input.value++;
+  atualizarPreco(produtoId);
+}
+
+function atualizarPreco(produtoId) {
+  const quantidade = parseInt(document.getElementById(`qtd${produtoId}`).value);
+  const precoTotal = quantidade * 22;
+  
+  document.getElementById(`preco${produtoId}`).textContent = `R$ ${precoTotal.toFixed(2).replace('.', ',')}`;
+  atualizarTotalCarrinho();
+}
+
+function removerProduto(produtoId) {
+  const produto = document.getElementById(`produto${produtoId}`);
+  produto.remove();
+  atualizarTotalCarrinho();
+}
+
+function atualizarTotalCarrinho() {
+  const produtos = document.querySelectorAll('.produto-item');
+  let total = 0;
+  let totalItens = 0;
+  
+  produtos.forEach(produto => {
+    const checkbox = produto.querySelector('input[type="checkbox"]');
+    if (checkbox.checked) {
+      const quantidade = parseInt(produto.querySelector('.quantidade-input').value);
+      total += quantidade * 22;
+      totalItens += quantidade;
+    }
+  });
+  
+  document.getElementById('totalItens').textContent = `Total de itens: ${totalItens}`;
+  document.getElementById('subtotal').textContent = `Subtotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+}
+
+document.addEventListener('change', function(e) {
+  if (e.target.type === 'checkbox' && e.target.closest('.produto-item')) {
+    atualizarTotalCarrinho();
+  }
+});
+</script>
