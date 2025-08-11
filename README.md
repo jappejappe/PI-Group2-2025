@@ -1,15 +1,14 @@
 # Projeto Integrador 2025
 
 <p align="center">
-    <img src="./assets/images/recycle.gif" width="80px">
-
+    <img src="./images/recycle.gif" width="80px">
 </p>
 
 
 
 # **Descrição**
 Com base no tema gerador proposto no Projeto Integrador 2025: "Fronteiras da Inovação: Intersecção da Ciência e Tecnologia para desenvolver soluções sustentáveis e inteligentes para os desafios globais" nós, do grupo 2, desenvolvemos o Recicla™ (RCL), um marketplace voltado para o comércio de sucatas e resíduos recicláveis, por conta do cenário atual e da escassez de opções acessíveis para vender esses materiais. O objetivo do Recicla é conectar catadores, cooperativas e pequenos geradores de resíduos a compradores de forma prática, incentivando a reciclagem e promovendo a sustentabilidade.
-Confira também nosso artigo.
+Confira também nosso [artigo científico](biorremediacao_de_polimeros_sinteticos.pdf).
 
 <br><br>
 
@@ -38,10 +37,27 @@ DB_PORT="5432"
 ```
 Repare que o campo `DB_PASSWORD=""` está vazio. Preencha-o com a sua senha padrão do PostgreSQL e salve.
 
+>***Nota:*** *Caso haja necessidade, altere as configurações como preferir.*
+
 <br><br>
 # Como utilizar
-No terminal, já no diretório equivalente, rode o `main.py` utilizando o _Python_.
+No terminal, já no diretório equivalente a raiz deste projeto, rode o `main.py` utilizando o _Python_.
 ```
 python main.py
 ```
 Acesse o link _http://127.0.0.1:5000_ exibido no terminal para navegar no site.
+
+<br><br>
+# Navegação
+Para navegar entre as diferentes páginas do projeto, a equipe resolveu momentaneamente deixar este trabalho manual, ou seja, você precisa ver as rotas do *Flask* no arquivo `main.py`, e adicioná-las **manualmente** ao endereço da página.
+
+
+*Exemplo de rota para o **login**:*
+```
+@app.route('/login')
+```
+
+*Como **você** deve deixar o endereço:*
+```
+http://127.0.0.1:5000/login
+```
