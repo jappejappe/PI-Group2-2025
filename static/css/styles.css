@@ -3,14 +3,6 @@ body {
   background: #ffffff;
   color: #000000;
 }
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
-}
   
 .body1 {
   font-family: 'Inter', sans-serif;
@@ -18,14 +10,6 @@ header {
   padding: 0;
   background: #fff;
   color: #000;
-}
-
-.header1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
 }
 
 nav a {
@@ -254,13 +238,6 @@ summary {
   padding-top: 10px;
 }
 
-
-
-
-
-
-
-
 /* PAGINA DE REGISTRO */
 
 #registrarBody > * {
@@ -341,11 +318,6 @@ summary {
   color: #999;
 }
 
-
-
-
-
-
 /* PAGINA DE LOGIN */
 
 #loginBody > * {
@@ -393,7 +365,6 @@ summary {
   color: #666;
   margin-top: 5px;
 }
-
 
 .form-item label {
   display: block;
@@ -455,9 +426,6 @@ summary {
   margin-left: 12px;
 }
 
-
-
-
 /* PÁGINA DE PERFIL */
 
 * {
@@ -473,13 +441,6 @@ summary {
   background: #fff;
   color: #000;
 
-}
-.header1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
 }
 
 .logo {
@@ -644,7 +605,6 @@ fieldset{
   width: 100%;
 }
 
-
 fieldset legend{
   margin-bottom: 8px;
   display: flex;
@@ -658,28 +618,23 @@ fieldset legend{
   align-self: start !important;
 }
 
-
 fieldset input{
   margin-bottom: 6px;
 }
-
 
 fieldset label{
   display: flex;
   flex-direction: row;
 }
 
-
 fieldset:last-of-type input{
   max-width: 10px;
   margin-right: 5px;
 }
 
-
 #outrosInput{
   max-width: 150px;
 }
-
 
 form{
   display: flex;
@@ -697,7 +652,6 @@ form{
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 form h2{
   text-align: center;
   margin-bottom: 30px;
@@ -706,11 +660,9 @@ form h2{
   color: #000;
 }
 
-
 form > *{
   margin-bottom: 20px;
 }
-
 
 form label{
   display: flex;
@@ -723,7 +675,6 @@ form label{
   font-weight: 400;
 }
 
-
 form input{
   width: 100%;
   padding: 16px 16px;
@@ -734,21 +685,22 @@ form input{
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-
 form input:focus{
   outline: none;
   border-color: #333;
   box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
 }
 
-
 form input::placeholder{
   color: #999;
 }
 
 /* Header */
+.esquerda{
+  left: 0;
+}
 .direita{
-  justify-content: end;
+  right: 0;
 }
 header{
   max-width: 100%;
