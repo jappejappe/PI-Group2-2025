@@ -435,12 +435,14 @@ summary {
 }
 
 #loginBotoes {
-  display: grid;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
 #registrarBotoes {
-  display: grid;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
