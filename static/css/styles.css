@@ -330,7 +330,7 @@ summary {
   font-family: "Istok Web", sans-serif;
   font-weight: 400;
   font-style: normal;
-  min-height: 100vh;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -340,17 +340,17 @@ summary {
 #loginForm {
   background: white;
   border: 1px solid #888;
-  border-radius: 12px;
-  padding: 40px;
-  max-width: 480px;
+  border-radius: 0.625vw;
+  padding: 2.08vw;
+  max-width: 28%;
   width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.104vw 0.52vw rgba(0, 0, 0, 0.1);
 }
 
 #loginForm h2 {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 25px;
+  margin-bottom: 1.56vw;
+  font-size: 1.3vw;
   font-weight: 400;
   color: #000;
 }
@@ -375,13 +375,46 @@ summary {
 }
 
 .form-item input {
-  width: 360px;
-  padding: 16px 16px;
+  width: 18.75vw;
+  padding: 0.83vw 0.83vw;
   border: 1px solid #888;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.42vw;
+  font-size: 0.73vw;
   font-family: inherit;
   transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+@media (max-width: 768px) {
+  #loginForm {
+    max-width: 90%;
+    padding: 5vw;
+    border-radius: 2.4vw;
+  }
+
+  #loginForm h2 {
+    font-size: 28px;
+  }
+
+  .form-item input {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #888;
+    border-radius: 2.4vw;
+  }
+}
+
+#loginBotoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#registrarBotoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .form-item input:focus {
@@ -406,12 +439,12 @@ summary {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
-  margin-left: 12px;
+  height: 48px;
+  margin: 4px;
 }
 
 .button-white{
-  font-family: "Istok Web", sans-serif;
+  font-family: "Istok Web", sans-serif !important;
   background-color: #ffffff;
   color: #000000;
   padding: 10px 20px;
@@ -422,8 +455,8 @@ summary {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
-  margin-left: 12px;
+  height: 48px;
+  margin: 4px;
 }
 
 /* PÁGINA DE PERFIL */
@@ -706,4 +739,208 @@ header{
   max-width: 100%;
   min-width: 100%;
   border-bottom: solid black;
+}
+
+
+/* ===== ESTILOS DA PÁGINA ANUNCIAR ===== */
+
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../assets/fonts/IstokWeb-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../assets/fonts/IstokWeb-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+#anunciar-body {
+    background: #f5f5f5;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.anunciar-btn-anunciar {
+    background: #fff;
+    color: #222;
+    border: 1px solid #222;
+    border-radius: 4px;
+    padding: 4px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.anunciar-user-icon {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.anunciar-main-title {
+    color: #000000;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 32px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.anunciar-form-container {
+    background: #fff;
+    max-width: 600px;
+    margin: 0 auto 48px auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*esconder setas*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.anunciar-form-section {
+    margin-bottom: 32px;
+}
+.anunciar-form-section h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #000000;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+.anunciar-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333333;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+.anunciar-select, .anunciar-input[type="text"], .anunciar-input[type="number"], .anunciar-textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: #ffffff;
+    color: #333333;
+    box-sizing: border-box;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.anunciar-select::placeholder, .anunciar-input::placeholder, .anunciar-textarea::placeholder {
+    color: #aaaaaa;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.anunciar-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+.anunciar-radio-group {
+    margin-bottom: 16px;
+    color: #333333;
+    font-size: 1rem;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+.anunciar-radio-group span {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: normal;
+    color: #333333;
+}
+.anunciar-radio-group label {
+    display: inline-block;
+    margin-right: 24px;
+    font-weight: normal;
+    color: #333333;
+    margin-bottom: 0;
+}
+.anunciar-inline-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.anunciar-inline-group select {
+    width: 80px;
+    margin-bottom: 0;
+}
+.anunciar-upload-box {
+    border: 2px dashed #cccccc;
+    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    background: #fafafa;
+}
+
+.anunciar-upload-icon {
+    font-size: 2rem;
+    color: #888888;
+}
+.anunciar-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+}
+.anunciar-btn-secondary, .anunciar-btn-primary {
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: normal;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    color: #333333;
+    background: #f7f7f7;
+}
+.anunciar-btn-secondary {
+    background: #f7f7f7;
+    color: #333333;
+    border: 1px solid #cccccc;
+}
+.anunciar-btn-primary {
+    background: #f7f7f7;
+    color: #333333;
+    border: 1px solid #cccccc;
+}
+
+/* Estilo para texto pequeno informativo */
+.anunciar-form-section small {
+    font-size: 0.875rem;
+    color: #888888;
+    font-weight: normal;
+    font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+@media (max-width: 700px) {
+    .anunciar-form-container {
+        padding: 18px 6vw;
+    }
+    .anunciar-main-title {
+        font-size: 1.4rem;
+    }
+    .anunciar-header {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 8px;
+    }
 }
