@@ -8,8 +8,9 @@
 </head>
 <body>
     <div id="loginBody">
-        <!-- aqui vai o componente do header -->
-        <div id="header"></div>
+        <div id="header">
+            {% include "components/header.html" with context %}
+        </div>
             <div id="loginForm">
                 <h2>Iniciar Sessão</h2>
         
@@ -23,16 +24,19 @@
                 </div>
             </div>
         </div>
-
-        <!-- botao continuar -->
-        {% set corBotao = 'black' %}
-        {% set textoBotao = 'Continuar' %}
-        {% include "components/button.html" with context %}
-
-        <!-- botao criar conta -->
-        {% set corBotao = 'white' %}
-        {% set textoBotao = 'Criar Conta' %}
-        {% include "components/button.html" with context %}
+        <div id="loginBotoes">
+            <!-- botao continuar -->
+            {% set corBotao = 'black' %}
+            {% set textoBotao = 'Continuar' %}
+            {% set path = 'home' %}
+            {% include "components/button.html" with context %}
+        
+            <!-- botao criar conta -->
+            {% set corBotao = 'white' %}
+            {% set textoBotao = 'Criar Conta' %}
+            {% set path = 'registrar' %}
+            {% include "components/button.html" with context %}
+        </div>
     </div>
 </body>
 </html>

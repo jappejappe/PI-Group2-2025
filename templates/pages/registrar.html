@@ -8,8 +8,9 @@
 </head>
 <body>
     <div id="registrarBody">
-        <!-- aqui vai o componente do header -->
-        <div id="header"></div>
+        <div id="header">
+            {% include "components/header.html" with context %}
+        </div>
             <div id="registrarForm">
                 <h2>Registrar-se</h2>
         
@@ -40,20 +41,24 @@
                 <div class="form-item">
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" placeholder="Senha" />
-                    <p class="password-hint">A senha deve conter pelo menos 8 caracteres, com ao menos um número</p>
+                    <p class="password-hint">Mínimo de 8 caracteres, contendo ao menos um número.</p>
                 </div>
             </div>
         </div>
 
-        <!-- botao continuar -->
-        {% set corBotao = 'black' %}
-        {% set textoBotao = 'Continuar' %}
-        {% include "components/button.html" with context %}
+        <div id="registrarBotoes">
+            <!-- botao continuar -->
+            {% set corBotao = 'black' %}
+            {% set textoBotao = 'Continuar' %}
+            {% set path = 'home' %}
+            {% include "components/button.html" with context %}
 
-        <!-- botao fazer login -->
-        {% set corBotao = 'white' %}
-        {% set textoBotao = 'Fazer Login' %}
-        {% include "components/button.html" with context %}
+            <!-- botao fazer login -->
+            {% set corBotao = 'white' %}
+            {% set textoBotao = 'Fazer Login' %}
+            {% set path = 'login' %}
+            {% include "components/button.html" with context %}
+        </div>
     </div>
 </body>
 </html>
