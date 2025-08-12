@@ -835,6 +835,7 @@ header{
     max-width: 600px;
     margin: 0 auto 48px auto;
     border-radius: 10px;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
