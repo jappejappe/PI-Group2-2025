@@ -780,31 +780,6 @@ header{
     padding: 0;
 }
 
-.anunciar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #222;
-    color: #6EC1E4;
-    padding: 12px 32px;
-    font-size: 18px;
-}
-.anunciar-logo {
-    font-weight: bold;
-    font-size: 20px;
-}
-.anunciar-header-nav a {
-    color: #222;
-    background: #fff;
-    border-radius: 4px;
-    margin: 0 8px;
-    padding: 4px 12px;
-    text-decoration: none;
-    font-size: 15px;
-}
-.anunciar-header-nav a:hover {
-    background: #e6e6e6;
-}
 .anunciar-btn-anunciar {
     background: #fff;
     color: #222;
