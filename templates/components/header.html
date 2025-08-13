@@ -5,7 +5,10 @@
         </a>
 
         <div class="direita">
-            <!-- Botão anunciar -->
+            {% set corBotao = 'black' %}
+            {% set textoBotao = 'Anunciar' %}
+            {% set path = 'anunciar' %}
+            {% include "components/button.html" with context %}
             <a href="{{ url_for('carrinho') }}">
                 <img src="{{ url_for('static', filename='images/icons/carrinhoCompra.png') }}" alt="carrinho">
             </a>
