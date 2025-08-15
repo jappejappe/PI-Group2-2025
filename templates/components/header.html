@@ -1,14 +1,14 @@
 <header>
     <nav>
-        <a href="{{ url_for('home') }}">
-            <img src="{{ url_for('static', filename='images/logos/logo_preta.png') }}" alt="Nossa logo" class="esquerda">
+        <a id="aHeader" href="{{ url_for('home') }}">
+            <img id="logo" src="{{ url_for('static', filename='images/logos/logo_preta.png') }}" alt="Logo">
         </a>
+        {% set corBotao = 'black' %}
+        {% set textoBotao = 'Anunciar' %}
+        {% set path = 'anunciar' %}
+        {% include "components/button.html" with context %}
 
-        <div class="direita">
-            {% set corBotao = 'black' %}
-            {% set textoBotao = 'Anunciar' %}
-            {% set path = 'anunciar' %}
-            {% include "components/button.html" with context %}
+        <div>
             <a href="{{ url_for('carrinho') }}">
                 <img src="{{ url_for('static', filename='images/icons/carrinhoCompra.png') }}" alt="carrinho">
             </a>

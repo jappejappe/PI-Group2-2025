@@ -1,3 +1,118 @@
+/* ###################### FONTES ###################### */
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../assets/fonts/IstokWeb-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Istok Web';
+    src: url('../assets/fonts/IstokWeb-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inknut Antiqua';
+    src: url('../assets/fonts/InknutAntiqua-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inknut Antiqua';
+    src: url('../assets/fonts/InknutAntiqua-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+/* ###################### COMPONENTES ###################### */
+
+/* ##### Header */
+header{
+  max-width: 100%;
+  min-width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 100;
+}
+
+nav div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8%;
+}
+
+nav img {
+  max-width: 50px;
+}
+
+#aHeader {
+  display: flex;
+  margin-left: 8%;
+} 
+
+#logo {
+  max-width: 90px;
+  max-height: 33px;
+  margin: auto;
+}
+
+#buttonHeader {
+  margin: 15px 10px 15px auto;
+}
+
+/* ##### */
+
+/* ##### Button */
+.button-black{
+  font-family: "Istok Web", sans-serif;
+  font-weight: bold;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 60px;
+  font-size: 14px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  margin: 4px;
+}
+
+.button-white{
+  font-family: "Istok Web", sans-serif !important;
+  font-weight: bold;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border: solid black 1px;
+  border-radius: 60px;
+  font-size: 14px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  margin: 4px;
+}
+
+/* ##### */
+
+
+
+/* ######################################################### */
+
 body {
   font-family: 'Inter', sans-serif;
   background: #ffffff;
@@ -427,37 +542,7 @@ summary {
   color: #999;
 }
 
-.button-black{
-  font-family: "Istok Web", sans-serif;
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 60px;
-  font-size: 14px;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  margin: 4px;
-}
 
-.button-white{
-  font-family: "Istok Web", sans-serif !important;
-  background-color: #ffffff;
-  color: #000000;
-  padding: 10px 20px;
-  border: solid black 1px;
-  border-radius: 60px;
-  font-size: 14px;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  margin: 4px;
-}
 
 /* PÁGINA DE PERFIL */
 
@@ -728,35 +813,10 @@ form input::placeholder{
   color: #999;
 }
 
-/* Header */
-.esquerda{
-  left: 0;
-}
-.direita{
-  right: 0;
-}
-header{
-  max-width: 100%;
-  min-width: 100%;
-  border-bottom: solid black;
-}
+
 
 
 /* ===== ESTILOS DA PÁGINA ANUNCIAR ===== */
-
-@font-face {
-    font-family: 'Istok Web';
-    src: url('../assets/fonts/IstokWeb-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Istok Web';
-    src: url('../assets/fonts/IstokWeb-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
 
 #anunciar-body {
     background: #f5f5f5;
