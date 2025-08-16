@@ -7,13 +7,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-
-    {% include 'components/header.html' %}
-
     <div id="loginBody">
-        <div id="header">
             {% include "components/header.html" with context %}
-        </div>
             <div id="loginForm">
                 <h2>Iniciar Sessão</h2>
         
