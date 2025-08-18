@@ -6,13 +6,6 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import dotenv
 
 #################################################################
-# O próximo a mexer aqui deve atentar-se para os diretórios 
-# dos quais os templates são puxados 
-# by: @jappejappe - 13/07
-#################################################################
-
-
-#################################################################
 # CARREGAMENTO DE VARIÁVEIS DE AMBIENTE
 # Carrega as variáveis de ambiente do arquivo .env
 dotenv.load_dotenv()
@@ -41,7 +34,6 @@ cursor.execute("SELECT 1 FROM pg_database WHERE datname = %s", ('rcl_db',)) # Ve
 # Retorna 1 se existir, caso contrário retorna None
 
 dbExiste = cursor.fetchone() # Coleta o resultado da consulta
-print(dbExiste) ################### DEBUG
 
 if dbExiste:
     print(f"Banco de dados 'rcl_db' já existe. Aguarde enquanto o mesmo é configurado.")
@@ -61,40 +53,21 @@ else:
     cursor = connect.cursor()
 
 
-    # Criação da tabela "users"
-    # SERIAL já deixa automaticamente com Auto Increment
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            nome VARCHAR(30) NOT NULL,
-            username VARCHAR(20) NOT NULL,
-            email VARCHAR(50) UNIQUE NOT NULL,
-            nascimento DATE NOT NULL,
-            cep CHAR(8) NOT NULL,
-            cpf CHAR(11) NOT NULL,
-            password TEXT NOT NULL
-        );
-    ''')
+    # Executa o script SQL para criar as tabelas
+    with open("./data/database.sql", "r", encoding="utf-8") as cmd:
+        sql = cmd.read()
 
-    # Criação da tabela "tipos_produtos"
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS tipos_produtos (
-            tipo VARCHAR(20) PRIMARY KEY
-        );
-    ''')
+    cursor.execute(sql)
 
-    # Criação da tabela "produtos"
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS produtos (
-            id SERIAL PRIMARY KEY,
-            tipo_produto VARCHAR(20) NOT NULL REFERENCES tipos_produtos(tipo),
-            nome VARCHAR(30) NOT NULL
-        );
-    ''')
-
-    connect.commit()
+connect.commit()
 
 
+dadosExemplo = input("Deseja pré-preencher o banco de dados com dados de exemplo? (s/n): ").strip().lower()
+if dadosExemplo == 'n':
+    connect.close()
+else: 
+    with open("./data/add_dados.py", "r", encoding="utf-8") as cmd:
+        os.system(f"python {cmd.name}")  # Executa o script para adicionar dados de exemplo
 
 ##################################################################
 

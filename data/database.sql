@@ -42,9 +42,17 @@ CREATE TABLE condicoes_produtos (
 );
 
 
+CREATE TABLE carregamentos (
+	id_carregamento SERIAL NOT NULL,
+	carregamento VARCHAR NOT NULL,
+	CONSTRAINT carregamentos_unique UNIQUE (id_carregamento,carregamento),
+	CONSTRAINT carregamentos_pk PRIMARY KEY (id_carregamento)
+);
+
+
 CREATE TABLE vendedores_carregamento (
 	id_vendedor INTEGER NOT NULL REFERENCES vendedores(id_vendedor),
-	id_carregamento INTEGER NOT NULL REFERENCES carregamento(id_carregamento)
+	id_carregamento INTEGER NOT NULL REFERENCES carregamentos(id_carregamento)
 );
 
 
@@ -72,14 +80,6 @@ CREATE TABLE anuncios (
 );
 
 
-CREATE TABLE carregamentos (
-	id_carregamento SERIAL NOT NULL,
-	carregamento VARCHAR NOT NULL,
-	CONSTRAINT carregamentos_unique UNIQUE (id_carregamento,carregamento),
-	CONSTRAINT carregamentos_pk PRIMARY KEY (id_carregamento)
-);
-
-
 CREATE TABLE carrinhos (
 	id_comprador INTEGER NOT NULL REFERENCES compradores(id_comprador),
 	id_produto INTEGER NOT NULL REFERENCES anuncios(id_anuncio),
@@ -94,10 +94,4 @@ CREATE TABLE fotos_anuncios (
 	foto VARCHAR NOT NULL,
 	CONSTRAINT fotos_anuncios_unique UNIQUE (id_foto),
 	CONSTRAINT fotos_anuncios_pk PRIMARY KEY (id_foto)
-);
-
-
-CREATE TABLE vendedores_carregamento (
-	id_vendedor INTEGER NOT NULL REFERENCES vendedores(id_vendedor),
-	id_carregamento INTEGER NOT NULL REFERENCES carregamentos(id_carregamento)
 );
