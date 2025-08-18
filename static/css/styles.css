@@ -1,28 +1,28 @@
 /* ###################### FONTES ###################### */
 @font-face {
     font-family: 'Istok Web';
-    src: url('../assets/fonts/IstokWeb-Regular.ttf') format('truetype');
+    src: url('../fonts/IstokWeb-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Istok Web';
-    src: url('../assets/fonts/IstokWeb-Bold.ttf') format('truetype');
+    src: url('../fonts/IstokWeb-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Inknut Antiqua';
-    src: url('../assets/fonts/InknutAntiqua-Regular.ttf') format('truetype');
+    src: url('../fonts/InknutAntiqua-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Inknut Antiqua';
-    src: url('../assets/fonts/InknutAntiqua-Bold.ttf') format('truetype');
+    src: url('../fonts/InknutAntiqua-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -74,7 +74,7 @@ nav img {
 
 /* ##### Button */
 .button-black{
-  font-family: "Istok Web", sans-serif;
+  font-family: "Istok Web", sans-serif !important;
   font-weight: bold;
   background-color: #000;
   color: #fff;
