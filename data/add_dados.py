@@ -118,6 +118,18 @@ for a in anuncios:
         ON CONFLICT (id_anuncio) DO NOTHING;
     """, a)
 
+carrinhos = [
+    (4, 1, 5),
+    (4, 4, 2),
+    (5, 9, 6),
+    (6, 13, 1),
+]
+for c in carrinhos:
+    cursor.execute("""
+        INSERT INTO carrinhos (id_comprador, id_produto, quantidade)
+        VALUES (%s,%s,%s);
+    """, c)
+
 fotos = [(i, f"foto_anuncio_{i}.png") for i in range(1, 16)]
 for f in fotos:
     cursor.execute("""
