@@ -354,7 +354,6 @@ summary {
 }
 
 /* PAGINA DE REGISTRO */
-
 #registrarBody > * {
   margin: 0;
   padding: 0;
@@ -396,6 +395,10 @@ summary {
   place-content: center;
 }
 
+#registrarFooter {
+  margin-top: 40px;
+}
+
 .password-hint {
   font-size: 12px;
   color: #666;
@@ -434,8 +437,28 @@ summary {
   color: #999;
 }
 
-/* PAGINA DE LOGIN */
+@media (max-width: 768px) {
+  #registrarForm {
+    max-width: 90%;
+    padding: 5vw;
+    border-radius: 2.4vw;
+  }
 
+  #registrarForm h2 {
+    font-size: 28px;
+  }
+
+  .form-item input {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #888;
+    border-radius: 2.4vw;
+  }
+}
+
+/* PAGINA DE LOGIN */
 #loginBody > * {
   margin: 0;
   padding: 0;
@@ -457,17 +480,17 @@ summary {
   margin-top: 5%;
   background: white;
   border: 1px solid #888;
-  border-radius: 0.625vw;
-  padding: 2.08vw;
-  max-width: 28%;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 480px;
   width: 100%;
-  box-shadow: 0 0.104vw 0.52vw rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #loginForm h2 {
   text-align: center;
-  margin-bottom: 1.56vw;
-  font-size: 1.3vw;
+  margin-bottom: 30px;
+  font-size: 25px;
   font-weight: 400;
   color: #000;
 }
@@ -477,28 +500,20 @@ summary {
   place-content: center;
 }
 
-.password-hint {
-  font-size: 12px;
-  color: #666;
-  margin-top: 5px;
+#loginBotoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.form-item label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  color: #000;
-  font-weight: 400;
+#loginFooter {
+  margin-top: 40px;
 }
 
-.form-item input {
-  width: 18.75vw;
-  padding: 0.83vw 0.83vw;
-  border: 1px solid #888;
-  border-radius: 0.42vw;
-  font-size: 0.73vw;
-  font-family: inherit;
-  transition: border-color 0.3s, box-shadow 0.3s;
+#registrarBotoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -511,40 +526,7 @@ summary {
   #loginForm h2 {
     font-size: 28px;
   }
-
-  .form-item input {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    font-size: 16px;
-    border: 1px solid #888;
-    border-radius: 2.4vw;
-  }
 }
-
-#loginBotoes {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-#registrarBotoes {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.form-item input:focus {
-  outline: none;
-  border-color: #333;
-  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
-}
-
-.form-item input::placeholder {
-  color: #999;
-}
-
-
 
 /* PÁGINA DE PERFIL */
 
