@@ -408,9 +408,10 @@ nav a {
   font-weight: 600;
   color: #000;
   margin: 0;
-  text-align: left;
-  line-height: 1.1;
+  text-align: center;
+  line-height: 2;
   display:block;
+  margin-left: 8%;
 }
 
 .middle-section-index h2:first-of-type {
@@ -432,6 +433,7 @@ nav a {
 }
 
 .feature-index {
+  margin-right: 8%;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -928,6 +930,12 @@ summary {
   color: #999;
 }
 
+#registrarBotoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   #registrarForm {
     max-width: 90%;
@@ -957,10 +965,14 @@ summary {
 }
 
 #loginBody {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   font-family: "Istok Web", sans-serif;
   font-weight: 400;
   font-style: normal;
-  min-height: 100px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -992,19 +1004,20 @@ summary {
 }
 
 #loginBotoes {
+  padding: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 #loginFooter {
-  margin-top: 40px;
-}
-
-#registrarBotoes {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
 }
 
 @media (max-width: 768px) {
@@ -1199,7 +1212,9 @@ fieldset{
 }
 
 fieldset legend{
-  margin-bottom: 8px;
+
+  justify-self: center;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -1212,7 +1227,7 @@ fieldset legend{
 }
 
 fieldset input{
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
 fieldset label{
@@ -1230,6 +1245,7 @@ fieldset:last-of-type input{
 }
 
 form{
+  justify-self: center;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -1288,6 +1304,21 @@ form input::placeholder{
   color: #999;
 }
 
+form button{
+  background: black;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+.submitButtonContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 500px;
+}
 
 
 

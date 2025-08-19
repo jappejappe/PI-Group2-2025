@@ -43,7 +43,6 @@
                 </div>
             </div>
         </div>
-
         <div id="registrarBotoes">
             <!-- botao continuar -->
             {% set corBotao = 'black' %}
@@ -57,6 +56,8 @@
             {% set path = 'login' %}
             {% include "components/button.html" with context %}
         </div>
+    {% set id = 'registrarFooter' %}
+    {% include "components/footer.html" with context %}
     </div>
 </body>
 </html>

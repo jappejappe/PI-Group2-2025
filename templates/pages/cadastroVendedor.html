@@ -94,14 +94,25 @@
 
 
         </fieldset>
+<!-- 
+        <div class="submitButtonContainer">
+            <a href="./index.html"></a><button type="submit" id="submitButton">Enviar informações</button></a>
+        </div> -->
+        {% set corBotao = 'black' %}
+        {% set textoBotao = 'Continuar' %}
+        {% set path = 'home' %}
+        {% include "components/button.html" with context %}
 
+                     <!-- botao continuar -->
 
-        <button type="submit">Enviar informações</button>
+        
+
     </form>
 
 
     <script src="./cadastroVendedor.js"></script>
 
+{% include 'components/footer.html'%}
 
 </body>
 </html>
