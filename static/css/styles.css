@@ -404,9 +404,10 @@ nav a {
   font-weight: 600;
   color: #000;
   margin: 0;
-  text-align: left;
-  line-height: 1.1;
+  text-align: center;
+  line-height: 2;
   display:block;
+  margin-left: 8%;
 }
 
 .middle-section-index h2:first-of-type {
@@ -428,6 +429,7 @@ nav a {
 }
 
 .feature-index {
+  margin-right: 8%;
   display: flex;
   align-items: center;
   gap: 10px;
