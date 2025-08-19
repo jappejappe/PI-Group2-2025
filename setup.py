@@ -2,7 +2,7 @@ conteudo_env = '''
 DB_HOST="localhost"
 DB_NAME="postgres"
 DB_USER="postgres"
-DB_PASSWORD=""
+DB_PASSWORD="M@epai7172"
 DB_PORT="5432"
 '''.strip()
 
