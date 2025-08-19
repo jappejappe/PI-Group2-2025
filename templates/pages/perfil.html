@@ -1,66 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RCL</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Perfil - Recicla Marketplace</title>
+  <link rel="stylesheet" href="../../static/css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
+<div class="body1 perfil-page">
 <body>
+  <div class="header1">
+  <header>
+    <div class="logo">RCL</div>
+    <nav>
+      <a href="#">Marketplace</a>
+      <a href="#">Vender</a>
+      <a href="#">Sobre</a>
+    </nav>
+    <div>
+      <button class="anunciar">Anunciar</button>
+    </div>
+  </header>
+  </div>
 
-  {% include 'components/header.html' %}
+  <section class="hero">
+    <div>
+      <div class="avatar-placeholder">👤</div>
+    </div>
+    <div class="hero-text">
+      <h2>@Fulano123</h2>
+      <p>Comprador/Vendedor</p>
+      <button class="btn-seguir">Seguir</button>
+      <p class="bio">Sou o fulaninho, moro em Concórdia SC e quero ter uma segunda fonte de renda.</p>
+    </div>
+  </section>
 
-  <main>
-    <section class="perfil">
-      <div class="foto-perfil"></div>
-      <div class="info-perfil">
-        <h2>@Fulano123</h2>
-        <p>Comprador/Vendedor</p>
-        <button class="seguir">Seguir</button>
-        <p class="bio">Sou o fulaninho, moro em Concórdia SC e quero ter uma segunda fonte de renda.</p>
-      </div>
-    </section>
+  <main class="perfil-container">
+    <h1 class="titulo-itens">Itens a venda:</h1>
 
-    <h1>Itens a venda:</h1>
-
-    <section class="item">
-      <img src="" alt="Latinhas de refri">
-      <div class="detalhes">
-        <div class="titulo-preco">
-          <h2>Latinhas de refri</h2>
-          <span class="peso">10kg</span>
+    <div class="itens-lista">
+      <div class="item-card">
+        <div class="item-imagem">
+          <div class="imagem-placeholder"></div>
         </div>
-        <p>Sujas, mas em bom estado</p>
-        <div class="acoes">
-          <button class="comprar">car</button>
-          <button class="ver">Ver</button>
+        <div class="item-detalhes">
+          <div class="item-header">
+            <h3>Latinhas de refri</h3>
+            <span class="peso">10kg</span>
+          </div>
+          <p class="descricao">Sujas, mas em bom estado</p>
+          <div class="item-acoes">
+            <button class="btn-carrinho">🛒</button>
+            <button class="btn-ver">Ver</button>
+          </div>
           <span class="preco">R$ 59,90</span>
         </div>
       </div>
-    </section>
 
-    <section class="item">
-      <img src="" alt="Garrafas plásticas">
-      <div class="detalhes">
-        <div class="titulo-preco">
-          <h2>Garrafas plásticas</h2>
-          <span class="peso">4kg</span>
+      <div class="item-card">
+        <div class="item-imagem">
+          <div class="imagem-placeholder"></div>
         </div>
-        <p>Vários tipos e tamanhos, todas limpas</p>
-        <div class="acoes">
-          <button class="comprar">car</button>
-          <button class="ver">Ver</button>
-          <span class="preco2">R$ 4,79</span>
+        <div class="item-detalhes">
+          <div class="item-header">
+            <h3>Garrafas plásticas</h3>
+            <span class="peso">4kg</span>
+          </div>
+          <p class="descricao">Vários tipos e tamanhos, todas limpas</p>
+          <div class="item-acoes">
+            <button class="btn-carrinho">🛒</button>
+            <button class="btn-ver">Ver</button>
+          </div>
+          <span class="preco">R$ 4,79</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <button class="ver-mais2">Ver mais</button>
-
+    <div class="ver-mais-container">
+      <button class="btn-ver-mais">Ver mais</button>
+    </div>
   </main>
-
-</body2>
+</body>
+</div>
 </html>
