@@ -111,7 +111,7 @@ nav img {
 
 
 
-/* ######################################################### */
+/* ####################### ################################## */
 
 body {
   font-family: 'Inter', sans-serif;
@@ -226,6 +226,375 @@ nav a {
 .ver-mais {
   text-align: center;
   margin-top: 30px;
+}
+/* ###################### HERO SECTION index ###################### */
+.hero-index {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 5px;
+  background: white;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.hero-text-index {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-text-index h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 70px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.hero-text-index p {
+  font-size: 18px;
+  margin: 20px 0 30px 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.btn-explorar {
+  background: black;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  transition: background-color 0.3s;
+}
+
+.btn-explorar:hover {
+  background: #333;
+}
+
+.stats-index {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.stat-item-index {
+  text-align: center;
+}
+
+.stat-number-index {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.stat-label-index {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Hero Images */
+.hero-images-index {
+  flex: 1;
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+
+.image-stack-index {
+  position: relative;
+  width: 500px;
+  height: 400px;
+}
+
+.hero-img-index {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  position: absolute;
+  border: 2px solid #000000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.hero-img-index.front {
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 450px;
+  height: 350px;
+}
+
+.hero-img-index.back {
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  filter: brightness(0.6);
+}
+
+.price-overlay-index {
+  position: absolute;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border: 1px solid #e0e0e0;
+}
+
+.price-overlay-index.back-overlay-index {
+  bottom: 20px;
+  right: 20px;
+  left: auto;
+  z-index: 1;
+}
+
+.price-overlay-index .weight-index {
+  display: block;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  text-align: center;
+}
+
+.price-overlay-index .price-index {
+  display: block;
+  font-size: 14px;
+  color: #000;
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* ###################### MIDDLE SECTION index ###################### */
+.middle-section-index {
+  background: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.middle-content-index {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 40px;
+}
+
+.titles-index {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.middle-section-index h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  text-align: left;
+  line-height: 1.1;
+  display:block;
+}
+
+.middle-section-index h2:first-of-type {
+  margin-bottom: 10px;
+}
+
+.middle-section-index h2:last-of-type {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.features-index {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-end;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.feature-index {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  color: #000;
+  font-weight: 500;
+}
+
+.feature-icon-index {
+  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ###################### MARKETPLACE SECTION index ###################### */
+.marketplace-index {
+  padding: 80px 20px;
+  background: white;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.marketplace-index h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #000;
+  padding-left: 20px;
+}
+
+.marketplace-index .items-index {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.marketplace-index .item-index {
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fafafa;
+  position: relative;
+  display: flex;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.marketplace-index .item-index img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.marketplace-index .item-content-index {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.marketplace-index .item-header-index {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.marketplace-index .item-header-index h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  flex: 1;
+}
+
+.marketplace-index .weight-badge-index {
+  background: #e0e0e0;
+  color: #666;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  right: -20px;
+  top: 0;
+}
+
+.marketplace-index .item-index p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.marketplace-index .item-actions-index {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.marketplace-index .btn-cart-index {
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.marketplace-index .btn-cart-index:hover {
+  background: #333;
+}
+
+.marketplace-index .btn-ver-index {
+  background: white;
+  color: black;
+  border: 1px solid #666;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.marketplace-index .btn-ver-index:hover {
+  background: #f0f0f0;
+}
+
+.marketplace-index .item-price-index {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  text-align: right;
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.marketplace-index .ver-mais-container-index {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.marketplace-index .btn-ver-mais-index {
+  background: #e0e0e0;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.marketplace-index .btn-ver-mais-index:hover {
+  background: #ccc;
 }
 
 footer {
