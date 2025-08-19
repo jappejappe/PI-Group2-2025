@@ -404,9 +404,10 @@ nav a {
   font-weight: 600;
   color: #000;
   margin: 0;
-  text-align: left;
-  line-height: 1.1;
+  text-align: center;
+  line-height: 2;
   display:block;
+  margin-left: 8%;
 }
 
 .middle-section-index h2:first-of-type {
@@ -428,6 +429,7 @@ nav a {
 }
 
 .feature-index {
+  margin-right: 8%;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -640,6 +642,7 @@ footer {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  justify-self: center;
 }
 
 .miniaturas img {
@@ -650,7 +653,14 @@ footer {
   cursor: pointer;
 }
 
-.seta {
+.setaAnterior {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.setaProxima{
   background: none;
   border: none;
   font-size: 24px;
@@ -806,6 +816,12 @@ summary {
   color: #999;
 }
 
+#registrarBotoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   #registrarForm {
     max-width: 90%;
@@ -835,10 +851,14 @@ summary {
 }
 
 #loginBody {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   font-family: "Istok Web", sans-serif;
   font-weight: 400;
   font-style: normal;
-  min-height: 100px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -870,19 +890,20 @@ summary {
 }
 
 #loginBotoes {
+  padding: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 #loginFooter {
-  margin-top: 40px;
-}
-
-#registrarBotoes {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
 }
 
 @media (max-width: 768px) {
