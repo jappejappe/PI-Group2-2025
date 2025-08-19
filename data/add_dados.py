@@ -95,21 +95,21 @@ for u in usuarios:
 
 
 anuncios = [
-    ("Garrafas de vidro transparentes", 1, "Garrafas usadas, 50 unid.", 3, 50, 100, 1),
-    ("Garrafas de cerveja verdes", 1, "100 garrafas retornáveis", 2, 100, 200, 3),
-    ("Garrafas marrons diversas", 1, "80 garrafas marrons", 3, 80, 150, 3),
-    ("Plásticos PET variados", 2, "Plástico PET prensado", 2, 200, 500, 2),
-    ("Plásticos coloridos", 2, "Plástico PEAD triturado", 1, 150, 400, 2),
-    ("Plástico filme", 2, "Plástico filme esticável", 3, 120, 350, 1),
-    ("Papelão prensado", 3, "Fardos de papelão limpo", 2, 100, 150, 3),
-    ("Caixas de papelão grandes", 3, "Caixas desmontadas", 3, 50, 70, 2),
-    ("Latas de alumínio", 4, "Latas prensadas", 2, 300, 600, 1),
-    ("Alumínio em chapas", 4, "Sobras industriais", 3, 30, 900, 1),
-    ("Ferro velho", 5, "Ferro e aço enferrujados", 4, 500, 800, 2),
-    ("Ferro pesado", 5, "Peças pesadas de ferro", 4, 1000, 1200, 2),
-    ("Sucata de cobre", 6, "Fios de cobre soltos", 1, 50, 1000, 1),
-    ("Cobre", 6, "Sucata mista de cobre", 3, 70, 950, 1),
-    ("Eletrônicos para descarte", 7, "PCs e placas sem uso", 4, 25, 300, 3),
+    ("Garrafas de vidro transparentes", 1, "Garrafas usadas, 50 unid.", 3, 50, 8, 1),
+    ("Garrafas de cerveja verdes", 1, "100 garrafas retornáveis", 2, 100, 5, 3),
+    ("Garrafas marrons diversas", 1, "80 garrafas marrons", 3, 80, 4, 3),
+    ("Plásticos PET variados", 2, "Plástico PET prensado", 2, 200, 3, 2),
+    ("Plásticos coloridos", 2, "Plástico PEAD triturado", 1, 150, 3, 2),
+    ("Plástico filme", 2, "Plástico filme esticável", 3, 120, 3, 1),
+    ("Papelão prensado", 3, "Fardos de papelão limpo", 2, 100, 3, 3),
+    ("Caixas de papelão grandes", 3, "Caixas desmontadas", 3, 50, 2, 2),
+    ("Latas de alumínio", 4, "Latas prensadas", 2, 300, 4, 1),
+    ("Alumínio em chapas", 4, "Sobras industriais", 3, 30, 6, 1),
+    ("Ferro velho", 5, "Ferro e aço enferrujados", 4, 500, 3, 2),
+    ("Ferro pesado", 5, "Peças pesadas de ferro", 4, 1000, 4, 2),
+    ("Sucata de cobre", 6, "Fios de cobre soltos", 1, 50, 25, 1),
+    ("Cobre", 6, "Sucata mista de cobre", 3, 70, 30, 1),
+    ("Eletrônicos para descarte", 7, "PCs e placas sem uso", 4, 25, 6, 3),
 ]
 for a in anuncios:
     cursor.execute("""
