@@ -1077,7 +1077,9 @@ fieldset{
 }
 
 fieldset legend{
-  margin-bottom: 8px;
+
+  justify-self: center;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -1090,7 +1092,7 @@ fieldset legend{
 }
 
 fieldset input{
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
 fieldset label{
@@ -1108,6 +1110,7 @@ fieldset:last-of-type input{
 }
 
 form{
+  justify-self: center;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -1166,6 +1169,21 @@ form input::placeholder{
   color: #999;
 }
 
+form button{
+  background: black;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+.submitButtonContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 500px;
+}
 
 
 

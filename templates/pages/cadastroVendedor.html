@@ -94,9 +94,19 @@
 
 
         </fieldset>
+<!-- 
+        <div class="submitButtonContainer">
+            <a href="./index.html"></a><button type="submit" id="submitButton">Enviar informações</button></a>
+        </div> -->
+        {% set corBotao = 'black' %}
+        {% set textoBotao = 'Continuar' %}
+        {% set path = 'home' %}
+        {% include "components/button.html" with context %}
 
+                     <!-- botao continuar -->
 
-        <a href="./index.html"><button type="submit">Enviar informações</button></a>
+        
+
     </form>
 
 
