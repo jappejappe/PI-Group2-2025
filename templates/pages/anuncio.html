@@ -12,14 +12,14 @@
 
   <main class="produto-container">
     <div class="galeria">
-      <img class="imagem-principal" src="imagens/images.jpg" alt="Latinhas coloridas">
+      <img class="imagem-principal" src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Latinhas coloridas">
       <div class="miniaturas">
-        <button class="seta">&#10094;</button>
-        <img src="imagens/images.jpg" alt="Miniatura 1">
-        <img src="imagens/Latinhas-Imagem-gratuita-Pixabay2.jpg" alt="Miniatura 2">
-        <img src="imagens/images.jpg" alt="Miniatura 3">
-        <img src="imagens/Latinhas-Imagem-gratuita-Pixabay2.jpg" alt="Miniatura 4">
-        <button class="seta">&#10095;</button>
+        <button class="setaAnterior">&#10094;</button>
+        <img src="{{ url_for('static', filename='images/lixos001.png') }}" alt="Miniatura 1">
+        <img src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Miniatura 2">
+        <img src="{{ url_for('static', filename='images/lixos001.png') }}" alt="Miniatura 3">
+        <img src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Miniatura 4">
+        <button class="setaProxima">&#10095;</button>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
       <p><strong>Marca:</strong> Nenhuma</p>
       <p class="avaliacao">4,9 (estrelas) <span class="reviews">(12)</span></p>
       <div class="preco">
-        <span class="preco-atual">R$<strong>17</strong>,99</span>
+        <span class="preco-atual">R$<strong>17</strong>,99/Kg</span>
         <p class="parcelas">Em até 2x R$ 29,99 sem juros</p>
         <p class="entrega">Entrega R$15,67: 30 de Julho - 3 de Agosto</p>
         <p class="endereco"> Entregando em Concórdia, 89700000</p>
@@ -52,5 +52,7 @@
       </details>
     </div>
   </main>
+
+  {% include 'components/footer.html' %}
 </body>
 </html>

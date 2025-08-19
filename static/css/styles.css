@@ -271,6 +271,7 @@ footer {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  justify-self: center;
 }
 
 .miniaturas img {
@@ -281,7 +282,14 @@ footer {
   cursor: pointer;
 }
 
-.seta {
+.setaAnterior {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.setaProxima{
   background: none;
   border: none;
   font-size: 24px;
