@@ -259,17 +259,17 @@ nav a {
   padding: 12px 20px;
   border-radius: 25px;
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
+  left: 20px;
+  z-index: 10;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   border: 1px solid #e0e0e0;
 }
 
 .price-overlay.back-overlay {
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 20px;
+  left: auto;
+  z-index: 1;
 }
 
 .price-overlay .weight {
