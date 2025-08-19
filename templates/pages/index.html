@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<div class="body1">
 <body>
   {% include 'components/header.html' %}
 
@@ -17,16 +16,36 @@
       <p>O seu marketplace para comprar e vender resíduos recicláveis</p>
       <button class="btn-explorar">Explorar</button>
       <div class="stats">
-        <div>20k+<br>Usuários</div>
-        <div>34k+<br>Vendas</div>
-        <div>19k+<br>Reviews</div>
+        <div class="stat-item">
+          <span class="stat-number">20k+</span>
+          <span class="stat-label">Usuários</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">34k+</span>
+          <span class="stat-label">Vendas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">19k+</span>
+          <span class="stat-label">Reviews</span>
+        </div>
       </div>
     </div>
-    <div>
-      <img src="imagens/images.jpg" alt="Latinhas" width="500" class="img-latinhas" />
+    <div class="hero-images">
+      <div class="image-stack">
+        <img src="{{ url_for('static', filename='images/lixos001.png') }}" alt="Latinhas de alumínio" class="hero-img front">
+        <div class="price-overlay">
+          <span class="weight">2kg</span>
+          <span class="price">R$ 11,90</span>
+        </div>
+        <img src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Garrafas plásticas" class="hero-img back">
+        <div class="price-overlay back-overlay">
+          <span class="weight">kg</span>
+          <span class="price">R$</span>
+        </div>
+      </div>
     </div>
   </section>
-
+  
   <div class="middle-section">
     <h2>A ARTE DE VENDER, COMPRAR E RECICLAR</h2>
     <div class="icons">
