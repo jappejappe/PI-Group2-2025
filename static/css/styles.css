@@ -298,34 +298,39 @@ nav a {
 }
 
 .middle-content {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 80px;
   padding: 0 40px;
+}
+
+.titles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .middle-section h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 600;
   color: #000;
   margin: 0;
-  flex: 1;
   text-align: left;
   line-height: 1.1;
-  display: block;
+  display:block;
 }
 
 .middle-section h2:first-of-type {
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .middle-section h2:last-of-type {
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 0;
 }
 
 .features {
@@ -334,14 +339,14 @@ nav a {
   gap: 20px;
   align-items: flex-end;
   flex: 1;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .feature {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  font-size: 20px;
   color: #000;
   font-weight: 500;
 }
