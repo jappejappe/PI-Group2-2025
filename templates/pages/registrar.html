@@ -47,8 +47,8 @@
             <!-- botao continuar -->
             {% set corBotao = 'black' %}
             {% set textoBotao = 'Continuar' %}
-            {% set path = 'home' %}
-            {% include "components/button.html" with context %}
+            {% set id = 'registrarButton' %}
+            {% include "components/buttonDados.html" with context %}
 
             <!-- botao fazer login -->
             {% set corBotao = 'white' %}
@@ -60,4 +60,6 @@
     {% include "components/footer.html" with context %}
     </div>
 </body>
+<script src="../../static/js/registrar.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </html>

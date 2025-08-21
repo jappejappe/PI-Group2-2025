@@ -26,48 +26,57 @@ connect = psql.connect(
 )
 
 connect.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT) # Define a permissão pra criar bancos de dados
-cursor = connect.cursor() # Cria um cursor para executar comandos SQL
+# Cria um cursor para executar comandos SQL
 
+with connect.cursor() as cursor:
+    cursor.execute("SELECT 1 FROM pg_database WHERE datname = %s", ('rcl_db',)) # Verifica se o 'rcl_db' já existe
+    # pg_database é a tabela que contém os bancos de dados existentes no PostgreSQL
+    # Retorna 1 se existir, caso contrário, retorna None
 
-cursor.execute("SELECT 1 FROM pg_database WHERE datname = %s", ('rcl_db',)) # Verifica se o 'rcl_db' já existe
-# pg_database é a tabela que contém os bancos de dados existentes no PostgreSQL
-# Retorna 1 se existir, caso contrário retorna None
-
-dbExiste = cursor.fetchone() # Coleta o resultado da consulta
+    dbExiste = cursor.fetchone() # Coleta o resultado da consulta
+    print(dbExiste)
 
 if dbExiste:
     print(f"Banco de dados 'rcl_db' já existe. Aguarde enquanto o mesmo é configurado.")
-
-else:
-    cursor.execute("CREATE DATABASE rcl_db;")
-    print(f"Banco de dados 'rcl_db' criado com sucesso. Aguarde enquanto o mesmo é configurado.")
     connect.close()
 
-    connect = psql.connect( # Conecta no banco 'rcl_db'
+else:
+    with connect.cursor() as cursor:
+        cursor.execute("CREATE DATABASE rcl_db;")
+        connect.commit()
+        connect.close()
+        print(f"Banco de dados 'rcl_db' criado com sucesso. Aguarde enquanto o mesmo é configurado.")
+    connect.close()
+
+
+    connect = psql.connect(
         host=os.getenv("DB_HOST"),
         database="rcl_db",
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
         port=os.getenv("DB_PORT")
     )
-    cursor = connect.cursor()
 
 
     # Executa o script SQL para criar as tabelas
     with open("./data/database.sql", "r", encoding="utf-8") as cmd:
-        sql = cmd.read()
+        sql = cmd.read().split(';')  # Divide o script em comandos individuais
 
-    cursor.execute(sql)
+    with connect.cursor() as cursor:
+        for command in sql:
+            if command.strip():  # Ignora comandos vazios
+                cursor.execute(command)
+    connect.commit()  # Confirma as alterações no banco de dados
 
-connect.commit()
 
 
 dadosExemplo = input("Deseja pré-preencher o banco de dados com dados de exemplo? (s/n): ").strip().lower()
 if dadosExemplo == 'n':
-    connect.close()
+    print("Banco de dados não foi pré-preenchido com dados de exemplo.")
 else: 
     with open("./data/add_dados.py", "r", encoding="utf-8") as cmd:
         os.system(f"python {cmd.name}")  # Executa o script para adicionar dados de exemplo
+        connect.commit()
 
 ##################################################################
 
@@ -133,6 +142,42 @@ def addCarrinho():
     with open('data.json', 'w') as f: # Abre o data.json para escrita ('w' write)
         json.dump(data, f)
     return jsonify({'status': 'success'})
+
+
+
+@app.route("/registrarDB", methods=["POST"])
+def registrarDB():
+    data = request.json
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    try:
+        with connect.cursor() as cursor:
+            cursor.execute(
+                """
+                    INSERT INTO compradores (nome_cliente, apelido_cliente, email_cliente, data_nascimento, cep_cliente, cpf_cliente, senha)
+                    VALUES (%(nome)s, %(apelido)s, %(email)s, %(nascimento)s, %(cep)s, %(cpf)s, %(password)s)
+                """,
+            {
+                "nome": data.get("nome"),
+                "apelido": data.get("apelido"),
+                "email": data.get("email"),
+                "nascimento": data.get("nascimento"),
+                "cep": data.get("cep"),
+                "cpf": data.get("cpf"),
+                "password": data.get("password")
+            }
+            )
+        connect.commit()
+        connect.close()
+        return jsonify({"status": "Sucesso", "message": "Usuário adicionado"})
+    except Exception as e:
+        connect.rollback()
+        return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
 
 
 ##################################################################
