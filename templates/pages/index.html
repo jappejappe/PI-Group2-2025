@@ -67,39 +67,7 @@
 
   <section class="marketplace-index">
     <h2>Marketplace</h2>
-    <div class="items-index">
-      <div class="item-index">
-        <img src="{{ url_for('static', filename='images/lixos001.png') }}" alt="Latinhas de refri">
-        <div class="item-content-index">
-          <div class="item-header-index">
-            <h3>Latinhas de refri</h3>
-            <span class="weight-badge-index">10kg</span>
-          </div>
-          <p>Sujas, mas em bom estado</p>
-          <div class="item-actions-index">
-            <button class="btn-cart-index">🛒</button>
-            <button class="btn-ver-index">Ver</button>
-          </div>
-        </div>
-        <div class="item-price-index">R$ 59,90</div>
-      </div>
-      
-      <div class="item-index">
-        <img src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Garrafas plásticas">
-        <div class="item-content-index">
-          <div class="item-header-index">
-            <h3>Garrafas plásticas</h3>
-            <span class="weight-badge-index">4kg</span>
-          </div>
-          <p>Vários tipos e tamanhos, todas limpas</p>
-          <div class="item-actions-index">
-            <button class="btn-cart-index">🛒</button>
-            <button class="btn-ver-index">Ver</button>
-          </div>
-        </div>
-        <div class="item-price-index">R$ 4,79</div>
-      </div>
-    </div>
+    {% include 'components/card.html' %}
     
     <div class="ver-mais-container-index">
       <button class="btn-ver-mais-index">Ver mais</button>
