@@ -1938,3 +1938,205 @@ input[type=number] {
   cursor: pointer;
   width: 100%;
 }
+
+
+
+
+/* PAGINA DE COMPRA */
+
+.checkout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+}
+
+.checkout-titulo {
+    grid-column: 1 / -1;
+    font-family: 'Istok Web';
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.secao-form {
+    border: solid 1px #333333;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.secao-titulo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #222222;
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-row-3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+}
+
+.form-grupo label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #666666;
+    font-size: 0.9rem;
+}
+
+.form-grupo input,
+.form-grupo select {
+    padding: 12px;
+    border: 2px solid #999999;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-grupo input:focus,
+.form-grupo select:focus {
+    outline: none;
+    border-color: #666666;
+}
+
+.resumo-pedido {
+  border: solid 1px #333333;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.resumo-titulo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.item-pedido {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.item-imagem {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.item-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-nome {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.item-loja {
+    font-family: 'Inter', sans-serif;
+    color: #666666;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.item-quantidade {
+    font-family: 'Inter', sans-serif;
+    color: #999999;
+    font-size: 0.8rem;
+}
+
+.item-preco {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333333;
+}
+
+.resumo-valores {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #000000;
+}
+
+.valor-linha {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.valor-total {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333333;
+    padding-top: 15px;
+    border-top: 2px solid #000000;
+    margin-top: 15px;
+}
+
+.finalizar-botao {
+  display: flex;
+  align-items: center;
+}
+
+.botoes-compra-final {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cartao-icones {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}

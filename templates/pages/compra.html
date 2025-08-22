@@ -126,9 +126,20 @@
         </div>
       </div>
 
-      <button class="btn-finalizar" onclick="finalizarCompra()">
-        Finalizar Compra
-      </button>
+      <div class="botoes-compra-final">
+        <div class="finalizar-botao">
+            {% set corBotao = 'black' %}
+            {% set textoBotao = 'Finalizar Compra' %}
+            {% set path = 'home' %}
+            {% include "components/button.html" with context %}
+        </div>
+        <div class="carrinho-botao">
+            {% set corBotao = 'white' %}
+            {% set textoBotao = 'Voltar ao Carrinho' %}
+            {% set path = 'home' %}
+            {% include "components/button.html" with context %}
+        </div>
+      </div> 
     </div>
 </div>
 
