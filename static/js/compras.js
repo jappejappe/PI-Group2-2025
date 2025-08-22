@@ -36,5 +36,42 @@
       e.target.value = value;
     });
 
+// Finalizar compra
+    document.getElementById("botao-finalizar").addEventListener("click", finalizarCompra);
+
+    function finalizarCompra() {
+    const btnFinalizar = document.getElementById("botao-finalizar");
+    btnFinalizar.disabled = true;
+
+    setTimeout(() => {
+        document.getElementById('modalConfirmacao').style.display = 'flex';
+    }, 100);
+    }
 
 
+// poder fechar o modal
+    document.getElementById('modalConfirmacao').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+      }
+    });
+
+
+// atualizar preço das parcelas
+    function atualizarParcelas() {
+      const total = 22.00;
+      const parcelasSelect = document.getElementById('parcelas');
+      parcelasSelect.innerHTML = '';
+      
+      for (let i = 1; i <= 12; i++) {
+        const valorParcela = (total / i).toFixed(2);
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = `${i}x de R$ ${valorParcela.replace('.', ',')}${i > 1 ? '' : ''}`;
+        parcelasSelect.appendChild(option);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      atualizarParcelas();
+    });
