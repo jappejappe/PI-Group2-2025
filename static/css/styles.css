@@ -2135,8 +2135,94 @@ input[type=number] {
   align-items: center;
 }
 
-.cartao-icones {
+.endereco-salvo {
+    border: 1px solid #999999;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.endereco-salvo:hover {
+    border-color: #000000;
+}
+
+.endereco-salvo input[type="radio"] {
+    margin-right: 10px;
+}
+
+.modal-confirmacao {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-conteudo {
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    flex-direction: column;
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    align-items: center;
+}
+
+.modal-icone {
+    width: 80px;
+    height: 80px;
+    background: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: white;
+}
+
+.modal-titulo {
+    font-family: 'Istok Web', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.modal-texto {
+    font-family: 'Inter', sans-serif;
+    color: #666666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.pedido-numero {
+    border-radius: 8px;
+    padding: 5px;
+    margin: 20px 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333333;
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+    }
+
+    .form-row,
+    .form-row-3 {
+    grid-template-columns: 1fr;
+    }
 }
