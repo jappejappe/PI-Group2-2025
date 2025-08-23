@@ -23,6 +23,22 @@
       </div>
     </div>
 
+<!-- <div class="galeria">
+      <img id="imagemPrincipal" class="imagem-principal" src="{{ imagens[0] }}" alt="Produto">
+
+      <div class="miniaturas">
+        <button class="seta" id="prev">&#10094;</button>
+
+        <div id="miniaturasContainer">
+          {% for img in imagens %}
+            <img src="{{ img }}" alt="Miniatura {{ loop.index }}" class="{% if loop.first %}ativa{% endif %}">
+          {% endfor %}
+        </div>
+
+        <button class="seta" id="next">&#10095;</button>
+      </div>
+    </div> -->
+
     <div class="detalhes-produto">
       <h1>Latinhas variadas e coloridas</h1>
       <p><strong>Marca:</strong> Nenhuma</p>
@@ -54,5 +70,44 @@
   </main>
 
   {% include 'components/footer.html' %}
+
+  <!-- <script>
+    const imagens = {{ imagens|tojson }};
+    let currentIndex = 0;
+
+    const imagemPrincipal = document.getElementById("imagemPrincipal");
+    const miniaturasContainer = document.getElementById("miniaturasContainer");
+
+    const thumbnails = miniaturasContainer.querySelectorAll("img");
+
+    function mostrarImagem(index) {
+      currentIndex = index;
+      imagemPrincipal.src = imagens[currentIndex];
+      atualizarMiniaturas();
+    }
+
+    function proximaImagem() {
+      currentIndex = (currentIndex + 1) % imagens.length;
+      mostrarImagem(currentIndex);
+    }
+
+    function imagemAnterior() {
+      currentIndex = (currentIndex - 1 + imagens.length) % imagens.length;
+      mostrarImagem(currentIndex);
+    }
+
+    function atualizarMiniaturas() {
+      thumbnails.forEach((thumb, idx) => {
+        thumb.classList.toggle("ativa", idx === currentIndex);
+      });
+    }
+
+    document.getElementById("next").addEventListener("click", proximaImagem);
+    document.getElementById("prev").addEventListener("click", imagemAnterior);
+
+    thumbnails.forEach((thumb, idx) => {
+      thumb.addEventListener("click", () => mostrarImagem(idx));
+    });
+  </script> -->
 </body>
 </html>

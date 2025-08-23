@@ -77,7 +77,6 @@ if dadosExemplo == 'n':
 else: 
     with open("./data/add_dados.py", "r", encoding="utf-8") as cmd:
         os.system(f"python {cmd.name}")  # Executa o script para adicionar dados de exemplo
-        connect.commit()
 
 ##################################################################
 
@@ -126,6 +125,10 @@ def cadastroVendedor():
 @app.route('/perfil') # Rota para perfil
 def perfil():
     return render_template('pages/perfil.html')
+
+@app.route('/compra') # Rota para compra
+def compra():
+    return render_template('pages/compra.html')
 
 ##################################################################
 
