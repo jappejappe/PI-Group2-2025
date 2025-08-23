@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask_cors import CORS
 import os
 import json
 import psycopg2 as psql
@@ -89,6 +90,7 @@ else:
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/') # Rota principal que carrega o index.html
 def home():
@@ -175,6 +177,38 @@ def registrarDB():
         connect.commit()
         connect.close()
         return jsonify({"status": "Sucesso", "message": "Usuário adicionado"})
+    except Exception as e:
+        connect.rollback()
+        return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
+    
+@app.route("/cadastrarVendedor", methods=["POST"])
+def cadastrarVendedor():
+    data = request.json
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    try:
+        with connect.cursor() as cursor:
+            cursor.execute(
+                """
+                    INSERT INTO compradores (nome_empresa, email_empresa, cep_empresa, telefone_empresa, descricao_empresa)
+                    VALUES (%(nome)s, %(email)s, %(cep)s, %(telefone)s, %(descricao)s)
+                """,
+                {
+                    "nome": data.get("nome"),
+                    "email": data.get("email"),
+                    "cep": data.get("cep"),
+                    "telefone": data.get("telefone"),
+                    "descricao": data.get("descricao")
+                }
+            )
+        connect.commit()
+        connect.close()
+        return jsonify({"status": "Sucesso", "message": "Vendedor adicionado"})
     except Exception as e:
         connect.rollback()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
