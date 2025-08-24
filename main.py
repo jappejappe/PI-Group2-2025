@@ -198,10 +198,11 @@ def cadastrarVendedor():
         with connect.cursor() as cursor:
             cursor.execute(
                 """
-                    INSERT INTO compradores (nome_empresa, email_empresa, cep_empresa, telefone_empresa, descricao_empresa)
-                    VALUES (%(nome)s, %(email)s, %(cep)s, %(telefone)s, %(descricao)s)
+                    INSERT INTO vendedores (id_comprador, nome_empresa, email_empresa, cep_empresa, telefone_empresa, descricao_empresa)
+                    VALUES (%(id)s, %(nome)s, %(email)s, %(cep)s, %(telefone)s, %(descricao)s)
                 """,
                 {
+                    "id": 1,
                     "nome": data.get("nome"),
                     "email": data.get("email"),
                     "cep": data.get("cep"),
