@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Inserir vendedor no banco de dados
 
     function cadastrarVendedor() {
+        const userId = localStorage.getItem("userId");
         const nome = document.getElementById('nome').value;
         const cep = document.getElementById('cep').value;
         const telefone = document.getElementById('telefone').value;
@@ -64,8 +65,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const descricao = document.getElementById('descricao').value;
 
 
+        console.log("ID do usuário salvo:", userId);
+
 
         axios.post("http://127.0.0.1:5000/cadastrarVendedor", {
+            id_comprador: userId,
             nome: nome,
             email: email,
             cep: cep,

@@ -202,10 +202,10 @@ def cadastrarVendedor():
             cursor.execute(
                 """
                     INSERT INTO vendedores (id_comprador, nome_empresa, email_empresa, cep_empresa, telefone_empresa, descricao_empresa)
-                    VALUES (%(id)s, %(nome)s, %(email)s, %(cep)s, %(telefone)s, %(descricao)s)
+                    VALUES (%(id_comprador)s, %(nome)s, %(email)s, %(cep)s, %(telefone)s, %(descricao)s)
                 """,
                 {
-                    "id": 1,
+                    "id_comprador": data.get("id_comprador"),
                     "nome": data.get("nome"),
                     "email": data.get("email"),
                     "cep": data.get("cep"),
