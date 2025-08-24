@@ -166,6 +166,7 @@ def registrarDB():
                 """
                     INSERT INTO compradores (nome_cliente, apelido_cliente, email_cliente, data_nascimento, cep_cliente, cpf_cliente, senha)
                     VALUES (%(nome)s, %(apelido)s, %(email)s, %(nascimento)s, %(cep)s, %(cpf)s, %(password)s)
+                    RETURNING id_comprador;
                 """,
             {
                 "nome": data.get("nome"),
@@ -177,9 +178,11 @@ def registrarDB():
                 "password": data.get("password")
             }
             )
+            new_id = cursor.fetchone()[0] # coleta o id do novo comprador inserido
+
         connect.commit()
         connect.close()
-        return jsonify({"status": "Sucesso", "message": "Usuário adicionado"})
+        return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "id": new_id})
     except Exception as e:
         connect.rollback()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
