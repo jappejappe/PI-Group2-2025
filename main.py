@@ -123,9 +123,56 @@ def anuncio():
 def cadastroVendedor():
     return render_template('pages/cadastroVendedor.html')
 
-@app.route('/perfil') # Rota para perfil
-def perfil():
-    return render_template('pages/perfil.html')
+@app.route('/perfil/<int:id_usuario>')
+def perfil(id_usuario):
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    with connect.cursor() as cursor:
+        # busca dados do usuario
+        cursor.execute("""
+            SELECT c.apelido_cliente, c.nome_cliente, u.id_comprador, u.id_vendedor
+            FROM usuarios u
+            JOIN compradores c ON u.id_comprador = c.id_comprador
+            LEFT JOIN vendedores v ON u.id_vendedor = v.id_vendedor
+            WHERE u.id_usuario = %s
+        """, (id_usuario,))
+        user = cursor.fetchone()
+
+        if not user:
+            return "Usuário não encontrado", 404
+
+        apelido, nome, id_comprador, id_vendedor = user
+
+        # busca anuncios caso usuario seja vendedor
+        anuncios = []
+        if id_vendedor:
+            cursor.execute("""
+                SELECT titulo_anuncio, descricao_anuncio, quantidade_anuncio, preco_anuncio
+                FROM anuncios
+                WHERE id_vendedor = %s
+            """, (id_vendedor,))
+            anuncios = cursor.fetchall()
+
+    connect.close()
+
+    # define a funcao do usuario
+    funcoes = []
+    if id_comprador: funcoes.append("Comprador")
+    if id_vendedor: funcoes.append("Vendedor")
+    funcao_str = "/".join(funcoes) if funcoes else "Usuário"
+
+    return render_template(
+        'pages/perfil.html',
+        apelido=apelido,
+        nome=nome,
+        funcao=funcao_str,
+        anuncios=anuncios
+    )
 
 @app.route('/compra') # Rota para compra
 def compra():
