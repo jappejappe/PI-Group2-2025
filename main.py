@@ -5,6 +5,7 @@ import json
 import psycopg2 as psql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import dotenv
+import bcrypt
 
 #################################################################
 # CARREGAMENTO DE VARIÁVEIS DE AMBIENTE
@@ -161,6 +162,11 @@ def registrarDB():
         port=os.getenv("DB_PORT")
     )
     try:
+        password = data.get("password")
+        senha_bytes = password.encode('utf-8') # trasforma a senha em bytes
+        hash_senha = bcrypt.hashpw(senha_bytes, bcrypt.gensalt()) # pega a senha em bytes, "mistura" com o salt e gera o hash
+        print(hash_senha)
+
         with connect.cursor() as cursor:
             cursor.execute(
                 """
@@ -176,7 +182,7 @@ def registrarDB():
                 "nascimento": data.get("nascimento"),
                 "cep": data.get("cep"),
                 "cpf": data.get("cpf"),
-                "password": data.get("password")
+                "password": hash_senha
             }
             )
             new_id = cursor.fetchone()[0] # coleta o id do novo comprador inserido
