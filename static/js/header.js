@@ -28,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // se nao tiver logado
             const btnLogin = document.createElement("button");
-            btnLogin.textContent = "Login";
+            btnLogin.textContent = "Fazer Login";
             btnLogin.onclick = () => {
                 window.location.href = "/login";
             };
 
             const btnRegistrar = document.createElement("button");
-            btnRegistrar.textContent = "Registrar";
+            btnRegistrar.textContent = "Registrar-se";
             btnRegistrar.onclick = () => {
                 window.location.href = "/registrar";
             };
