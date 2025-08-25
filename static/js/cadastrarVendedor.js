@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Inserir vendedor no banco de dados
 
     function cadastrarVendedor() {
-        const userId = localStorage.getItem("userId");
+        const compradorId = localStorage.getItem("compradorId");
         const nome = document.getElementById('nome').value;
         const cep = document.getElementById('cep').value;
         const telefone = document.getElementById('telefone').value;
@@ -65,18 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const descricao = document.getElementById('descricao').value;
 
 
-        console.log("ID do usuário salvo:", userId);
+        console.log("ID do usuário salvo:", compradorId);
 
 
         axios.post("http://127.0.0.1:5000/cadastrarVendedor", {
-            id_comprador: userId,
+            id_comprador: compradorId,
             nome: nome,
             email: email,
             cep: cep,
             telefone: telefone,
             descricao: descricao
-        }) // NOTA PARA MIM MESMO: você parou aqui, ainda precisa fazer a rota do flask que recebe e add no banco
-        // Falta pegar o coiso dos carregamentos, e linkar com o usuário logado
+        })
         
         .then(response => {
             console.log("Sucesso:", response.data);

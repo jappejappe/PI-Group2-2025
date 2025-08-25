@@ -168,6 +168,7 @@ def registrarDB():
                     VALUES (%(nome)s, %(apelido)s, %(email)s, %(nascimento)s, %(cep)s, %(cpf)s, %(password)s)
                     RETURNING id_comprador;
                 """,
+                # retorna o id do novo vendedor inserido
             {
                 "nome": data.get("nome"),
                 "apelido": data.get("apelido"),
@@ -179,6 +180,13 @@ def registrarDB():
             }
             )
             new_id = cursor.fetchone()[0] # coleta o id do novo comprador inserido
+
+            cursor.execute(
+                """
+                    INSERT INTO usuarios (id_comprador) VALUES (%s);
+                """,
+                (new_id,)
+            )
 
         connect.commit()
         connect.close()
@@ -203,7 +211,9 @@ def cadastrarVendedor():
                 """
                     INSERT INTO vendedores (id_comprador, nome_empresa, email_empresa, cep_empresa, telefone_empresa, descricao_empresa)
                     VALUES (%(id_comprador)s, %(nome)s, %(email)s, %(cep)s, %(telefone)s, %(descricao)s)
+                    RETURNING id_vendedor;
                 """,
+                # retorna o id do novo vendedor inserido
                 {
                     "id_comprador": data.get("id_comprador"),
                     "nome": data.get("nome"),
@@ -213,6 +223,17 @@ def cadastrarVendedor():
                     "descricao": data.get("descricao")
                 }
             )
+
+            new_id = cursor.fetchone()[0] # coleta o id do novo vendedor inserido
+            id_comprador = data.get("id_comprador")
+
+            cursor.execute(
+                """
+                    UPDATE usuarios SET id_vendedor = %s WHERE id_comprador = %s;
+                """,
+                (new_id, id_comprador)
+            )
+
         connect.commit()
         connect.close()
         return jsonify({"status": "Sucesso", "message": "Vendedor adicionado"})

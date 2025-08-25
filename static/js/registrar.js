@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .then(response => {
             console.log("Sucesso:", response.data);
-            const userId = response.data.id;
+            const compradorId = response.data.id;
             // salva no localStorage o id do usuário
-            localStorage.setItem("userId", userId);
+            localStorage.setItem("compradorId", compradorId);
             window.location.href = "http://127.0.0.1:5000/perfil";
         })
 
