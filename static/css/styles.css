@@ -2261,5 +2261,6 @@ input[type=number] {
   flex-wrap: nowrap;
 }
 
-
-
+.hidden {
+  display: none;
+}
