@@ -165,7 +165,8 @@ def registrarDB():
         password = data.get("password")
         senha_bytes = password.encode('utf-8') # trasforma a senha em bytes
         hash_senha = bcrypt.hashpw(senha_bytes, bcrypt.gensalt()) # pega a senha em bytes, "mistura" com o salt e gera o hash
-        print(hash_senha)
+        hash_str = hash_senha.decode('utf-8') # transforma o hash em string pra salvar no campo senha que é varchar
+        print(hash_str)
 
         with connect.cursor() as cursor:
             cursor.execute(
@@ -182,7 +183,7 @@ def registrarDB():
                 "nascimento": data.get("nascimento"),
                 "cep": data.get("cep"),
                 "cpf": data.get("cpf"),
-                "password": hash_senha
+                "password": hash_str
             }
             )
             new_id = cursor.fetchone()[0] # coleta o id do novo comprador inserido
@@ -246,6 +247,42 @@ def cadastrarVendedor():
     except Exception as e:
         connect.rollback()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
+    
+@app.route("/logar", methods=["POST"])
+def logar():
+    data = request.json
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    try:
+        with connect.cursor() as cursor:
+            cursor.execute(
+                """
+                    SELECT email_cliente, senha, id_comprador FROM compradores WHERE email_cliente = %(email)s
+                """, 
+                {
+                    "email": data.get("email"),
+                })
+            
+            user = cursor.fetchone() # tupla (email, senha)
+            if user is None:
+                return jsonify({"status": "Falha", "message": "Usuário não encontrado"})
+            
+
+            if bcrypt.checkpw(data.get("password").encode("utf-8"), user[1].encode("utf-8")):
+                print("Senha correta")
+
+        return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2]})
+            
+    except Exception as e:
+        connect.rollback()
+        return jsonify({"status": "Falha", "message": "Erro ao tentar logar", "error": str(e)})
+        
+        
 
 
 ##################################################################
