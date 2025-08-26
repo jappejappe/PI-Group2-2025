@@ -8,57 +8,56 @@
 </head>
 <body>
     <div id="registrarBody">
-            {% include "components/header.html" with context %}
-            <div id="registrarForm">
-                <h2>Registrar-se</h2>
-        
-                <div class="form-item">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" placeholder="Usuário" />
-                </div>
-                <div class="form-item">
-                    <label for="username">Nome de Usuário</label>
-                    <input type="text" id="username" name="username" placeholder="@username" />
-                </div>
-                <div class="form-item">
-                    <label for="email">E-Mail</label>
-                    <input type="email" id="email" name="email" placeholder="exemplo@dominio.com" />
-                </div>
-                <div class="form-item">
-                    <label for="nascimento">Nascimento</label>
-                    <input type="text" id="nascimento" name="nascimento" placeholder="DD/MM/YYYY" />
-                </div>
-                <div class="form-item">
-                    <label for="cep">CEP</label>
-                    <input type="text" id="cep" name="cep" placeholder="XXXXX-XXX" />
-                </div>
-                <div class="form-item">
-                    <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" />
-                </div>
-                <div class="form-item">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" placeholder="Senha" />
-                    <p class="password-hint">Mínimo de 8 caracteres, contendo ao menos um número.</p>
-                </div>
+        {% include "components/header.html" with context %}
+        <form id="registrarForm" method="post" action="/registrar">
+            <h2>Registrar-se</h2>
+    
+            <div class="form-item">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Usuário" />
             </div>
-        </div>
-        <div id="registrarBotoes">
-            <!-- botao continuar -->
-            {% set corBotao = 'black' %}
-            {% set textoBotao = 'Registrar' %}
-            {% set id = 'registrarButton' %}
-            {% include "components/buttonDados.html" with context %}
+            <div class="form-item">
+                <label for="username">Nome de Usuário</label>
+                <input type="text" id="username" name="username" placeholder="@username" />
+            </div>
+            <div class="form-item">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" name="email" placeholder="exemplo@dominio.com" />
+            </div>
+            <div class="form-item">
+                <label for="nascimento">Nascimento</label>
+                <input type="text" id="nascimento" name="nascimento" placeholder="DD/MM/YYYY" />
+            </div>
+            <div class="form-item">
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" placeholder="99999-999" />
+            </div>
+            <div class="form-item">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" placeholder="999.999.999-99" />
+            </div>
+            <div class="form-item">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Senha" />
+                <p class="password-hint">Mínimo de 8 caracteres, contendo ao menos um número.</p>
+            </div>
+            <div id="registrarBotoes">
+                <!-- botao continuar -->
+                {% set corBotao = 'black' %}
+                {% set textoBotao = 'Registrar' %}
+                {% set id = 'registrarButton' %}
+                {% include "components/buttonDados.html" with context %}
 
-            <!-- botao fazer login -->
-            {% set corBotao = 'white' %}
-            {% set textoBotao = 'Fazer Login' %}
-            {% set path = 'login' %}
-            {% include "components/button.html" with context %}
-        </div>
+                <!-- botao fazer login -->
+                {% set corBotao = 'white' %}
+                {% set textoBotao = 'Fazer Login' %}
+                {% set path = 'login' %}
+                {% include "components/button.html" with context %}
+            </div>
+        </form>
+    </div>
     {% set id = 'registrarFooter' %}
     {% include "components/footer.html" with context %}
-    </div>
 </body>
 <script src="../../static/js/registrar.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
