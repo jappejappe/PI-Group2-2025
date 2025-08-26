@@ -10,7 +10,7 @@
 
     {% include 'components/header.html' %}
 
-    <form id="meuFormulario" action="">
+    <form id="meuFormulario" method="post" action="">
         <h2>Insira as informações da empresa</h2>
 
 
@@ -20,12 +20,12 @@
 
         <fieldset>
             <legend>Onde fica?</legend>
-            <input type="text" id="cep"  name="cep" placeholder="CEP" />
+            <input type="text" id="cep"  name="cep" title="É o CEP" placeholder="99999-999" />
         </fieldset>
 
 
         <label for="telefone">Qual é o telefone de contato?</label>
-        <input type="tel" id="telefone" name="telefone" pattern="^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$" title="Formato esperado: (99) 99999-9999" placeholder="(99) 98765-4321" />
+        <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-999" />
 
 
         <label for="email">Qual é o email de contato?</label>
@@ -58,7 +58,7 @@
                 <input type="checkbox" name="infraestrutura" value="caminhao" /> Caminhão
             </label>
             <label>
-                <input type="checkbox" name="infraestrutura" value="barco" /> Barco
+                <input type="checkbox" name="infraestrutura" value="barco" /> Barco de carga
             </label>
             <label>
                 <input type="checkbox" name="infraestrutura" value="aviao" /> Avião de carga

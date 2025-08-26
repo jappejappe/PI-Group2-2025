@@ -745,6 +745,228 @@ select {
 
 /* Tablets no modo retrato */
 @media (max-width: 768px) {
+  .perfil-page .hero {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .perfil-page .avatar-placeholder {
+    width: 160px;
+    height: 160px;
+    font-size: 80px;
+    margin: 0 auto;
+  }
+  
+  .perfil-page .hero-text h2 {
+    font-size: 28px;
+  }
+  
+  .perfil-page .hero-text p {
+    font-size: 18px;
+  }
+  
+  .perfil-page .btn-seguir {
+    font-size: 16px;
+    padding: 10px 25px;
+  }
+  
+  .perfil-page .bio {
+    font-size: 16px;
+  }
+  
+  .perfil-page .perfil-container {
+    padding: 0 20px 20px;
+  }
+  
+  .perfil-page .titulo-itens {
+    font-size: 28px;
+    margin: 30px 0 20px;
+  }
+  
+  .perfil-page .item-card {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .perfil-page .imagem-placeholder {
+    width: 100%;
+    height: 200px;
+    min-width: auto;
+    min-height: auto;
+  }
+  
+  .perfil-page .item-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .perfil-page .item-header h3 {
+    font-size: 20px;
+  }
+  
+  .perfil-page .peso {
+    font-size: 16px;
+  }
+  
+  .perfil-page .descricao {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .perfil-page .item-acoes {
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .perfil-page .btn-carrinho {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .perfil-page .btn-ver {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  
+  .perfil-page .preco {
+    font-size: 20px;
+    text-align: center;
+    align-self: center;
+    margin-top: 15px;
+  }
+  
+  .perfil-page .btn-ver-mais {
+    font-size: 18px;
+    padding: 12px 30px;
+  }
+  
+  /* Página de Carrinho - Mobile */
+  .carrinho-container {
+    padding: 20px 10px;
+  }
+  
+  .carrinho-titulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .produto-item {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .produto-checkbox {
+    align-self: flex-start;
+  }
+  
+  .produto-imagem img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .produto-descricao {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .produto-quantidade {
+    justify-content: center;
+  }
+  
+  .btn-quantidade {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+  
+  .quantidade-input {
+    width: 60px;
+    font-size: 14px;
+  }
+  
+  .produto-preco {
+    justify-content: center;
+  }
+  
+  .preco-valor {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .produto-acoes {
+    justify-content: center;
+  }
+  
+  .btn-remover {
+    font-size: 16px;
+    width: 35px;
+    height: 35px;
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+  }
+  
+  .carrinho-footer {
+    padding: 15px;
+    margin-top: 20px;
+  }
+  
+  .total-info {
+    text-align: center;
+  }
+  
+  .total-itens {
+    font-size: 14px;
+  }
+  
+  .subtotal {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .btn-continuar {
+    font-size: 16px;
+    padding: 12px 25px;
+  }
+
+  #registrarForm {
+    max-width: 90%;
+    padding: 5vw;
+    border-radius: 2.4vw;
+  }
+
+  #registrarForm h2 {
+    font-size: 28px;
+  }
+
+  .form-item input {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #888;
+    border-radius: 2.4vw;
+  }
+
+  #loginForm {
+    max-width: 90%;
+    padding: 5vw;
+    border-radius: 2.4vw;
+  }
+
+  #loginForm h2 {
+    font-size: 28px;
+  }
+
   .produto-container {
     flex-direction: column;
     padding: 1.25rem;
@@ -949,27 +1171,6 @@ summary {
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  #registrarForm {
-    max-width: 90%;
-    padding: 5vw;
-    border-radius: 2.4vw;
-  }
-
-  #registrarForm h2 {
-    font-size: 28px;
-  }
-
-  .form-item input {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    font-size: 16px;
-    border: 1px solid #888;
-    border-radius: 2.4vw;
-  }
-}
-
 /* PAGINA DE LOGIN */
 #loginBody > * {
   margin: 0;
@@ -1031,18 +1232,6 @@ summary {
   border-top: 1px solid #ccc;
   text-align: center;
   padding: 15px;
-}
-
-@media (max-width: 768px) {
-  #loginForm {
-    max-width: 90%;
-    padding: 5vw;
-    border-radius: 2.4vw;
-  }
-
-  #loginForm h2 {
-    font-size: 28px;
-  }
 }
 
 /* PÁGINA DE PERFIL */
@@ -1490,8 +1679,135 @@ input[type=number] {
 }
 
 @media (max-width: 480px){
-  .anunciar-inline-group{ flex-direction: column; align-items: stretch; }
-  .anunciar-inline-group .anunciar-select{ width: 100%; flex: 0 0 auto; }
+  .anunciar-inline-group{ 
+    flex-direction: column; align-items: stretch; 
+  }
+
+  .anunciar-inline-group .anunciar-select{ 
+    width: 100%; flex: 0 0 auto; 
+  }
+
+  .perfil-page .hero {
+    padding: 30px 15px;
+    text-align: center;
+  }
+  
+  .perfil-page .avatar-placeholder {
+    width: 160px;
+    height: 160px;
+    font-size: 80px;
+    margin: 0 auto;
+  }
+  
+  .perfil-page .hero-text h2 {
+    font-size: 24px;
+  }
+  
+  .perfil-page .hero-text p {
+    font-size: 16px;
+  }
+  
+  .perfil-page .btn-seguir {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+  
+  .perfil-page .bio {
+    font-size: 14px;
+  }
+  
+  .perfil-page .titulo-itens {
+    font-size: 24px;
+  }
+  
+  .perfil-page .item-header h3 {
+    font-size: 18px;
+  }
+  
+  .perfil-page .peso {
+    font-size: 14px;
+  }
+  
+  .perfil-page .descricao {
+    font-size: 14px;
+  }
+  
+  .perfil-page .btn-carrinho {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .perfil-page .btn-ver {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  
+  .perfil-page .preco {
+    font-size: 18px;
+  }
+  
+  .perfil-page .btn-ver-mais {
+    font-size: 16px;
+    padding: 10px 25px;
+  }
+  
+  /* Página de Carrinho - Mobile Pequeno */
+  .carrinho-container {
+    padding: 15px 8px;
+  }
+  
+  .carrinho-titulo {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .produto-item {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .produto-imagem img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .produto-descricao {
+    font-size: 15px;
+  }
+  
+  .btn-quantidade {
+    font-size: 15px;
+    padding: 6px 10px;
+  }
+  
+  .quantidade-input {
+    width: 50px;
+    font-size: 13px;
+  }
+  
+  .preco-valor {
+    font-size: 16px;
+  }
+  
+  .btn-remover {
+    font-size: 15px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .total-itens {
+    font-size: 13px;
+  }
+  
+  .subtotal {
+    font-size: 16px;
+  }
+  
+  .btn-continuar {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
 }
 
 /* .anunciar-inline-group {
@@ -2309,6 +2625,7 @@ input[type=number] {
   }
 }
 
+
 .anunciar-inline-group{
   display: flex;
   align-items: center; 
@@ -2316,328 +2633,46 @@ input[type=number] {
   flex-wrap: nowrap;
 }
 
-/* Páginas de Perfil e Carrinho - Mobile*/
-
-@media (max-width: 768px) {
-  /* Página de Perfil - Mobile */
-  .perfil-page .hero {
-    flex-direction: column;
-    padding: 40px 20px;
-    gap: 30px;
-    text-align: center;
-  }
-  
-  .perfil-page .avatar-placeholder {
-    width: 160px;
-    height: 160px;
-    font-size: 80px;
-    margin: 0 auto;
-  }
-  
-  .perfil-page .hero-text h2 {
-    font-size: 28px;
-  }
-  
-  .perfil-page .hero-text p {
-    font-size: 18px;
-  }
-  
-  .perfil-page .btn-seguir {
-    font-size: 16px;
-    padding: 10px 25px;
-  }
-  
-  .perfil-page .bio {
-    font-size: 16px;
-  }
-  
-  .perfil-page .perfil-container {
-    padding: 0 20px 20px;
-  }
-  
-  .perfil-page .titulo-itens {
-    font-size: 28px;
-    margin: 30px 0 20px;
-  }
-  
-  .perfil-page .item-card {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .perfil-page .imagem-placeholder {
-    width: 100%;
-    height: 200px;
-    min-width: auto;
-    min-height: auto;
-  }
-  
-  .perfil-page .item-header {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .perfil-page .item-header h3 {
-    font-size: 20px;
-  }
-  
-  .perfil-page .peso {
-    font-size: 16px;
-  }
-  
-  .perfil-page .descricao {
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .perfil-page .item-acoes {
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .perfil-page .btn-carrinho {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-  }
-  
-  .perfil-page .btn-ver {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-  
-  .perfil-page .preco {
-    font-size: 20px;
-    text-align: center;
-    align-self: center;
-    margin-top: 15px;
-  }
-  
-  .perfil-page .btn-ver-mais {
-    font-size: 18px;
-    padding: 12px 30px;
-  }
-  
-  /* Página de Carrinho - Mobile */
-  .carrinho-container {
-    padding: 20px 10px;
-  }
-  
-  .carrinho-titulo {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .produto-item {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
-    text-align: center;
-  }
-  
-  .produto-checkbox {
-    align-self: flex-start;
-  }
-  
-  .produto-imagem img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
-  
-  .produto-descricao {
-    font-size: 16px;
-    margin: 10px 0;
-  }
-  
-  .produto-quantidade {
-    justify-content: center;
-  }
-  
-  .btn-quantidade {
-    font-size: 16px;
-    padding: 8px 12px;
-  }
-  
-  .quantidade-input {
-    width: 60px;
-    font-size: 14px;
-  }
-  
-  .produto-preco {
-    justify-content: center;
-  }
-  
-  .preco-valor {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .produto-acoes {
-    justify-content: center;
-  }
-  
-  .btn-remover {
-    font-size: 16px;
-    width: 35px;
-    height: 35px;
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 50%;
-  }
-  
-  .carrinho-footer {
-    padding: 15px;
-    margin-top: 20px;
-  }
-  
-  .total-info {
-    text-align: center;
-  }
-  
-  .total-itens {
-    font-size: 14px;
-  }
-  
-  .subtotal {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .btn-continuar {
-    font-size: 16px;
-    padding: 12px 25px;
-  }
+.user-menu {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  background: #f2f2f2;
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 150px;
+  z-index: 100;
 }
 
-@media (max-width: 480px) {
-  /* Página de Perfil - Mobile */
-  .perfil-page .hero {
-    padding: 30px 15px;
-    text-align: center;
-  }
-  
-  .perfil-page .avatar-placeholder {
-    width: 160px;
-    height: 160px;
-    font-size: 80px;
-    margin: 0 auto;
-  }
-  
-  .perfil-page .hero-text h2 {
-    font-size: 24px;
-  }
-  
-  .perfil-page .hero-text p {
-    font-size: 16px;
-  }
-  
-  .perfil-page .btn-seguir {
-    font-size: 14px;
-    padding: 8px 20px;
-  }
-  
-  .perfil-page .bio {
-    font-size: 14px;
-  }
-  
-  .perfil-page .titulo-itens {
-    font-size: 24px;
-  }
-  
-  .perfil-page .item-header h3 {
-    font-size: 18px;
-  }
-  
-  .perfil-page .peso {
-    font-size: 14px;
-  }
-  
-  .perfil-page .descricao {
-    font-size: 14px;
-  }
-  
-  .perfil-page .btn-carrinho {
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
-  }
-  
-  .perfil-page .btn-ver {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  
-  .perfil-page .preco {
-    font-size: 18px;
-  }
-  
-  .perfil-page .btn-ver-mais {
-    font-size: 16px;
-    padding: 10px 25px;
-  }
-  
-  /* Página de Carrinho - Mobile Pequeno */
-  .carrinho-container {
-    padding: 15px 8px;
-  }
-  
-  .carrinho-titulo {
-    font-size: 22px;
-    margin-bottom: 15px;
-  }
-  
-  .produto-item {
-    padding: 12px;
-    margin-bottom: 15px;
-  }
-  
-  .produto-imagem img {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .produto-descricao {
-    font-size: 15px;
-  }
-  
-  .btn-quantidade {
-    font-size: 15px;
-    padding: 6px 10px;
-  }
-  
-  .quantidade-input {
-    width: 50px;
-    font-size: 13px;
-  }
-  
-  .preco-valor {
-    font-size: 16px;
-  }
-  
-  .btn-remover {
-    font-size: 15px;
-    width: 30px;
-    height: 30px;
-  }
-  
-  .total-itens {
-    font-size: 13px;
-  }
-  
-  .subtotal {
-    font-size: 16px;
-  }
-  
-  .btn-continuar {
-    font-size: 15px;
-    padding: 10px 20px;
-  }
+.user-menu button {
+  min-width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f2f2f2;
 }
 
+.user-menu button:hover {
+  background: #dddddd;
+}
 
+.user-menu .logout {
+  background: #ffbbbb;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.user-menu .logout:hover {
+  background: #ff8888;
+}
+
+.hidden {
+  display: none;
+}
 
