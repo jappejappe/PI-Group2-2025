@@ -626,7 +626,15 @@ footer {
   border-radius: 5px;
   border: none;
 }
-
+#anuncioFooter{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
+}
 .produto-container {
   display: flex;
   padding: 40px;
@@ -889,7 +897,12 @@ summary {
 }
 
 #registrarFooter {
-  margin-top: 40px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
 }
 
 .password-hint {
@@ -1204,8 +1217,26 @@ h1 {
   border-radius: 10px;
   cursor: pointer;
 }
+#perfilFooter{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
+}
 
 /* cadastroVendedor */
+#cadastroVendedorFooter {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
+}
+
 fieldset{
   border: none !important;
   width: 100%;
@@ -1496,6 +1527,14 @@ input[type=number] {
     color: #888888;
     font-weight: normal;
     font-family: 'Istok Web', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+#anunciarFooter{
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
 }
 
 @media (max-width: 700px) {
@@ -1904,6 +1943,15 @@ input[type=number] {
   border: 1px solid #e0e0e0;
 }
 
+#carrinhoFooter{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
+}
 .resumo-carrinho {
   display: flex;
   flex-direction: column;
