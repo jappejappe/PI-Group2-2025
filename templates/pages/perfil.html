@@ -9,72 +9,49 @@
 </head>
 <div class="body1 perfil-page">
 <body>
-  <div class="header1">
-  <header>
-    <div class="logo">RCL</div>
-    <nav>
-      <a href="#">Marketplace</a>
-      <a href="#">Vender</a>
-      <a href="#">Sobre</a>
-    </nav>
-    <div>
-      <button class="anunciar">Anunciar</button>
-    </div>
-  </header>
-  </div>
+  {% include 'components/header.html' %}
 
   <section class="hero">
     <div>
       <div class="avatar-placeholder">👤</div>
     </div>
     <div class="hero-text">
-      <h2>@Fulano123</h2>
-      <p>Comprador/Vendedor</p>
+      <h2>{{apelido}}</h2>
+      <p>{{funcao}}</p>
       <button class="btn-seguir">Seguir</button>
-      <p class="bio">Sou o fulaninho, moro em Concórdia SC e quero ter uma segunda fonte de renda.</p>
+      <p class="bio">{{bio}}</p>
     </div>
   </section>
 
   <main class="perfil-container">
-    <h1 class="titulo-itens">Itens a venda:</h1>
+    <h1 class="titulo-itens">Itens à venda:</h1>
 
     <div class="itens-lista">
-      <div class="item-card">
-        <div class="item-imagem">
-          <div class="imagem-placeholder"></div>
-        </div>
-        <div class="item-detalhes">
-          <div class="item-header">
-            <h3>Latinhas de refri</h3>
-            <span class="peso">10kg</span>
+      {% if anuncios %}
+        {% for titulo, descricao, quantidade, preco in anuncios %}
+          <div class="item-card">
+            <div class="item-imagem">
+              <div class="imagem-placeholder"></div>
+            </div>
+            <div class="item-detalhes">
+              <div class="item-header">
+                <h3>{{ titulo }}</h3>
+                <span class="peso">{{ quantidade }} un.</span>
+              </div>
+              <p class="descricao">{{ descricao }}</p>
+              <div class="item-acoes">
+                <button class="btn-carrinho">🛒</button>
+                <button class="btn-ver">Ver</button>
+              </div>
+              <span class="preco">R$ {{ preco }}</span>
+            </div>
           </div>
-          <p class="descricao">Sujas, mas em bom estado</p>
-          <div class="item-acoes">
-            <button class="btn-carrinho">🛒</button>
-            <button class="btn-ver">Ver</button>
-          </div>
-          <span class="preco">R$ 59,90</span>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-imagem">
-          <div class="imagem-placeholder"></div>
-        </div>
-        <div class="item-detalhes">
-          <div class="item-header">
-            <h3>Garrafas plásticas</h3>
-            <span class="peso">4kg</span>
-          </div>
-          <p class="descricao">Vários tipos e tamanhos, todas limpas</p>
-          <div class="item-acoes">
-            <button class="btn-carrinho">🛒</button>
-            <button class="btn-ver">Ver</button>
-          </div>
-          <span class="preco">R$ 4,79</span>
-        </div>
-      </div>
+        {% endfor %}
+      {% else %}
+        <p>Esse usuário não possui anúncios.</p>
+      {% endif %}
     </div>
+
 
     <div class="ver-mais-container">
       <button class="btn-ver-mais">Ver mais</button>

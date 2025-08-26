@@ -1,54 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RCL</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
     <div id="bodyanunciar"></div>
-        {% include 'components/header.html' %}
-        <main>
-            <h1 class="anunciar-main-title">Anuncie seu resíduo reciclável<br>com facilidade!</h1>
-            <section class="anunciar-form-container">
-                <form>
-                    <div class="anunciar-form-section">
-                        <h2>1- Identificação do produto</h2>
-                        <label class="anunciar-label">Qual o material do resíduo?</label>
-                        <select class="anunciar-select">
-                            <option value="" disabled selected>Selecione o tipo de material</option>
-                            <option>Plástico</option>
-                            <option>Ferroso</option>
-                            <option>Não Ferroso</option>
-                            <option>Papel e Papelão</option>
-                            <option>Vidro</option>
-                            <option>Madeira</option>
-                            <option>Eletrônico</option>
-                            <option>Sucata de Veículos</option>
-                            <option>Outro</option>
-                        </select>
-                        <label class="anunciar-label">Descreva o produto</label>
-                        <textarea class="anunciar-textarea" maxlength="5000" placeholder="Digite a descrição do produto"></textarea>
-                        <small>Máximo 5000 caracteres</small>
-                        <div class="anunciar-radio-group">
-                            <span>É resíduo pós-consumo ou pós-industrial?</span>
-                            <div>
-                                <label class="anunciar-label"><input type="radio" name="tipo-residuo"> Pós-consumo</label>
-                                <label class="anunciar-label"><input type="radio" name="tipo-residuo"> Pós-industrial</label>
-                            </div>
+    {% include 'components/header.html' %}
+    <main>
+        <h1 class="anunciar-main-title">Anuncie seu resíduo reciclável<br>com facilidade!</h1>
+        <section class="anunciar-form-container">
+            <form>
+                <div class="anunciar-form-section">
+                    <h2>1- Identificação do produto</h2>
+                    <label class="anunciar-label">Qual o material do resíduo?</label>
+                    <select class="anunciar-select">
+                        <option value="" disabled selected>Selecione o tipo de material</option>
+                        <option>Plástico</option>
+                        <option>Ferroso</option>
+                        <option>Não Ferroso</option>
+                        <option>Papel e Papelão</option>
+                        <option>Vidro</option>
+                        <option>Madeira</option>
+                        <option>Eletrônico</option>
+                        <option>Sucata de Veículos</option>
+                        <option>Outro</option>
+                    </select>
+                    <label class="anunciar-label">Descreva o produto</label>
+                    <textarea class="anunciar-textarea" maxlength="5000"
+                        placeholder="Digite a descrição do produto"></textarea>
+                    <small>Máximo 5000 caracteres</small>
+                    <div class="anunciar-radio-group">
+                        <span>É resíduo pós-consumo ou pós-industrial?</span>
+                        <div>
+                            <label class="anunciar-label"><input type="radio" name="tipo-residuo"> Pós-consumo</label>
+                            <label class="anunciar-label"><input type="radio" name="tipo-residuo">
+                                Pós-industrial</label>
                         </div>
                     </div>
-                    <div class="anunciar-form-section">
-                        <h2>2- Quantidade</h2>
-                        <label class="anunciar-label">Qual a quantidade disponível?</label>
-                        <div class="anunciar-inline-group">
-                            <input class="anunciar-input" type="number" placeholder="Digite qual a quantidade" min="0">
-                            <select class="anunciar-select">
-                                <option>Kg</option>
-                            </select>
-                        </div>
-                        
+                </div>
+                <div class="anunciar-form-section">
+                    <h2>2- Quantidade</h2>
+                    <label class="anunciar-label">Qual a quantidade disponível?</label>
+                    <div class="anunciar-inline-group">
+                        <input class="anunciar-input" type="number" placeholder="Digite qual a quantidade" min="0">
+                        <select class="anunciar-select">
+                            <option>Kg</option>
+                            <option>g</option>
+                            <option>Toneladas</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="anunciar-form-section">
+                    <h2>3- Condições</h2>
+                    <label class="anunciar-label">Qual o preço desejado?</label>
+                    <input class="anunciar-input" type="number" placeholder="Digite o preço" min="0" step="0.01">
+                </div>
+                <div class="anunciar-form-section">
+                    <h2>4- Fotos</h2>
+                    <label class="anunciar-label">Envie fotos do resíduo no estilo .jpg</label>
+                    <div class="anunciar-upload-box">
+                        <span class="anunciar-upload-icon">⤴</span>
                     </div>
                     <div class="anunciar-form-section">
                         <h2>3- Condições</h2>
@@ -75,4 +92,5 @@
     {% set id = 'anunciarFooter' %}
     {% include "components/footer.html" with context %}
 </body>
+
 </html>

@@ -62,7 +62,7 @@ for c in condicoes:
     """, (c,))
 
 
-carregamentos = ["Caminhão", "Carreta", "Van", "Carro", "Kombi"]
+carregamentos = ["moto", "carro", "van", "caminhao",  "barco", "aviao", "guindaste", "paleteira"]
 for c in carregamentos:
     cursor.execute("""
         INSERT INTO carregamentos (carregamento) VALUES (%s)

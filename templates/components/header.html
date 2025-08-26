@@ -13,9 +13,14 @@
             <a href="{{ url_for('carrinho') }}">
                 <img src="{{ url_for('static', filename='images/icons/carrinhoCompra.png') }}" alt="carrinho">
             </a>
-            <a href="{{ url_for('registrar') }}">
-                <img src="{{ url_for('static', filename='images/icons/login.png') }}" alt="login">
-            </a>
+            <div class="user-menu-container">
+                <img id="user-icon" src="{{ url_for('static', filename='images/icons/login.png') }}" alt="login" style="cursor: pointer;">
+                
+                <div id="user-menu" class="user-menu hidden">
+                   <!-- script preenche aqui -->
+                </div>
+            </div>
         </div>
     </nav>
+    <script src="../../static/js/header.js" ></script>
 </header>
