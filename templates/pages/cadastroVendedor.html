@@ -87,10 +87,8 @@
 
     </form>
 
-
-    
-    {% include 'components/footer.html'%}
-    
+    {% set id = 'cadastroVendedorFooter' %}
+    {% include "components/footer.html" with context %}
 </body>
 <script src="../../static/js/cadastrarVendedor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

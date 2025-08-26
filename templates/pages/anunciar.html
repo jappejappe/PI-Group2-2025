@@ -67,20 +67,30 @@
                     <div class="anunciar-upload-box">
                         <span class="anunciar-upload-icon">⤴</span>
                     </div>
-                    <small>mínimo 8 fotos</small>
-                </div>
-                <div class="anunciar-form-buttons">
-                    <a href="./anunciar.html"><button type="submit" class="anunciar-btn-secondary">Enviar e fazer mais
-                            um</button></a>
-
-                    <a href="/"><button type="button" class="anunciar-btn-primary">Enviar e sair</button></a>
-                </div>
-            </form>
-        </section>
-    </main>
-    </div>
-
-    {% include 'components/footer.html'%}
+                    <div class="anunciar-form-section">
+                        <h2>3- Condições</h2>
+                        <label class="anunciar-label">Qual o preço desejado?</label>
+                        <input class="anunciar-input" type="number" placeholder="Digite o preço" min="0" step="0.01">
+                    </div>
+                    <div class="anunciar-form-section">
+                        <h2>4- Fotos</h2>
+                        <label class="anunciar-label">Envie fotos do resíduo no estilo .jpg (mínimo 4 fotos)</label>
+                        <div class="anunciar-upload-box">
+                            <span class="anunciar-upload-icon">⤴</span>
+                        </div>
+                        <small>mínimo 8 fotos</small>
+                    </div>
+                    <div class="anunciar-form-buttons">
+                        <a href="./anunciar.html"><button type="submit" class="anunciar-btn-secondary">Enviar e fazer mais um</button></a>
+                        
+                        <a href="/"><button type="button" class="anunciar-btn-primary">Enviar e sair</button></a>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div> 
+    {% set id = 'anunciarFooter' %}
+    {% include "components/footer.html" with context %}
 </body>
 
 </html>
