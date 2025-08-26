@@ -322,8 +322,12 @@ def logar():
 
             if bcrypt.checkpw(data.get("password").encode("utf-8"), user[1].encode("utf-8")):
                 print("Senha correta")
+                return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2]})
+            else:
+                print("Senha incorreta")
+                return jsonify({"status": "Falha", "message": "Senha incorreta"})
+            
 
-        return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2]})
             
     except Exception as e:
         connect.rollback()
