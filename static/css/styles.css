@@ -236,7 +236,7 @@ nav a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 5px;
+  padding: 80px 70px;
   background: white;
   max-width: 1400px;
   margin: auto;
@@ -2286,6 +2286,14 @@ input[type=number] {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   color: #333333;
+}
+#compraFooter{
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
 }
 
 @media (max-width: 1120px) {
