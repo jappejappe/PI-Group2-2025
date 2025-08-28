@@ -85,7 +85,7 @@ nav img {
   padding: 10px 20px;
   border: none;
   border-radius: 60px;
-  font-size: 14px;
+  font-size: 18px;
   
   display: flex;
   align-items: center;
@@ -102,7 +102,7 @@ nav img {
   padding: 10px 20px;
   border: solid black 1px;
   border-radius: 60px;
-  font-size: 14px;
+  font-size: 18px;
   
   display: flex;
   align-items: center;
@@ -2686,7 +2686,7 @@ input[type=number] {
     border: 2px solid black;
     border-radius: 30px;
     padding: 1%;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 .card > img {
@@ -2695,16 +2695,32 @@ input[type=number] {
     border: 1px solid black;
 }
 
+.card_preco {
+    font-family: 'Istok Web';
+    font-size: 26px;
+    margin-left: 15px;
+    color: black;
+}
+
+.card_titulo {
+    font-family: 'Istok Web';
+    font-size: 26px;
+    font-weight: bold;
+    margin-left: 15px;
+    color: black;
+}
+
 .infoCard {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 250px;
+    width: 100%;
     height: 250px;
 }
 
 .divBotoesCard {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     margin-top: 10px;
 }
