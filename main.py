@@ -189,12 +189,49 @@ def compra():
 # como adicionar itens ao carrinho ou publicar um novo produto.
 
 
-@app.route('/addCarrinho', methods=['POST']) # Endpoint acionado para adicionar itens ao carrinho
-def addCarrinho():
+@app.route("/addCarrinho", methods=["POST"])
+def adicionar_carrinho():
     data = request.get_json()
-    with open('data.json', 'w') as f: # Abre o data.json para escrita ('w' write)
-        json.dump(data, f)
-    return jsonify({'status': 'success'})
+    id_comprador = data["id_comprador"]
+    id_produto = data["id_produto"]
+    quantidade = data.get("quantidade", 1)
+
+    conn = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                SELECT quantidade FROM carrinhos
+                WHERE id_comprador = %s AND id_produto = %s
+            """, (id_comprador, id_produto))
+            existe = cursor.fetchone()
+
+            if existe:
+                nova_qtd = existe[0] + quantidade
+                cursor.execute("""
+                    UPDATE carrinhos
+                    SET quantidade = %s
+                    WHERE id_comprador = %s AND id_produto = %s
+                """, (nova_qtd, id_comprador, id_produto))
+            else:
+                cursor.execute("""
+                    INSERT INTO carrinhos (id_comprador, id_produto, quantidade)
+                    VALUES (%s, %s, %s)
+                """, (id_comprador, id_produto, quantidade))
+
+        conn.commit()
+        return jsonify({"status": "ok"})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({"status": "error", "message": str(e)})
+    finally:
+        conn.close()
 
 
 
