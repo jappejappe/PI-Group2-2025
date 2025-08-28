@@ -347,8 +347,40 @@ def logar():
         connect.rollback()
         return jsonify({"status": "Falha", "message": "Erro ao tentar logar", "error": str(e)})
         
-        
+@app.route("/mostrarAnuncios", methods=["POST", "GET"])
+def mostrarAnuncios():
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
 
+    try:
+        with connect.cursor() as cursor:
+            cursor.execute(
+                """
+                    SELECT id_anuncio, titulo_anuncio, preco_anuncio FROM anuncios;
+                """
+            )
+            anuncios = cursor.fetchall() # lista dos anúncios (tuplas)
+        connect.close()
+
+        lista_anuncios = []
+        for anuncio in anuncios:
+            lista_anuncios.append({
+                "id": anuncio[0],
+                "titulo": anuncio[1],
+                "preco": int(anuncio[2])
+            })
+
+        return jsonify(lista_anuncios)
+    
+    except Exception as e:
+        connect.rollback()
+        connect.close()
+        return f"Erro ao carregar anúncios: {str(e)}"
 
 ##################################################################
 

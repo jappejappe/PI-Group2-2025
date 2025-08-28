@@ -2236,6 +2236,7 @@ input[type=number] {
   font-size: 14px;
   outline: none;
   background: #fff;
+  appearance: textfield;
   -webkit-appearance: none;
   -moz-appearance: textfield;
   margin: 0;
@@ -2676,3 +2677,52 @@ input[type=number] {
   display: none;
 }
 
+.card {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
+    background-color: #e1e1e180;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 1%;
+    justify-content: space-between;
+}
+
+.card > img {
+    max-height: 250px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.infoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 250px;
+}
+
+.divBotoesCard {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#botaoCard {
+    width: 45%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#carrinhoBotao {
+    width: 40px;
+    height: 40px;
+}
+
+#anunciosContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
