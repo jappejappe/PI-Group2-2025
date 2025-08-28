@@ -260,6 +260,9 @@ def cadastrarVendedor():
         port=os.getenv("DB_PORT")
     )
     try:
+        cep = data.get("cep", "").replace("-", "").strip()
+        telefone = data.get("telefone", "").replace("-", "").replace("(", "").replace(")", "").replace(" ", "").strip()
+
         with connect.cursor() as cursor:
             cursor.execute(
                 """
@@ -272,20 +275,31 @@ def cadastrarVendedor():
                     "id_comprador": data.get("id_comprador"),
                     "nome": data.get("nome"),
                     "email": data.get("email"),
-                    "cep": data.get("cep"),
-                    "telefone": data.get("telefone"),
+                    "cep": cep,
+                    "telefone": telefone,
                     "descricao": data.get("descricao")
                 }
             )
 
-            new_id = cursor.fetchone()[0] # coleta o id do novo vendedor inserido
-            id_comprador = data.get("id_comprador")
+            id_vendedor = cursor.fetchone()[0] # coleta o id do novo vendedor inserido
+            carregamentos = data.get("carregamentos", [])
+
+            for carregamento in carregamentos:
+                cursor.execute(
+                    """
+                        INSERT INTO vendedores_carregamento (id_vendedor, id_carregamento)
+                        VALUES (%s, %s) 
+                    """,
+                    (
+                        id_vendedor, int(carregamento)
+                    )
+                )
 
             cursor.execute(
                 """
                     UPDATE usuarios SET id_vendedor = %s WHERE id_comprador = %s;
                 """,
-                (new_id, id_comprador)
+                (id_vendedor, data.get("id_comprador"))
             )
 
         connect.commit()

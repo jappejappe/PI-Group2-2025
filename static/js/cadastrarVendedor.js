@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const telefone = document.getElementById('telefone').value;
         const email = document.getElementById('email').value;
         const descricao = document.getElementById('descricao').value;
+        const checkboxes = document.querySelectorAll('input[name="infraestrutura"]:checked');
+        const selecionados = Array.from(checkboxes).map(cb => cb.value); // array de infraestruturasselecionadas
 
 
         console.log("ID do usuário salvo:", compradorId);
@@ -19,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
             email: email,
             cep: cep,
             telefone: telefone,
-            descricao: descricao
+            descricao: descricao,
+            carregamentos: selecionados // envia array de infraestruturas
         })
         
         .then(response => {
@@ -28,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    document.getElementById("cadastrarVendedorButton").addEventListener("click", () => {
+    document.getElementById("cadastrarVendedorButton").addEventListener("click", (e) => {
+        e.preventDefault();
         console.log("Clicou no botão");
         cadastrarVendedor();
     });
