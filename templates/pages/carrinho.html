@@ -11,55 +11,30 @@
 <body>
   {% include 'components/header.html' %}
 
-  <main class="carrinho-container">
-    <h1 class="carrinho-titulo">Seu Carrinho</h1>
-    
-    <div class="produtos-lista">
-      <div class="produto-item" id="produto1">
-        <div class="produto-checkbox">
-          <input type="checkbox" id="check1" checked>
-        </div>
-        
-        <div class="produto-imagem">
-          <img src="../../images/recycle.gif" alt="Latas de alumínio">
-        </div>
-        
-        <div class="produto-info">
-          <p class="produto-descricao">Latas de alumínio</p>
-        </div>
-        
-        <div class="produto-quantidade">
-          <div class="quantidade-controles">
-            <button class="btn-quantidade" onclick="diminuirQuantidade(1)">-</button>
-            <input type="number" value="1" min="1" class="quantidade-input" id="qtd1" onchange="atualizarPreco(1)">
-            <button class="btn-quantidade" onclick="aumentarQuantidade(1)">+</button>
-          </div>
-        </div>
-        
-        <div class="produto-preco">
-          <span class="preco-valor" id="preco1">R$ 22,00</span>
-        </div>
-        
-        <div class="produto-acoes">
-          <button class="btn-remover" onclick="removerProduto(1)">×</button>
-        </div>
+<main class="carrinho-container">
+  <h1 class="carrinho-titulo">Seu Carrinho</h1>
+  
+  <div class="produtos-lista">
+    <!-- aqui o js preenche -->
+  </div>
+  
+  <div class="carrinho-footer">
+    <div class="resumo-carrinho">
+      <div class="total-info">
+        <span class="total-itens" id="totalItens">Total de itens: {{ itens|sum(attribute=3) if itens else 0 }}</span>
+        <span class="subtotal" id="subtotal">
+          Subtotal: R$ {{ itens|map(attribute=2)|sum if itens else 0 }}
+        </span>
       </div>
+      <button class="btn-continuar">Continuar</button>
     </div>
-    
-    <div class="carrinho-footer">
-      <div class="resumo-carrinho">
-        <div class="total-info">
-          <span class="total-itens" id="totalItens">Total de itens: 1</span>
-          <span class="subtotal" id="subtotal">Subtotal: R$ 22,00</span>
-        </div>
-        <button class="btn-continuar">Continuar</button>
-      </div>
-    </div>
-  </main>
+  </div>
+</main>
   {% set id = 'carrinhoFooter' %}
   {% include "components/footer.html" with context %}
 </body>
 </div>
+<script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
 
 <script>
 function diminuirQuantidade(produtoId) {
