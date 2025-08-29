@@ -2742,3 +2742,93 @@ input[type=number] {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
+
+/* responsividade para o Header */
+@media (max-width: 1120px) and (min-width: 769px) {
+  nav {
+    padding: 0 18px;
+  }
+  
+  nav div {
+    margin-right: 6%;
+  }
+  
+  #aHeader {
+    margin-left: 6%;
+  }
+  
+  #logo {
+    max-width: 80px;
+    max-height: 28px;
+  }
+  
+  #buttonHeader {
+    margin: 13px 9px 13px auto;
+    padding: 9px 18px;
+    font-size: 17px;
+  }
+  
+  nav img {
+    max-width: 45px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  nav {
+    padding: 0 15px;
+  }
+  
+  nav div {
+    margin-right: 4%;
+  }
+  
+  #aHeader {
+    margin-left: 4%;
+  }
+  
+  #logo {
+    max-width: 70px;
+    max-height: 25px;
+  }
+  
+  #buttonHeader {
+    margin: 12px 8px 12px auto;
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+  
+  nav img {
+    max-width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  nav div {
+    margin-right: 2%;
+  }
+  
+  #aHeader {
+    margin-left: 2%;
+  }
+  
+  #logo {
+    max-width: 60px;
+    max-height: 22px;
+  }
+  
+  #buttonHeader {
+    margin: 10px 5px 10px auto;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  nav img {
+    max-width: 35px;
+  }
+}
