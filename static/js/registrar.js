@@ -25,10 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .then(response => {
             console.log("Sucesso:", response.data);
-            const compradorId = response.data.id;
-            // salva no localStorage o id do usuário
-            localStorage.setItem("compradorId", compradorId);
-            window.location.href = "http://127.0.0.1:5000/perfil";
+            const compradorId = response.data.compradorId;
+            if (response.data.status === "Sucesso") {
+                localStorage.setItem("compradorId", compradorId);
+                window.location.href = `/perfil/${compradorId}`;
+            }
+            else {
+                alert("Falha no registro: " + response.data.message);
+            }
         })
 
     }

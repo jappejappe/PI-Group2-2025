@@ -6,6 +6,7 @@ import psycopg2 as psql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import dotenv
 import bcrypt
+import base64
 from database import get_anuncio_por_id
 
 #################################################################
@@ -315,7 +316,7 @@ def adicionar_carrinho():
 
 @app.route("/registrarDB", methods=["POST"])
 def registrarDB():
-    data = request.json
+    data = request.form
     connect = psql.connect(
         host=os.getenv("DB_HOST"),
         database="rcl_db",
@@ -348,20 +349,20 @@ def registrarDB():
                 "password": hash_str
             }
             )
-            new_id = cursor.fetchone()[0] # coleta o id do novo comprador inserido
+            compradorId = cursor.fetchone()[0] # coleta o id do novo comprador inserido
 
             cursor.execute(
                 """
                     INSERT INTO usuarios (id_comprador) VALUES (%s);
                 """,
-                (new_id,)
+                (compradorId,)
             )
 
         connect.commit()
-        connect.close()
-        return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "id": new_id})
+        return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "compradorId": compradorId})
     except Exception as e:
         connect.rollback()
+        connect.close()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
     
 @app.route("/cadastrarVendedor", methods=["POST"])
@@ -451,7 +452,6 @@ def logar():
 
             if bcrypt.checkpw(data.get("password").encode("utf-8"), user[1].encode("utf-8")):
                 print("Senha correta")
-                localStorage.setItem("compradorId", data.compradorId)
                 return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2]})
             else:
                 print("Senha incorreta")
@@ -497,6 +497,70 @@ def mostrarAnuncios():
         connect.rollback()
         connect.close()
         return f"Erro ao carregar anúncios: {str(e)}"
+    
+
+@app.route("/salvarImagens", methods=["POST"])
+def salvarImagens():
+    data = request.get_json()
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    try:
+        titulo = data.get("titulo")
+        condicao = int(data.get("condicao"))
+        tipo_material = int(data.get("tipo_material"))
+        descricao = data.get("descricao")
+        quantidade = int(data.get("quantidade"))
+        preco = int(data.get("preco"))
+        imagens = data.get("imagens", [])  # Lista de imagens em base64
+        id_vendedor = 18 # TO DO: substituir pelo id do vendedor logado
+
+        with connect.cursor() as cursor:
+            cursor.execute(
+                """
+                    INSERT INTO anuncios (titulo_anuncio, tipo_anuncio, descricao_anuncio, condicao_anuncio, quantidade_anuncio, preco_anuncio, id_vendedor)
+                    VALUES (%(titulo)s, %(tipo_material)s, %(descricao)s, %(condicao)s, %(quantidade)s, %(preco)s, %(id_vendedor)s)
+                    RETURNING id_anuncio;
+                """,
+                {
+                    "titulo": titulo,
+                    "tipo_material": tipo_material,
+                    "descricao": descricao,
+                    "condicao": condicao,
+                    "quantidade": quantidade,
+                    "preco": preco,
+                    "id_vendedor": id_vendedor,
+                }
+            )
+
+            id_anuncio = cursor.fetchone()[0]
+
+            for img_base64 in imagens:
+                cursor.execute(
+                    """
+                        INSERT INTO fotos_anuncios (id_anuncio, foto)
+                        VALUES (%(id_anuncio)s, %(imagem_base64)s);
+                    """,
+                    {
+                        "id_anuncio": id_anuncio,
+                        "imagem_base64": img_base64
+                    }
+                )
+
+        connect.commit()
+
+        return jsonify({"status": "Sucesso", "message": f"Título: {titulo}, Condição: {condicao}, Tipo de material: {tipo_material}, Descrição: {descricao}, Quantidade: {quantidade}, Preço: {preco}, Imagens recebidas: {len(imagens)}"})
+
+    except Exception as e:
+        connect.rollback()
+        print("erro:", str(e))
+        return jsonify({"status": "Erro", "message": str(e)}), 500
+    finally:
+        connect.close()
 
 ##################################################################
 

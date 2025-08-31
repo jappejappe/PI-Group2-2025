@@ -1844,15 +1844,17 @@ input[type=number] {
     justify-content: center;
     margin-top: 8px;
     background: #fafafa;
+    cursor: pointer;
 }
 
 .anunciar-upload-icon {
     font-size: 2rem;
     color: #888888;
+    cursor: pointer;
 }
 .anunciar-form-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 12px;
     margin-top: 32px;
 }
