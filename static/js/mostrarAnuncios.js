@@ -14,6 +14,11 @@ axios.get("http://127.0.0.1:5000/mostrarAnuncios")
             card.querySelector(".card-img").alt = anuncio.titulo || "Produto";
             card.querySelector(".card_titulo").textContent = anuncio.titulo || "Produto sem título";
             card.querySelector(".card_preco").textContent = anuncio.preco ? `R$ ${anuncio.preco}` : "R$ 0,00";
+            
+            const verBotao = card.querySelector("#verBotaoCard");
+                verBotao.addEventListener("click", () => {
+                window.location.href = `/anuncio?id=${anuncio.id}`;
+            });
 
             // pega o botão de carrinho
             const carrinhoBotao = card.querySelector("#carrinhoBotao");

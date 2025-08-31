@@ -2749,6 +2749,13 @@ input[type=number] {
     cursor: pointer;
 }
 
+#verBotaoCard {
+    width: 45%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
 #carrinhoBotao {
     width: 40px;
     height: 40px;
