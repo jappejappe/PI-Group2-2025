@@ -66,6 +66,6 @@ def get_anuncio_por_id(id_anuncio):
     for row in rows:
         # supondo row["foto"] == "foto_anuncio_1.png"
         if row["foto"]:
-            anuncio_dict["fotos"].append(f"images/{row['foto']}")
+            anuncio_dict["fotos"].append(f"{row['foto']}")
 
     return anuncio_dict

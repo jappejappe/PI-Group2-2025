@@ -14,10 +14,10 @@
     {% if anuncio %}
       <div class="galeria">
         <img id="imagemPrincipal" class="imagem-principal"
-          src="{{ url_for('static', filename=anuncio.fotos[0]) }}">
+          src="{{ anuncio.fotos[0] }}">
         <div class="miniaturas">
           {% for foto in anuncio.fotos %}
-            <img src="{{ url_for('static', filename=foto) }}" alt="Miniatura {{ loop.index }}">
+            <img src="{{ foto }}" alt="Miniatura {{ loop.index }}">
           {% endfor %}
         </div>
       </div>
