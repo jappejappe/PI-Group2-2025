@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     let selectedFiles = [];
+    const compradorId = localStorage.getItem("compradorId");
+
+    if (!compradorId) {
+        alert("Você precisa estar logado para anunciar.");
+        window.location.href = "/login";
+        return;
+    }
 
     // Função para mostrar o preview das imagens selecionadas
     document.getElementById("files").addEventListener("change", function() {
@@ -63,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             quantidade: document.getElementById('quantidade').value,
             preco: document.getElementById('preco').value,
             imagens: base64Images,
+            compradorId: parseInt(compradorId)
         })
         
         .then(response => {

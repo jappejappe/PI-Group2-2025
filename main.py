@@ -429,7 +429,8 @@ def cadastrarVendedor():
 
         connect.commit()
         connect.close()
-        return jsonify({"status": "Sucesso", "message": "Vendedor adicionado"})
+        session['vendedorId'] = id_vendedor
+        return jsonify({"status": "Sucesso", "message": "Vendedor adicionado", "vendedorId": id_vendedor})
     except Exception as e:
         connect.rollback()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
@@ -525,10 +526,18 @@ def salvarImagens():
         descricao = data.get("descricao")
         quantidade = int(data.get("quantidade"))
         preco = int(data.get("preco"))
-        imagens = data.get("imagens", [])  # Lista de imagens em base64
-        id_vendedor = 18 # TO DO: substituir pelo id do vendedor logado
-
+        imagens = data.get("imagens", [])
+        comprador_id = int(data.get("compradorId"))
+        
         with connect.cursor() as cursor:
+            cursor.execute("SELECT id_vendedor FROM vendedores WHERE id_comprador = %s", (comprador_id,))
+            vendedor_result = cursor.fetchone()
+            
+            if not vendedor_result:
+                return jsonify({"status": "Erro", "message": "Usuário não está cadastrado como vendedor"}), 400
+            
+            id_vendedor = vendedor_result[0]
+            
             cursor.execute(
                 """
                     INSERT INTO anuncios (titulo_anuncio, tipo_anuncio, descricao_anuncio, condicao_anuncio, quantidade_anuncio, preco_anuncio, id_vendedor)
@@ -561,8 +570,7 @@ def salvarImagens():
                 )
 
         connect.commit()
-
-        return jsonify({"status": "Sucesso", "message": f"Título: {titulo}, Condição: {condicao}, Tipo de material: {tipo_material}, Descrição: {descricao}, Quantidade: {quantidade}, Preço: {preco}, Imagens recebidas: {len(imagens)}"})
+        return jsonify({"status": "Sucesso", "message": f"Anúncio criado com sucesso!"})
 
     except Exception as e:
         connect.rollback()
