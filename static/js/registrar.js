@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const cpf = document.getElementById('cpf').value;
         const password = document.getElementById('password').value;
 
-        axios.post("http://127.0.0.1:5000/registrarDB", {
+        axios.post("http://127.0.0.1:5000/registrarDB",{
             nome: nome,
             apelido: apelido,
             email: email,
@@ -21,13 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
             cep: cep,
             cpf: cpf,
             password: password
-        })
+        },
+        { timeout: 0 }
+        )
 
         .then(response => {
+            console.log(response.data)
             console.log("Sucesso:", response.data);
             const compradorId = response.data.compradorId;
+            const usuarioId = response.data.usuarioId;
             if (response.data.status === "Sucesso") {
                 localStorage.setItem("compradorId", compradorId);
+                localStorage.setItem("usuarioId", usuarioId);
                 window.location.href = `/perfil/${compradorId}`;
             }
             else {
@@ -114,7 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // limpeza antes de enviar
     const form = document.getElementById('registrarForm');
     if (form) {
-        form.addEventListener('submit', function () {
+        form.addEventListener('submit', function (e) {
+        e.preventDefault();
         const onlyDigits = v => v ? v.replace(/\D/g, '') : '';
         ['cep','cpf','telefone'].forEach(id => {
             const el = document.getElementById(id);

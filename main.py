@@ -316,7 +316,7 @@ def adicionar_carrinho():
 
 @app.route("/registrarDB", methods=["POST"])
 def registrarDB():
-    data = request.form
+    data = request.get_json()
     connect = psql.connect(
         host=os.getenv("DB_HOST"),
         database="rcl_db",
@@ -329,7 +329,6 @@ def registrarDB():
         senha_bytes = password.encode('utf-8') # trasforma a senha em bytes
         hash_senha = bcrypt.hashpw(senha_bytes, bcrypt.gensalt()) # pega a senha em bytes, "mistura" com o salt e gera o hash
         hash_str = hash_senha.decode('utf-8') # transforma o hash em string pra salvar no campo senha que é varchar
-        print(hash_str)
 
         with connect.cursor() as cursor:
             cursor.execute(
@@ -338,14 +337,14 @@ def registrarDB():
                     VALUES (%(nome)s, %(apelido)s, %(email)s, %(nascimento)s, %(cep)s, %(cpf)s, %(password)s)
                     RETURNING id_comprador;
                 """,
-                # retorna o id do novo vendedor inserido
+                # retorna o id do novo comprador inserido
             {
                 "nome": data.get("nome"),
                 "apelido": data.get("apelido"),
                 "email": data.get("email"),
                 "nascimento": data.get("nascimento"),
                 "cep": data.get("cep"),
-                "cpf": data.get("cpf"),
+                "cpf": data.get("cpf", "").replace(".", "").replace("-", ""),
                 "password": hash_str
             }
             )
@@ -358,8 +357,16 @@ def registrarDB():
                 (compradorId,)
             )
 
+            cursor.execute(
+                """
+                    SELECT id_usuario FROM usuarios WHERE id_comprador = (%s);
+                """,
+                (compradorId,)
+            )
+            usuarioId = cursor.fetchone()[0]
+
         connect.commit()
-        return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "compradorId": compradorId})
+        return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "compradorId": compradorId, "usuarioId": usuarioId}), 200
     except Exception as e:
         connect.rollback()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
