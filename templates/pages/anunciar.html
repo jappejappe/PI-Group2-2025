@@ -17,18 +17,16 @@
                 <form>
                     <div class="anunciar-form-section">
                         <h2>1- Informações</h2>
-                        <div class="anunciar-inline-group">
-                            <label class="anunciar-label">Título do produto</label>
-                            <input id="titulo" class="anunciar-input" type="text" placeholder="Título do anúncio" min="0" step="0.01">
-                            <label class="anunciar-label">Qual a condição produto</label>
-                            <select id="condicao" class="anunciar-select">
-                                <option value="" disabled selected>Condição do produto</option>
-                                <option value="1">Excelente</option>
-                                <option value="2">Bom</option>
-                                <option value="3">Usado</option>
-                                <option value="4">Danificado</option>
-                            </select>
-                        </div>
+                        <label class="anunciar-label">Título do produto</label>
+                        <input id="titulo" class="anunciar-input" type="text" placeholder="Título do anúncio" min="0" step="0.01">
+                        <label class="anunciar-label">Qual a condição produto</label>
+                        <select id="condicao" class="anunciar-select">
+                            <option value="" disabled selected>Condição do produto</option>
+                            <option value="1">Excelente</option>
+                            <option value="2">Bom</option>
+                            <option value="3">Usado</option>
+                            <option value="4">Danificado</option>
+                        </select>
                     </div>
                     <div class="anunciar-form-section">
                         <h2>2- Identificação do produto</h2>
@@ -55,7 +53,10 @@
                             <small>Kg</small>
                         </div>
                         <label class="anunciar-label">Qual o preço do Kg?</label>
-                        <input id="preco" class="anunciar-input" type="number" placeholder="R$ 4,00" min="0" step="0.01">
+                        <div class="anunciar-inline-group">
+                            <small>R$</small>
+                            <input id="preco" class="anunciar-input" type="number" placeholder="4,00" min="0" step="0.01">
+                        </div>
 
                     </div>
                     <div class="anunciar-form-section">
