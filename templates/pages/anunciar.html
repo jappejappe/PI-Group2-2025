@@ -11,79 +11,68 @@
 <body>
     <div id="bodyanunciar"></div>
     {% include 'components/header.html' %}
-    <main>
-        <h1 class="anunciar-main-title">Anuncie seu resíduo reciclável<br>com facilidade!</h1>
-        <section class="anunciar-form-container">
-            <form>
-                <div class="anunciar-form-section">
-                    <h2>1- Identificação do produto</h2>
-                    <label class="anunciar-label">Qual o material do resíduo?</label>
-                    <select class="anunciar-select">
-                        <option value="" disabled selected>Selecione o tipo de material</option>
-                        <option>Plástico</option>
-                        <option>Ferroso</option>
-                        <option>Não Ferroso</option>
-                        <option>Papel e Papelão</option>
-                        <option>Vidro</option>
-                        <option>Madeira</option>
-                        <option>Eletrônico</option>
-                        <option>Sucata de Veículos</option>
-                        <option>Outro</option>
-                    </select>
-                    <label class="anunciar-label">Descreva o produto</label>
-                    <textarea class="anunciar-textarea" maxlength="5000"
-                        placeholder="Digite a descrição do produto"></textarea>
-                    <small>Máximo 5000 caracteres</small>
-                    <div class="anunciar-radio-group">
-                        <span>É resíduo pós-consumo ou pós-industrial?</span>
-                        <div>
-                            <label class="anunciar-label"><input type="radio" name="tipo-residuo"> Pós-consumo</label>
-                            <label class="anunciar-label"><input type="radio" name="tipo-residuo">
-                                Pós-industrial</label>
+        <main>
+            <h1 class="anunciar-main-title">Anuncie seu resíduo reciclável<br>com facilidade!</h1>
+            <section class="anunciar-form-container">
+                <form>
+                    <div class="anunciar-form-section">
+                        <h2>1- Informações</h2>
+                        <div class="anunciar-inline-group">
+                            <label class="anunciar-label">Título do produto</label>
+                            <input id="titulo" class="anunciar-input" type="text" placeholder="Título do anúncio" min="0" step="0.01">
+                            <label class="anunciar-label">Qual a condição produto</label>
+                            <select id="condicao" class="anunciar-select">
+                                <option value="" disabled selected>Condição do produto</option>
+                                <option value="1">Excelente</option>
+                                <option value="2">Bom</option>
+                                <option value="3">Usado</option>
+                                <option value="4">Danificado</option>
+                            </select>
                         </div>
                     </div>
-                </div>
-                <div class="anunciar-form-section">
-                    <h2>2- Quantidade</h2>
-                    <label class="anunciar-label">Qual a quantidade disponível?</label>
-                    <div class="anunciar-inline-group">
-                        <input class="anunciar-input" type="number" placeholder="Digite qual a quantidade" min="0">
-                        <select class="anunciar-select">
-                            <option>Kg</option>
-                            <option>g</option>
-                            <option>Toneladas</option>
+                    <div class="anunciar-form-section">
+                        <h2>2- Identificação do produto</h2>
+                        <label class="anunciar-label">Qual o material do resíduo?</label>
+                        <select id="tipo_material" class="anunciar-select">
+                            <option value="" disabled selected>Selecione o tipo de material</option>
+                            <option value="1">Garrafas de vidro</option>
+                            <option value="2">Plástico</option>
+                            <option value="3">Papelão</option>
+                            <option value="4">Alumínio</option>
+                            <option value="5">Ferro velho</option>
+                            <option value="6">Cobre</option>
+                            <option value="7">Eletrônico</option>
                         </select>
-                    </div>
-
-                </div>
-                <div class="anunciar-form-section">
-                    <h2>3- Condições</h2>
-                    <label class="anunciar-label">Qual o preço desejado?</label>
-                    <input class="anunciar-input" type="number" placeholder="Digite o preço" min="0" step="0.01">
-                </div>
-                <div class="anunciar-form-section">
-                    <h2>4- Fotos</h2>
-                    <label class="anunciar-label">Envie fotos do resíduo no estilo .jpg</label>
-                    <div class="anunciar-upload-box">
-                        <span class="anunciar-upload-icon">⤴</span>
+                        <label class="anunciar-label">Descreva o produto</label>
+                        <textarea id="descricao" class="anunciar-textarea" maxlength="5000" placeholder="Digite a descrição do produto"></textarea>
+                        <small>Máximo 5000 caracteres</small>
                     </div>
                     <div class="anunciar-form-section">
-                        <h2>3- Condições</h2>
-                        <label class="anunciar-label">Qual o preço desejado?</label>
-                        <input class="anunciar-input" type="number" placeholder="Digite o preço" min="0" step="0.01">
+                        <h2>3- Quantidade</h2>
+                        <label class="anunciar-label">Qual a quantidade disponível?</label>
+                        <div class="anunciar-inline-group">
+                            <input id="quantidade" class="anunciar-input" type="number" placeholder="" min="1">
+                            <small>Kg</small>
+                        </div>
+                        <label class="anunciar-label">Qual o preço do Kg?</label>
+                        <input id="preco" class="anunciar-input" type="number" placeholder="R$ 4,00" min="0" step="0.01">
+
                     </div>
                     <div class="anunciar-form-section">
                         <h2>4- Fotos</h2>
-                        <label class="anunciar-label">Envie fotos do resíduo no estilo .jpg (mínimo 4 fotos)</label>
+                        <label class="anunciar-label">Envie fotos do resíduo no formato <i>.jpg</i> ou <i>.png</i></label>
                         <div class="anunciar-upload-box">
-                            <span class="anunciar-upload-icon">⤴</span>
+                            <input id="files" class="anunciar-upload-input" type="file" accept=".jpg, .png, .jpeg" multiple style="display: none;">
+                            <label for="files" class="anunciar-upload-icon">⤴</label>
                         </div>
-                        <small>mínimo 8 fotos</small>
-                    </div>
-                    <div class="anunciar-form-buttons">
-                        <a href="./anunciar.html"><button type="submit" class="anunciar-btn-secondary">Enviar e fazer mais um</button></a>
-                        
-                        <a href="/"><button type="button" class="anunciar-btn-primary">Enviar e sair</button></a>
+                        <div id="preview" style="margin-top:10px; display:flex; flex-wrap:wrap;"></div>
+                        <br>
+                        <div class="anunciar-form-buttons">
+                            {% set corBotao = 'black' %}
+                            {% set textoBotao = 'Anunciar' %}
+                            {% set id = 'sendBtn' %}
+                            {% include "components/buttonDados.html" with context %}
+                        </div>
                     </div>
                 </form>
             </section>
@@ -92,5 +81,7 @@
     {% set id = 'anunciarFooter' %}
     {% include "components/footer.html" with context %}
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../../static/js/anunciar.js"></script>
 
 </html>

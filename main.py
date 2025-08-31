@@ -6,6 +6,7 @@ import psycopg2 as psql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import dotenv
 import bcrypt
+import base64
 
 #################################################################
 # CARREGAMENTO DE VARIÁVEIS DE AMBIENTE
@@ -418,6 +419,70 @@ def mostrarAnuncios():
         connect.rollback()
         connect.close()
         return f"Erro ao carregar anúncios: {str(e)}"
+    
+
+@app.route("/salvarImagens", methods=["POST"])
+def salvarImagens():
+    data = request.get_json()
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    try:
+        titulo = data.get("titulo")
+        condicao = int(data.get("condicao"))
+        tipo_material = int(data.get("tipo_material"))
+        descricao = data.get("descricao")
+        quantidade = int(data.get("quantidade"))
+        preco = int(data.get("preco"))
+        imagens = data.get("imagens", [])  # Lista de imagens em base64
+        id_vendedor = 18 # TO DO: substituir pelo id do vendedor logado
+
+        with connect.cursor() as cursor:
+            cursor.execute(
+                """
+                    INSERT INTO anuncios (titulo_anuncio, tipo_anuncio, descricao_anuncio, condicao_anuncio, quantidade_anuncio, preco_anuncio, id_vendedor)
+                    VALUES (%(titulo)s, %(tipo_material)s, %(descricao)s, %(condicao)s, %(quantidade)s, %(preco)s, %(id_vendedor)s)
+                    RETURNING id_anuncio;
+                """,
+                {
+                    "titulo": titulo,
+                    "tipo_material": tipo_material,
+                    "descricao": descricao,
+                    "condicao": condicao,
+                    "quantidade": quantidade,
+                    "preco": preco,
+                    "id_vendedor": id_vendedor,
+                }
+            )
+
+            id_anuncio = cursor.fetchone()[0]
+
+            for img_base64 in imagens:
+                cursor.execute(
+                    """
+                        INSERT INTO fotos_anuncios (id_anuncio, foto)
+                        VALUES (%(id_anuncio)s, %(imagem_base64)s);
+                    """,
+                    {
+                        "id_anuncio": id_anuncio,
+                        "imagem_base64": img_base64
+                    }
+                )
+
+        connect.commit()
+
+        return jsonify({"status": "Sucesso", "message": f"Título: {titulo}, Condição: {condicao}, Tipo de material: {tipo_material}, Descrição: {descricao}, Quantidade: {quantidade}, Preço: {preco}, Imagens recebidas: {len(imagens)}"})
+
+    except Exception as e:
+        connect.rollback()
+        print("erro:", str(e))
+        return jsonify({"status": "Erro", "message": str(e)}), 500
+    finally:
+        connect.close()
 
 ##################################################################
 

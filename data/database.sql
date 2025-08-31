@@ -91,7 +91,7 @@ CREATE TABLE carrinhos (
 CREATE TABLE fotos_anuncios (
 	id_anuncio INTEGER NOT NULL REFERENCES anuncios(id_anuncio),
 	id_foto SERIAL NOT NULL,
-	foto VARCHAR NOT NULL,
+	foto TEXT NOT NULL,
 	CONSTRAINT fotos_anuncios_unique UNIQUE (id_foto),
 	CONSTRAINT fotos_anuncios_pk PRIMARY KEY (id_foto)
 );
