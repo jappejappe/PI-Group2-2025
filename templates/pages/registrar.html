@@ -9,7 +9,7 @@
 <body>
     <div id="registrarBody">
         {% include "components/header.html" with context %}
-        <form id="registrarForm" method="post" action="/registrar">
+        <form id="registrarForm" method="post" action="/registrarDB">
             <h2>Registrar-se</h2>
     
             <div class="form-item">
@@ -18,7 +18,7 @@
             </div>
             <div class="form-item">
                 <label for="username">Nome de Usuário</label>
-                <input type="text" id="username" name="username" placeholder="@username" />
+                <input type="text" id="username" name="apelido" placeholder="@username" />
             </div>
             <div class="form-item">
                 <label for="email">E-Mail</label>

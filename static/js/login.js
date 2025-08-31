@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         .then(response => {
             console.log("Sucesso:", response.data);
+            const compradorId = response.data.compradorId;
             if (response.data.status === "Sucesso") {
-                localStorage.setItem("compradorId", response.data.compradorId);
-                window.location.href = "http://127.0.0.1:5000/perfil";
+                localStorage.setItem("compradorId", compradorId);
+                window.location.href = `/perfil/${compradorId}`;
             }
             else {
                 alert("Falha no login: " + response.data.message);
