@@ -1,6 +1,7 @@
 import os
 import psycopg2 as psql
 import dotenv
+import json
 
 dotenv.load_dotenv()
 
@@ -100,7 +101,7 @@ anuncios = [
     ("Garrafas marrons diversas", 1, "80 garrafas marrons", 3, 80, 4, 3),
     ("Plásticos PET variados", 2, "Plástico PET prensado", 2, 200, 3, 2),
     ("Plásticos coloridos", 2, "Plástico PEAD triturado", 1, 150, 3, 2),
-    ("Plástico filme", 2, "Plástico filme esticável", 3, 120, 3, 1),
+    ("Tampas Garrafas de plástico", 2, "Tampas de Garrafas de plástico limpas", 3, 120, 3, 1),
     ("Papelão prensado", 3, "Fardos de papelão limpo", 2, 100, 3, 3),
     ("Caixas de papelão grandes", 3, "Caixas desmontadas", 3, 50, 2, 2),
     ("Latas de alumínio", 4, "Latas prensadas", 2, 300, 4, 1),
@@ -130,13 +131,16 @@ for c in carrinhos:
         VALUES (%s,%s,%s);
     """, c)
 
-fotos = [(i, f"foto_anuncio_{i}.png") for i in range(1, 16)]
-for f in fotos:
+
+with open("data/fotos_ficticias.json", "r") as f:
+    imagens_base64 = json.load(f)
+
+for i, img in enumerate(imagens_base64, start=1):
     cursor.execute("""
         INSERT INTO fotos_anuncios (id_anuncio, foto)
         VALUES (%s,%s)
         ON CONFLICT (id_foto) DO NOTHING;
-    """, f)
+    """, (i, img))
 
 connect.commit()
 cursor.close()
