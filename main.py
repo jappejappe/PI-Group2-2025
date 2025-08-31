@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_from_directory, session, redirect, url_for
 from flask_cors import CORS
 import os
 import json
@@ -98,9 +98,30 @@ def home():
     return render_template('pages/index.html')
 
 
-@app.route('/carrinho') # Rota para o carrinho
+@app.route('/carrinho')
 def carrinho():
-    return render_template('pages/carrinho.html')
+    comprador_id = session.get("compradorId")
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    itens = []
+    try:
+        with connect.cursor() as cursor:
+            cursor.execute("""
+                SELECT a.id_anuncio, a.titulo_anuncio, a.preco_anuncio, c.quantidade
+                FROM carrinhos c
+                JOIN anuncios a ON c.id_produto = a.id_anuncio
+                WHERE c.id_comprador = %s
+            """, (comprador_id,))
+            itens = cursor.fetchall()
+    finally:
+        connect.close()
+
+    return render_template('pages/carrinho.html', itens=itens)
 
 
 @app.route('/registrar') # Rota para registrar um novo usuário
@@ -189,6 +210,45 @@ def compra():
 # Os endpoints abaixo são responsáveis por manipular dados,
 # como adicionar itens ao carrinho ou publicar um novo produto.
 
+@app.route("/getCarrinho", methods=["POST"])
+def getCarrinho():
+    data = request.get_json()
+    comprador_id = data.get("id_comprador")
+
+    conn = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                SELECT a.id_anuncio, a.titulo_anuncio, a.preco_anuncio, c.quantidade
+                FROM carrinhos c
+                JOIN anuncios a ON c.id_produto = a.id_anuncio
+                WHERE c.id_comprador = %s
+            """, (comprador_id,))
+            itens = cursor.fetchall()
+        conn.close()
+
+        lista = []
+        for id_anuncio, titulo, preco, qtd in itens:
+            lista.append({
+                "id": id_anuncio,
+                "titulo": titulo,
+                "preco": preco,
+                "quantidade": qtd
+            })
+
+        return jsonify(lista)
+
+    except Exception as e:
+        conn.rollback()
+        conn.close()
+        return jsonify({"status": "erro", "mensagem": str(e)})
 
 @app.route("/addCarrinho", methods=["POST"])
 def adicionar_carrinho():
@@ -374,6 +434,7 @@ def logar():
 
             if bcrypt.checkpw(data.get("password").encode("utf-8"), user[1].encode("utf-8")):
                 print("Senha correta")
+                localStorage.setItem("compradorId", data.compradorId)
                 return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2]})
             else:
                 print("Senha incorreta")
