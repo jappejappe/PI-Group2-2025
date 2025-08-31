@@ -362,8 +362,10 @@ def registrarDB():
         return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "compradorId": compradorId})
     except Exception as e:
         connect.rollback()
-        connect.close()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
+    finally:
+        if connect:
+            connect.close()
     
 @app.route("/cadastrarVendedor", methods=["POST"])
 def cadastrarVendedor():
