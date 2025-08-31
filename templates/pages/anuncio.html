@@ -11,103 +11,35 @@
   {% include 'components/header.html' %}
 
   <main class="produto-container">
-    <div class="galeria">
-      <img class="imagem-principal" src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Latinhas coloridas">
-      <div class="miniaturas">
-        <button class="setaAnterior">&#10094;</button>
-        <img src="{{ url_for('static', filename='images/lixos001.png') }}" alt="Miniatura 1">
-        <img src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Miniatura 2">
-        <img src="{{ url_for('static', filename='images/lixos001.png') }}" alt="Miniatura 3">
-        <img src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Miniatura 4">
-        <button class="setaProxima">&#10095;</button>
-      </div>
-    </div>
-
-    {# <div class="galeria">
-      <img id="imagemPrincipal" class="imagem-principal" src="{{ imagens[0] }}" alt="Produto">
-
-      <div class="miniaturas">
-        <button class="seta" id="prev">&#10094;</button>
-
-        <div id="miniaturasContainer">
-          {% for img in imagens %}
-            <img src="{{ img }}" alt="Miniatura {{ loop.index }}" class="{% if loop.first %}ativa{% endif %}">
+    {% if anuncio %}
+      <div class="galeria">
+        <img id="imagemPrincipal" class="imagem-principal"
+          src="{{ url_for('static', filename=anuncio.fotos[0]) }}">
+        <div class="miniaturas">
+          {% for foto in anuncio.fotos %}
+            <img src="{{ url_for('static', filename=foto) }}" alt="Miniatura {{ loop.index }}">
           {% endfor %}
         </div>
-
-        <button class="seta" id="next">&#10095;</button>
-      </div>
-    </div> #}
-
-    <div class="detalhes-produto">
-      <h1>Latinhas variadas e coloridas</h1>
-      <p><strong>Marca:</strong> Nenhuma</p>
-      <p class="avaliacao">4,9 (estrelas) <span class="reviews">(12)</span></p>
-      <div class="preco">
-        <span class="preco-atual">R$<strong>17</strong>,99/Kg</span>
-        <p class="parcelas">Em até 2x R$ 29,99 sem juros</p>
-        <p class="entrega">Entrega R$15,67: 30 de Julho - 3 de Agosto</p>
-        <p class="endereco"> Entregando em Concórdia, 89700000</p>
       </div>
 
-      <label for="quantidade">Em estoque:</label>
-      <select id="quantidade">
-        <option>Quantidade (Kg): 1</option>
-        <option>Quantidade (Kg): 2</option>
-        <option>Quantidade (Kg): 3</option>
-      </select>
-
-      <div class="acoes">
-        <button class="btn">Adicionar ao carrinho</button>
-        <button class="btn">Comprar agora</button>
+      <div class="detalhes-produto">
+        <h1>{{ anuncio.titulo }}</h1>
+        <p><strong>Tipo:</strong> {{ anuncio.tipo }}</p>
+        <p><strong>Condição:</strong> {{ anuncio.condicao }}</p>
+        <p>Em estoque: {{ anuncio.quantidade }}</p>
+        <p class="preco">R$ <strong>{{ anuncio.preco }}</strong></p>
+        <details>
+          <summary>Detalhes do produto</summary>
+          <p>{{ anuncio.descricao }}</p>
+        </details>
       </div>
-
-      <details>
-        <summary>Detalhes do produto</summary>
-        <p>Latinhas recicláveis de alumínio, coloridas, misturadas, sem marca específica. Vendidas por peso.</p>
-      </details>
-    </div>
+    {% else %}
+      <p>Anúncio não encontrado.</p>
+    {% endif %}
   </main>
 
   {% include 'components/footer.html' %}
 
-  {# <script>
-    const imagens = {{ imagens|tojson }};
-    let currentIndex = 0;
-
-    const imagemPrincipal = document.getElementById("imagemPrincipal");
-    const miniaturasContainer = document.getElementById("miniaturasContainer");
-
-    const thumbnails = miniaturasContainer.querySelectorAll("img");
-
-    function mostrarImagem(index) {
-      currentIndex = index;
-      imagemPrincipal.src = imagens[currentIndex];
-      atualizarMiniaturas();
-    }
-
-    function proximaImagem() {
-      currentIndex = (currentIndex + 1) % imagens.length;
-      mostrarImagem(currentIndex);
-    }
-
-    function imagemAnterior() {
-      currentIndex = (currentIndex - 1 + imagens.length) % imagens.length;
-      mostrarImagem(currentIndex);
-    }
-
-    function atualizarMiniaturas() {
-      thumbnails.forEach((thumb, idx) => {
-        thumb.classList.toggle("ativa", idx === currentIndex);
-      });
-    }
-
-    document.getElementById("next").addEventListener("click", proximaImagem);
-    document.getElementById("prev").addEventListener("click", imagemAnterior);
-
-    thumbnails.forEach((thumb, idx) => {
-      thumb.addEventListener("click", () => mostrarImagem(idx));
-    });
-  </script> #}
+  <script src="{{ url_for('static', filename='js/anuncio.js') }}"></script>
 </body>
 </html>

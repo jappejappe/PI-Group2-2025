@@ -6,6 +6,7 @@ import psycopg2 as psql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import dotenv
 import bcrypt
+from database import get_anuncio_por_id
 
 #################################################################
 # CARREGAMENTO DE VARIÁVEIS DE AMBIENTE
@@ -138,7 +139,24 @@ def anunciar():
 
 @app.route('/anuncio') # Rota para anúncio
 def anuncio():
-    return render_template('pages/anuncio.html')
+    id_anuncio = request.args.get('id')
+    if not id_anuncio:
+        return "ID do anúncio não fornecido", 400
+
+    anuncio_data = get_anuncio_por_id(id_anuncio)
+    if not anuncio_data:
+        return "Anúncio não encontrado", 404
+
+    return render_template('pages/anuncio.html', anuncio=anuncio_data)
+
+# rota de teste para checar conexão ao banco rapidamente
+@app.route('/_testdb')
+def testdb():
+    try:
+        a = get_anuncio_por_id(1)  # teste com id 1
+        return {"ok": True, "exemplo": bool(a)}
+    except Exception as e:
+        return {"ok": False, "erro": str(e)}, 500
 
 @app.route('/cadastroVendedor') # Rota para cadastrar vendedor
 def cadastroVendedor():
