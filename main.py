@@ -7,6 +7,7 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import dotenv
 import bcrypt
 import base64
+from database import get_anuncio_por_id
 
 #################################################################
 # CARREGAMENTO DE VARIÁVEIS DE AMBIENTE
@@ -139,7 +140,24 @@ def anunciar():
 
 @app.route('/anuncio') # Rota para anúncio
 def anuncio():
-    return render_template('pages/anuncio.html')
+    id_anuncio = request.args.get('id')
+    if not id_anuncio:
+        return "ID do anúncio não fornecido", 400
+
+    anuncio_data = get_anuncio_por_id(id_anuncio)
+    if not anuncio_data:
+        return "Anúncio não encontrado", 404
+
+    return render_template('pages/anuncio.html', anuncio=anuncio_data)
+
+# rota de teste para checar conexão ao banco rapidamente
+@app.route('/_testdb')
+def testdb():
+    try:
+        a = get_anuncio_por_id(1)  # teste com id 1
+        return {"ok": True, "exemplo": bool(a)}
+    except Exception as e:
+        return {"ok": False, "erro": str(e)}, 500
 
 @app.route('/cadastroVendedor') # Rota para cadastrar vendedor
 def cadastroVendedor():
@@ -298,7 +316,7 @@ def adicionar_carrinho():
 
 @app.route("/registrarDB", methods=["POST"])
 def registrarDB():
-    data = request.json
+    data = request.form
     connect = psql.connect(
         host=os.getenv("DB_HOST"),
         database="rcl_db",
@@ -331,21 +349,23 @@ def registrarDB():
                 "password": hash_str
             }
             )
-            new_id = cursor.fetchone()[0] # coleta o id do novo comprador inserido
+            compradorId = cursor.fetchone()[0] # coleta o id do novo comprador inserido
 
             cursor.execute(
                 """
                     INSERT INTO usuarios (id_comprador) VALUES (%s);
                 """,
-                (new_id,)
+                (compradorId,)
             )
 
         connect.commit()
-        connect.close()
-        return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "id": new_id})
+        return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "compradorId": compradorId})
     except Exception as e:
         connect.rollback()
         return jsonify({"status": "Falha", "message": "Usuário não adicionado", "error": str(e)})
+    finally:
+        if connect:
+            connect.close()
     
 @app.route("/cadastrarVendedor", methods=["POST"])
 def cadastrarVendedor():

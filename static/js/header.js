@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const btnPerfil = document.createElement("button");
             btnPerfil.textContent = "Ver perfil";
             btnPerfil.onclick = () => {
+                localStorage.setItem("compradorId", compradorId);
                 window.location.href = `/perfil/${compradorId}`;
             };
 
