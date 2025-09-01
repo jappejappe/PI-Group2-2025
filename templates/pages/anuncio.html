@@ -28,12 +28,11 @@
         <p><strong>Condição:</strong> {{ anuncio.condicao }}</p>
         <p>Em estoque: {{ anuncio.quantidade }}</p>
         <p class="preco">R$ <strong>{{ anuncio.preco }}</strong></p>
-        <div class="divBotoesCard" >
+        <div class="divBotoesCard" id="anuncioCarrinhoBotao">
           {% set corBotao = 'black' %}
           {% set textoBotao = '<p alt="Carrinho"> Adicionar ao Carrinho</p>' %}
-          {% set path = 'home' %}
-          {% set id = 'botaoCard' %}
-          {% include "components/button.html" with context %}
+          {% set id = 'botaoCarrinhoAnuncio' %}
+          {% include "components/buttonDados.html" with context %}
         </div>
         <details>
           <summary>Detalhes do produto</summary>
@@ -47,6 +46,7 @@
 
   {% include 'components/footer.html' %}
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="{{ url_for('static', filename='js/anuncio.js') }}"></script>
 </body>
 </html>
