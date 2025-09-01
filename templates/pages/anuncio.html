@@ -28,6 +28,13 @@
         <p><strong>Condição:</strong> {{ anuncio.condicao }}</p>
         <p>Em estoque: {{ anuncio.quantidade }}</p>
         <p class="preco">R$ <strong>{{ anuncio.preco }}</strong></p>
+        <div class="divBotoesCard" >
+          {% set corBotao = 'black' %}
+          {% set textoBotao = '<p alt="Carrinho"> Adicionar ao Carrinho</p>' %}
+          {% set path = 'home' %}
+          {% set id = 'botaoCard' %}
+          {% include "components/button.html" with context %}
+        </div>
         <details>
           <summary>Detalhes do produto</summary>
           <p>{{ anuncio.descricao }}</p>
