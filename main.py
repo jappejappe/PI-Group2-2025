@@ -119,10 +119,19 @@ def carrinho():
     try:
         with connect.cursor() as cursor:
             cursor.execute("""
-                SELECT a.id_anuncio, a.titulo_anuncio, a.preco_anuncio, c.quantidade
+                SELECT 
+                    a.id_anuncio, 
+                    a.titulo_anuncio, 
+                    a.preco_anuncio, 
+                    COALESCE(f.foto, '/static/images/residuos1.jpg') as foto,
+                    c.quantidade,
+                    COALESCE(v.nome_empresa, 'Loja RCL') as nome_empresa
                 FROM carrinhos c
                 JOIN anuncios a ON c.id_produto = a.id_anuncio
+                LEFT JOIN vendedores v ON a.id_vendedor = v.id_vendedor
+                LEFT JOIN fotos_anuncios f ON a.id_anuncio = f.id_anuncio
                 WHERE c.id_comprador = %s
+                ORDER BY a.id_anuncio
             """, (comprador_id,))
             itens = cursor.fetchall()
     finally:
@@ -228,7 +237,52 @@ def perfil(id_usuario):
 
 @app.route('/compra') # Rota para compra
 def compra():
-    return render_template('pages/compra.html')
+    comprador_id = session.get("compradorId")
+    
+    # se nao está logado, vai pro login
+    if not comprador_id:
+        return redirect(url_for('login'))
+    
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    
+    itens_carrinho = []
+    total_compra = 0.0  # Garante que seja float
+    
+    try:
+        with connect.cursor() as cursor:
+            # busca itens do carrinho
+            cursor.execute("""
+                SELECT 
+                    a.id_anuncio, 
+                    a.titulo_anuncio, 
+                    a.preco_anuncio, 
+                    ARRAY_AGG(f.foto) as fotos,
+                    c.quantidade,
+                    v.nome_empresa
+                FROM carrinhos c
+                JOIN anuncios a ON c.id_produto = a.id_anuncio
+                LEFT JOIN vendedores v ON a.id_vendedor = v.id_vendedor
+                LEFT JOIN fotos_anuncios f ON a.id_anuncio = f.id_anuncio
+                WHERE c.id_comprador = %s
+                GROUP BY a.id_anuncio, a.titulo_anuncio, a.preco_anuncio, c.quantidade, v.nome_empresa
+            """, (comprador_id,))
+            
+            itens_carrinho = cursor.fetchall()
+            
+            # calcula total
+            for item in itens_carrinho:
+                total_compra += float(item[2]) * item[4]
+                
+    finally:
+        connect.close()
+
+    return render_template('pages/compra.html', itens=itens_carrinho, total=total_compra)
 
 ##################################################################
 

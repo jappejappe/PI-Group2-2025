@@ -23,12 +23,10 @@
             <div class="carrinho-footer">
                 <div class="resumo-carrinho">
                     <div class="total-info">
-                        <span class="total-itens" id="totalItens">Total de itens: {{ itens|sum(attribute=3) if itens else 0 }}</span>
-                        <span class="subtotal" id="subtotal">
-          Subtotal: R$ {{ itens|map(attribute=2)|sum if itens else 0 }}
-        </span>
+                        <span class="total-itens" id="totalItens">Total de itens: 0</span>
+                        <span class="subtotal" id="subtotal">Subtotal: R$ 0,00</span>
                     </div>
-                    <button class="btn-continuar">Continuar</button>
+                    <button class="btn-continuar" onclick="window.location.href='/compra'">Continuar</button>
                 </div>
             </div>
         </main>

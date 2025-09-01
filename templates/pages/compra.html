@@ -100,22 +100,28 @@
         <div class="resumo-pedido">
         <h3 class="resumo-titulo">Resumo do Pedido</h3>
         
-        <div class="item-pedido">
-            <div class="item-imagem">
-            <img src="item.png" alt="Latas de alumínio"> <!-- puxar imagem-->
+        {% if itens %}
+            {% for item in itens %}
+            <div class="item-pedido">
+                <div class="item-imagem">
+                <img src="{{ item[3][0] if item[3] and item[3][0] else '/static/images/residuos1.jpg' }}" alt="{{ item[1] }}">
+                </div>
+                <div class="item-info">
+                <div class="item-nome">{{ item[1] }}</div>
+                <div class="item-loja">{{ item[5] if item[5] else 'Loja RCL' }}</div>
+                <div class="item-quantidade">Quantidade: {{ item[4] }}</div>
+                </div>
+                <div class="item-preco">R$ {{ "%.2f"|format(item[2]|float) }}</div>
             </div>
-            <div class="item-info">
-            <div class="item-nome">Latas de alumínio</div> <!-- puxar nome produto-->
-            <div class="item-loja">RCL Shop</div> <!-- puxar nome loja-->
-            <div class="item-quantidade">Quantidade: 1</div> <!-- puxar quantia-->
-            </div>
-            <div class="item-preco">R$ 22,00</div> <!-- puxar preço-->
-        </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum item no carrinho</p>
+        {% endif %}
 
         <div class="resumo-valores">
             <div class="valor-linha">
             <span>Subtotal:</span>
-            <span>R$ 22,00</span> <!-- puxar preço-->
+            <span>R$ {{ "%.2f"|format(total) }}</span>
             </div>
             <div class="valor-linha">
             <span>Frete:</span>
@@ -123,7 +129,7 @@
             </div>
             <div class="valor-total">
             <span>Total:</span>
-            <span>R$ 22,00</span> <!-- puxar preço-->
+            <span>R$ {{ "%.2f"|format(total) }}</span>
             </div>
         </div>
 
@@ -172,5 +178,6 @@
 
   {% include 'components/footer.html' %}
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="../../static/js/compras.js" ></script>
 </html>
