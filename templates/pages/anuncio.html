@@ -32,13 +32,7 @@
           <summary>Detalhes do produto</summary>
           <p>{{ anuncio.descricao }}</p>
         </details>
-        <!-- Ajeitar o botão abaixo -->
-        {% set corBotao = 'black' %}
-        {% set textoBotao = 'Adicionar ao carrinho' %}
-        {% set id = 'botaoCard' %}
-        {% include "components/buttonDados.html" with context %}
       </div>
-
     {% else %}
       <p>Anúncio não encontrado.</p>
     {% endif %}
@@ -47,6 +41,5 @@
   {% include 'components/footer.html' %}
 
   <script src="{{ url_for('static', filename='js/anuncio.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/Carrinho.js') }}"></script>
 </body>
 </html>

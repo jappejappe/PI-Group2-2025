@@ -1,91 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RCL</title>
-  <link rel="stylesheet" href="../../static/css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCL</title>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <div class="body1">
-<body>
-  {% include 'components/header.html' %}
 
-<main class="carrinho-container">
-  <h1 class="carrinho-titulo">Seu Carrinho</h1>
-  
-  <div class="produtos-lista">
-    <!-- aqui o js preenche -->
-  </div>
-  
-  <div class="carrinho-footer">
-    <div class="resumo-carrinho">
-      <div class="total-info">
-        <span class="total-itens" id="totalItens">Total de itens: {{ itens|sum(attribute=3) if itens else 0 }}</span>
-        <span class="subtotal" id="subtotal">
+    <body>
+        {% include 'components/header.html' %}
+
+        <main class="carrinho-container">
+            <h1 class="carrinho-titulo">Seu Carrinho</h1>
+
+            <div class="produtos-lista">
+                <!-- aqui o js preenche -->
+            </div>
+
+            <div class="carrinho-footer">
+                <div class="resumo-carrinho">
+                    <div class="total-info">
+                        <span class="total-itens" id="totalItens">Total de itens: {{ itens|sum(attribute=3) if itens else 0 }}</span>
+                        <span class="subtotal" id="subtotal">
           Subtotal: R$ {{ itens|map(attribute=2)|sum if itens else 0 }}
         </span>
-      </div>
-      <button class="btn-continuar">Continuar</button>
-    </div>
-  </div>
-</main>
-  {% set id = 'carrinhoFooter' %}
-  {% include "components/footer.html" with context %}
-</body>
+                    </div>
+                    <button class="btn-continuar">Continuar</button>
+                </div>
+            </div>
+        </main>
+        {% set id = 'carrinhoFooter' %} {% include "components/footer.html" with context %}
+    </body>
 </div>
 <script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
 
 <script>
-function diminuirQuantidade(produtoId) {
-  const input = document.getElementById(`qtd${produtoId}`);
-  if (input.value > 1) {
-    input.value--;
-    atualizarPreco(produtoId);
-  }
-}
-
-function aumentarQuantidade(produtoId) {
-  const input = document.getElementById(`qtd${produtoId}`);
-  input.value++;
-  atualizarPreco(produtoId);
-}
-
-function atualizarPreco(produtoId) {
-  const quantidade = parseInt(document.getElementById(`qtd${produtoId}`).value);
-  const precoTotal = quantidade * 22;
-  
-  document.getElementById(`preco${produtoId}`).textContent = `R$ ${precoTotal.toFixed(2).replace('.', ',')}`;
-  atualizarTotalCarrinho();
-}
-
-function removerProduto(produtoId) {
-  const produto = document.getElementById(`produto${produtoId}`);
-  produto.remove();
-  atualizarTotalCarrinho();
-}
-
-function atualizarTotalCarrinho() {
-  const produtos = document.querySelectorAll('.produto-item');
-  let total = 0;
-  let totalItens = 0;
-  
-  produtos.forEach(produto => {
-    const checkbox = produto.querySelector('input[type="checkbox"]');
-    if (checkbox.checked) {
-      const quantidade = parseInt(produto.querySelector('.quantidade-input').value);
-      total += quantidade * 22;
-      totalItens += quantidade;
+    function diminuirQuantidade(produtoId) {
+        const input = document.getElementById(`qtd${produtoId}`);
+        if (input.value > 1) {
+            input.value--;
+            atualizarPreco(produtoId);
+        }
     }
-  });
-  
-  document.getElementById('totalItens').textContent = `Total de itens: ${totalItens}`;
-  document.getElementById('subtotal').textContent = `Subtotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-}
 
-document.addEventListener('change', function(e) {
-  if (e.target.type === 'checkbox' && e.target.closest('.produto-item')) {
-    atualizarTotalCarrinho();
-  }
-});
+    function aumentarQuantidade(produtoId) {
+        const input = document.getElementById(`qtd${produtoId}`);
+        input.value++;
+        atualizarPreco(produtoId);
+    }
+
+    function atualizarPreco(produtoId) {
+        const quantidade = parseInt(document.getElementById(`qtd${produtoId}`).value);
+        const precoUnitario = parseFloat(document.getElementById(`preco${produtoId}`).getAttribute('data-preco-unitario') || 22);
+        const precoTotal = quantidade * precoUnitario;
+
+        document.getElementById(`preco${produtoId}`).textContent = `R$ ${precoTotal.toFixed(2).replace('.', ',')}`;
+        atualizarTotalCarrinho();
+    }
+
+    function removerProduto(produtoId) {
+        const produto = document.getElementById(`produto${produtoId}`);
+        produto.remove();
+        atualizarTotalCarrinho();
+    }
+
+    function atualizarTotalCarrinho() {
+        const produtos = document.querySelectorAll('.produto-item');
+        let total = 0;
+        let totalItens = 0;
+
+        produtos.forEach(produto => {
+            const checkbox = produto.querySelector('input[type="checkbox"]');
+            if (checkbox.checked) {
+                const quantidade = parseInt(produto.querySelector('.quantidade-input').value);
+                const precoElement = produto.querySelector('.preco-valor');
+                const precoUnitario = parseFloat(precoElement.getAttribute('data-preco-unitario') || 22);
+                total += quantidade * precoUnitario;
+                totalItens += quantidade;
+            }
+        });
+
+        document.getElementById('totalItens').textContent = `Total de itens: ${totalItens}`;
+        document.getElementById('subtotal').textContent = `Subtotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    document.addEventListener('change', function(e) {
+        if (e.target.type === 'checkbox' && e.target.closest('.produto-item')) {
+            atualizarTotalCarrinho();
+        }
+    });
 </script>
