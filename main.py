@@ -175,7 +175,7 @@ def perfil(id_usuario):
     with connect.cursor() as cursor:
         # busca dados do usuario
         cursor.execute("""
-            SELECT c.apelido_cliente, c.nome_cliente, u.id_comprador, u.id_vendedor
+            SELECT c.apelido_cliente, c.nome_cliente, c.foto, u.id_comprador, u.id_vendedor
             FROM usuarios u
             JOIN compradores c ON u.id_comprador = c.id_comprador
             LEFT JOIN vendedores v ON u.id_vendedor = v.id_vendedor
@@ -186,7 +186,7 @@ def perfil(id_usuario):
         if not user:
             return "Usuário não encontrado", 404
 
-        apelido, nome, id_comprador, id_vendedor = user
+        apelido, nome, foto, id_comprador, id_vendedor = user
 
         # busca anuncios caso usuario seja vendedor
         anuncios = []
@@ -210,6 +210,7 @@ def perfil(id_usuario):
         'pages/perfil.html',
         apelido=apelido,
         nome=nome,
+        foto=foto,
         funcao=funcao_str,
         anuncios=anuncios
     )
@@ -333,8 +334,8 @@ def registrarDB():
         with connect.cursor() as cursor:
             cursor.execute(
                 """
-                    INSERT INTO compradores (nome_cliente, apelido_cliente, email_cliente, data_nascimento, cep_cliente, cpf_cliente, senha)
-                    VALUES (%(nome)s, %(apelido)s, %(email)s, %(nascimento)s, %(cep)s, %(cpf)s, %(password)s)
+                    INSERT INTO compradores (nome_cliente, apelido_cliente, email_cliente, data_nascimento, cep_cliente, cpf_cliente, senha, foto)
+                    VALUES (%(nome)s, %(apelido)s, %(email)s, %(nascimento)s, %(cep)s, %(cpf)s, %(password)s, %(foto)s)
                     RETURNING id_comprador;
                 """,
                 # retorna o id do novo comprador inserido
@@ -343,9 +344,10 @@ def registrarDB():
                 "apelido": data.get("apelido"),
                 "email": data.get("email"),
                 "nascimento": data.get("nascimento"),
-                "cep": data.get("cep"),
+                "cep": data.get("cep").replace("-", ""),
                 "cpf": data.get("cpf", "").replace(".", "").replace("-", ""),
-                "password": hash_str
+                "password": hash_str,
+                "foto": data.get("foto")
             }
             )
             compradorId = cursor.fetchone()[0] # coleta o id do novo comprador inserido

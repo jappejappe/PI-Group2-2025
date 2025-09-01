@@ -772,6 +772,17 @@ select {
     font-size: 80px;
     margin: 0 auto;
   }
+
+  .perfil-page .profile-picture {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
   
   .perfil-page .hero-text h2 {
     font-size: 28px;
@@ -1983,6 +1994,17 @@ input[type=number] {
   font-size: 80px;
   flex-shrink: 0;
   margin: 0 auto;
+}
+
+.perfil-page .profile-picture {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .perfil-page .hero-text {

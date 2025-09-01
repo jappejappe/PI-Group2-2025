@@ -13,7 +13,11 @@
 
   <section class="hero">
     <div>
-      <div class="avatar-placeholder">👤</div>
+      {% if foto %}
+        <img src="data:image/jpeg;base64,{{ foto }}" alt="Foto de perfil de {{ apelido }}" class="profile-picture">
+      {% else %}
+        <div class="avatar-placeholder">👤</div>
+      {% endif %}
     </div>
     <div class="hero-text">
       <h2>{{apelido}}</h2>

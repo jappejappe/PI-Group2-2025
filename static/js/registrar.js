@@ -9,18 +9,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const apelido = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const nascimento = document.getElementById('nascimento').value;
-        const cep = document.getElementById('cep').value;
-        const cpf = document.getElementById('cpf').value;
+        const cep = document.getElementById('cep').value.replace(/\D/g, '');;
+        const cpf = document.getElementById('cpf').value.replace(/\D/g, '');;
         const password = document.getElementById('password').value;
+        const fotoInput = document.getElementById('foto');
+        const file = fotoInput.files[0];
 
-        axios.post("http://127.0.0.1:5000/registrarDB",{
+        if (!file) {
+            alert("Adicione uma foto de perfil.");
+            return
+        }
+
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            const fotoBase64 = reader.result.split(",")[1];
+
+            axios.post("http://127.0.0.1:5000/registrarDB",{
             nome: nome,
             apelido: apelido,
             email: email,
             nascimento: nascimento,
             cep: cep,
             cpf: cpf,
-            password: password
+            password: password,
+            foto: fotoBase64
         },
         { timeout: 0 }
         )
@@ -39,7 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Falha no registro: " + response.data.message);
             }
         })
+        .catch(error => {
+            console.error("Erro na requisição:", error);
+            alert("Erro ao registrar: " + (error.response?.data?.message || error.message));
+        });
+        };
 
+        reader.readAsDataURL(file);
     }
 
     button.addEventListener("click", () => {

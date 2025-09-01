@@ -7,6 +7,7 @@ CREATE TABLE compradores (
     cep_cliente CHAR(8) NULL,
     cpf_cliente CHAR(11) NULL,
     senha VARCHAR NOT NULL,
+	foto TEXT NULL,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     CONSTRAINT compradores_unique UNIQUE (apelido_cliente, email_cliente, cpf_cliente),
     CONSTRAINT compradores_pk PRIMARY KEY (id_comprador)
