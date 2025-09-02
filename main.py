@@ -369,6 +369,7 @@ def getCarrinho():
 @app.route("/addCarrinho", methods=["POST"])
 def adicionar_carrinho():
     data = request.get_json()
+    print("JSON recebido:", data)
     id_comprador = data["id_comprador"]
     id_produto = data["id_produto"]
     quantidade = data.get("quantidade", 1)

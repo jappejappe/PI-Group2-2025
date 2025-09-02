@@ -2779,8 +2779,10 @@ input[type=number] {
 }
 
 #carrinhoBotao {
-    width: 40px;
-    height: 40px;
+    width: 45%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 #anunciosContainer {
