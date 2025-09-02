@@ -2953,6 +2953,9 @@ input[type=number] {
   
   .card > img {
     max-height: 200px;
+    min-height: 200px;
+    max-width: 200px;
+    min-width: 200px;
     border-radius: 20px;
     border: 0,5px solid black
 }
