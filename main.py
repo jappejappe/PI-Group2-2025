@@ -92,6 +92,7 @@ else:
 
 
 app = Flask(__name__)
+app.secret_key = 'sua_chave_secreta_aqui'  # Necessário para usar sessões
 CORS(app)
 
 @app.route('/') # Rota principal que carrega o index.html
@@ -102,6 +103,11 @@ def home():
 @app.route('/carrinho')
 def carrinho():
     comprador_id = session.get("compradorId")
+    
+    # Se não há comprador logado, redireciona para login
+    if not comprador_id:
+        return redirect(url_for('login'))
+    
     connect = psql.connect(
         host=os.getenv("DB_HOST"),
         database="rcl_db",
@@ -113,10 +119,19 @@ def carrinho():
     try:
         with connect.cursor() as cursor:
             cursor.execute("""
-                SELECT a.id_anuncio, a.titulo_anuncio, a.preco_anuncio, c.quantidade
+                SELECT 
+                    a.id_anuncio, 
+                    a.titulo_anuncio, 
+                    a.preco_anuncio, 
+                    COALESCE(f.foto, '/static/images/residuos1.jpg') as foto,
+                    c.quantidade,
+                    COALESCE(v.nome_empresa, 'Loja RCL') as nome_empresa
                 FROM carrinhos c
                 JOIN anuncios a ON c.id_produto = a.id_anuncio
+                LEFT JOIN vendedores v ON a.id_vendedor = v.id_vendedor
+                LEFT JOIN fotos_anuncios f ON a.id_anuncio = f.id_anuncio
                 WHERE c.id_comprador = %s
+                ORDER BY a.id_anuncio
             """, (comprador_id,))
             itens = cursor.fetchall()
     finally:
@@ -133,6 +148,11 @@ def registrar():
 @app.route('/login') # Rota para login
 def login():
     return render_template('pages/login.html')
+
+@app.route('/logout') # Rota para logout
+def logout():
+    session.clear()  # Limpa toda a sessão
+    return redirect(url_for('home'))
 
 @app.route('/anunciar') # Rota para anunciar
 def anunciar():
@@ -246,7 +266,52 @@ def perfil(id_usuario):
 
 @app.route('/compra') # Rota para compra
 def compra():
-    return render_template('pages/compra.html')
+    comprador_id = session.get("compradorId")
+    
+    # se nao está logado, vai pro login
+    if not comprador_id:
+        return redirect(url_for('login'))
+    
+    connect = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+    
+    itens_carrinho = []
+    total_compra = 0.0  # Garante que seja float
+    
+    try:
+        with connect.cursor() as cursor:
+            # busca itens do carrinho
+            cursor.execute("""
+                SELECT 
+                    a.id_anuncio, 
+                    a.titulo_anuncio, 
+                    a.preco_anuncio, 
+                    ARRAY_AGG(f.foto) as fotos,
+                    c.quantidade,
+                    v.nome_empresa
+                FROM carrinhos c
+                JOIN anuncios a ON c.id_produto = a.id_anuncio
+                LEFT JOIN vendedores v ON a.id_vendedor = v.id_vendedor
+                LEFT JOIN fotos_anuncios f ON a.id_anuncio = f.id_anuncio
+                WHERE c.id_comprador = %s
+                GROUP BY a.id_anuncio, a.titulo_anuncio, a.preco_anuncio, c.quantidade, v.nome_empresa
+            """, (comprador_id,))
+            
+            itens_carrinho = cursor.fetchall()
+            
+            # calcula total
+            for item in itens_carrinho:
+                total_compra += float(item[2]) * item[4]
+                
+    finally:
+        connect.close()
+
+    return render_template('pages/compra.html', itens=itens_carrinho, total=total_compra)
 
 ##################################################################
 
@@ -262,6 +327,9 @@ def compra():
 def getCarrinho():
     data = request.get_json()
     comprador_id = data.get("id_comprador")
+    
+    if not comprador_id:
+        return jsonify({"status": "erro", "mensagem": "ID do comprador não fornecido"}), 400
 
     conn = psql.connect(
         host=os.getenv("DB_HOST"),
@@ -287,7 +355,7 @@ def getCarrinho():
             lista.append({
                 "id": id_anuncio,
                 "titulo": titulo,
-                "preco": preco,
+                "preco": float(preco),  # Garante que o preço seja float
                 "quantidade": qtd
             })
 
@@ -296,7 +364,7 @@ def getCarrinho():
     except Exception as e:
         conn.rollback()
         conn.close()
-        return jsonify({"status": "erro", "mensagem": str(e)})
+        return jsonify({"status": "erro", "mensagem": str(e)}), 500
 
 @app.route("/addCarrinho", methods=["POST"])
 def adicionar_carrinho():
@@ -397,6 +465,7 @@ def registrarDB():
             usuarioId = cursor.fetchone()[0]
 
         connect.commit()
+        session["compradorId"] = compradorId  # Salva o compradorId na sessão
         return jsonify({"status": "Sucesso", "message": "Usuário adicionado", "compradorId": compradorId, "usuarioId": usuarioId}), 200
     except Exception as e:
         connect.rollback()
@@ -460,7 +529,6 @@ def cadastrarVendedor():
 
         connect.commit()
         connect.close()
-        session['vendedorId'] = id_vendedor
         return jsonify({"status": "Sucesso", "message": "Vendedor adicionado", "vendedorId": id_vendedor})
     except Exception as e:
         connect.rollback()
@@ -491,9 +559,18 @@ def logar():
                 return jsonify({"status": "Falha", "message": "Usuário não encontrado"})
             
 
+            cursor.execute(
+                """
+                    SELECT id_usuario FROM usuarios WHERE id_comprador = (%s);
+                """,
+                (user[2],)
+            )
+            usuarioId = cursor.fetchone()[0]
+
             if bcrypt.checkpw(data.get("password").encode("utf-8"), user[1].encode("utf-8")):
                 print("Senha correta")
-                return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2]})
+                session["compradorId"] = user[2]  # Salva o compradorId na sessão
+                return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2], "usuarioId": usuarioId})
             else:
                 print("Senha incorreta")
                 return jsonify({"status": "Falha", "message": "Senha incorreta"})
@@ -559,7 +636,7 @@ def salvarImagens():
         preco = int(data.get("preco"))
         imagens = data.get("imagens", [])
         comprador_id = int(data.get("compradorId"))
-        
+
         with connect.cursor() as cursor:
             cursor.execute("SELECT id_vendedor FROM vendedores WHERE id_comprador = %s", (comprador_id,))
             vendedor_result = cursor.fetchone()
@@ -601,7 +678,8 @@ def salvarImagens():
                 )
 
         connect.commit()
-        return jsonify({"status": "Sucesso", "message": f"Anúncio criado com sucesso!"})
+
+        return jsonify({"status": "Sucesso", "message": f"Título: {titulo}, Condição: {condicao}, Tipo de material: {tipo_material}, Descrição: {descricao}, Quantidade: {quantidade}, Preço: {preco}, Imagens recebidas: {len(imagens)}"})
 
     except Exception as e:
         connect.rollback()

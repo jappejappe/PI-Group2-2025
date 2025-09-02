@@ -59,7 +59,11 @@
 
 // atualizar preço das parcelas
     function atualizarParcelas() {
-      const total = 22.00;
+      // total da compra
+      const totalElement = document.querySelector('.valor-total span:last-child');
+      const totalText = totalElement.textContent;
+      const total = parseFloat(totalText.replace('R$ ', '').replace(',', '.'));
+      
       const parcelasSelect = document.getElementById('parcelas');
       parcelasSelect.innerHTML = '';
       
@@ -67,7 +71,7 @@
         const valorParcela = (total / i).toFixed(2);
         const option = document.createElement('option');
         option.value = i;
-        option.textContent = `${i}x de R$ ${valorParcela.replace('.', ',')}${i > 1 ? '' : ''}`;
+        option.textContent = `${i}x de R$ ${valorParcela.replace('.', ',')}`;
         parcelasSelect.appendChild(option);
       }
     }
