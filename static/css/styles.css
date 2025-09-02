@@ -2942,3 +2942,78 @@ input[type=number] {
     font-size: 14px;
   }
 }
+
+@media (max-width: 1120px) {
+  #anunciosContainer {
+    grid-template-columns: 1fr;
+  }
+}
+  
+  .card > img {
+    max-height: 200px;
+    border-radius: 20px;
+    border: 0,5px solid black
+}
+  #botaoCard{
+    width: 40%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+  #verBotaoCard{
+    width: 40%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+  .divBotoesCard{
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+  .card_titulo{
+    font-family: 'Istok Web';
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+    color: black;
+}
+  .infoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+}
+
+@media (max-width: 1120px) {
+  .middle-content-index {
+    flex-direction: column; 
+    align-items: center; 
+    padding: 0 20px;
+  }
+
+  .titles-index {
+    align-items: center; 
+    margin-bottom: 20px;
+  }
+
+  .middle-section-index h2 {
+    margin-left: 0;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .feature-index {
+    font-size: 28px;
+    color: #000;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+  } 
+
+  .feature-index {
+    justify-content: center;
+    text-align: center;
+  }
+}
