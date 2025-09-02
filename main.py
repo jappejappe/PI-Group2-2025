@@ -530,10 +530,18 @@ def logar():
                 return jsonify({"status": "Falha", "message": "Usuário não encontrado"})
             
 
+            cursor.execute(
+                """
+                    SELECT id_usuario FROM usuarios WHERE id_comprador = (%s);
+                """,
+                (user[2],)
+            )
+            usuarioId = cursor.fetchone()[0]
+
             if bcrypt.checkpw(data.get("password").encode("utf-8"), user[1].encode("utf-8")):
                 print("Senha correta")
                 session["compradorId"] = user[2]  # Salva o compradorId na sessão
-                return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2]})
+                return jsonify({"status": "Sucesso", "message": "Login efetuado", "compradorId": user[2], "usuarioId": usuarioId})
             else:
                 print("Senha incorreta")
                 return jsonify({"status": "Falha", "message": "Senha incorreta"})

@@ -13,8 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => {
             console.log("Sucesso:", response.data);
             const compradorId = response.data.compradorId;
+            const usuarioId = response.data.usuarioId;
             if (response.data.status === "Sucesso") {
                 localStorage.setItem("compradorId", compradorId);
+                localStorage.setItem("usuarioId", usuarioId);
                 window.location.href = `/perfil/${compradorId}`;
             }
             else {
