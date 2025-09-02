@@ -599,14 +599,34 @@ def mostrarAnuncios():
                 """
             )
             anuncios = cursor.fetchall() # lista dos anúncios (tuplas)
-        connect.close()
+            anunciosLista = []
+            for a in anuncios:
+                anunciosLista.append(list(a))
+
+            for anuncio in anunciosLista:
+                cursor.execute(
+                    """
+                        SELECT foto FROM fotos_anuncios WHERE id_anuncio = %(id_anuncio)s LIMIT 1;
+                    """,
+                    {
+                        "id_anuncio": anuncio[0]
+                    }
+                ) 
+                resultado = cursor.fetchone()
+                if resultado:
+                    foto = resultado[0]
+                else:
+                    foto = None
+                anuncio.append(foto)
+
 
         lista_anuncios = []
-        for anuncio in anuncios:
+        for anuncio in anunciosLista:
             lista_anuncios.append({
                 "id": anuncio[0],
                 "titulo": anuncio[1],
-                "preco": int(anuncio[2])
+                "preco": int(anuncio[2]),
+                "foto": anuncio[3]
             })
 
         return jsonify(lista_anuncios)
