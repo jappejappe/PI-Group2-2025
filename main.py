@@ -163,6 +163,35 @@ def testdb():
 def cadastroVendedor():
     return render_template('pages/cadastroVendedor.html')
 
+def get_vendedor_by_comprador(id_comprador):
+    try:
+        # Conexão com o PostgreSQL
+        connect = psql.connect(
+            host=os.getenv("DB_HOST"),
+            database="rcl_db",
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT")
+        )
+        cursor = connect.cursor()
+        # Consulta SQL
+        cursor.execute("SELECT id_vendedor FROM vendedores WHERE id_comprador = %s", (id_comprador,))
+        result = cursor.fetchone()
+        cursor.close()
+        connect.close()
+        return result[0] if result else None
+    except Exception as e:
+        print("Erro ao consultar o banco:", e)
+        return None
+
+# Rota para receber o id_comprador e retornar o id_vendedor
+@app.route('/get_vendedor', methods=['POST'])
+def get_vendedor():
+    data = request.json
+    id_comprador = data.get('id_comprador')
+    id_vendedor = get_vendedor_by_comprador(id_comprador)
+    return jsonify({'id_vendedor': id_vendedor})
+
 @app.route('/perfil/<int:id_usuario>')
 def perfil(id_usuario):
     connect = psql.connect(

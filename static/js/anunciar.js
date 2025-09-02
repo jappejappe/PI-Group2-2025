@@ -7,6 +7,23 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Você precisa estar logado para anunciar.");
         window.location.href = "/login";
         return;
+    } else {
+        axios.post('/get_vendedor', { id_comprador: compradorId })
+        .then(response => {
+            const idVendedor = response.data.id_vendedor;
+
+            if (!idVendedor){
+                alert("Você precisa ser um vendedor para anunciar.");
+                window.location.href = "/cadastroVendedor";
+                return;
+            }
+            
+            console.log('ID do vendedor:', idVendedor);
+            // Atualiza o carrinho ou perfil
+        })
+        .catch(error => {
+            console.error('Erro ao buscar o vendedor:', error);
+        });
     }
 
     // Função para mostrar o preview das imagens selecionadas
