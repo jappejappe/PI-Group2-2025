@@ -1442,6 +1442,12 @@ h1 {
 }
 
 /* cadastroVendedor */
+#meuFormulario{
+  justify-content: center;
+  align-content: center;
+  margin: 30px auto;
+}
+
 #cadastroVendedorFooter {
   bottom: 0;
   left: 0;
