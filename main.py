@@ -104,7 +104,6 @@ def home():
 def carrinho():
     comprador_id = session.get("compradorId")
     
-    # Se não há comprador logado, redireciona para login
     if not comprador_id:
         return redirect(url_for('login'))
     
@@ -116,6 +115,8 @@ def carrinho():
         port=os.getenv("DB_PORT")
     )
     itens = []
+    total_itens = 0
+    subtotal = 0.0
     try:
         with connect.cursor() as cursor:
             cursor.execute("""
@@ -134,10 +135,50 @@ def carrinho():
                 ORDER BY a.id_anuncio
             """, (comprador_id,))
             itens = cursor.fetchall()
+
+            # Calcula total de itens e subtotal
+            for item in itens:
+                preco = float(item[2])
+                quantidade = int(item[4])
+                subtotal += preco * quantidade
+                total_itens += quantidade
     finally:
         connect.close()
 
-    return render_template('pages/carrinho.html', itens=itens)
+    return render_template(
+        'pages/carrinho.html',
+        itens=itens,
+        total_itens=total_itens,
+        subtotal=subtotal
+    )
+
+@app.route("/removerDoCarrinho", methods=["POST"])
+def remover_do_carrinho():
+    data = request.get_json()
+    id_comprador = data.get("id_comprador")
+    id_produto = data.get("id_produto")
+
+    conn = psql.connect(
+        host=os.getenv("DB_HOST"),
+        database="rcl_db",
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT")
+    )
+
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                DELETE FROM carrinhos
+                WHERE id_comprador = %s AND id_produto = %s
+            """, (id_comprador, id_produto))
+        conn.commit()
+        return jsonify({"status": "ok"})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({"status": "erro", "mensagem": str(e)}), 500
+    finally:
+        conn.close()
 
 
 @app.route('/registrar') # Rota para registrar um novo usuário
@@ -369,6 +410,7 @@ def getCarrinho():
 @app.route("/addCarrinho", methods=["POST"])
 def adicionar_carrinho():
     data = request.get_json()
+    print("JSON recebido:", data)
     id_comprador = data["id_comprador"]
     id_produto = data["id_produto"]
     quantidade = data.get("quantidade", 1)

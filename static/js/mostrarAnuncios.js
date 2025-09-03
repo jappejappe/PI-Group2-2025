@@ -27,7 +27,8 @@ axios.get("http://127.0.0.1:5000/mostrarAnuncios")
                 const carrinhoBotao = card.querySelector("#carrinhoBotao");
 
                 // adiciona evento de clique
-                carrinhoBotao.addEventListener("click", () => {
+                carrinhoBotao.addEventListener("click", (e) => {
+                    e.preventDefault(); // previne qualquer ação padrão
                     const compradorId = localStorage.getItem("compradorId"); // precisa já estar salvo no login
                     if (!compradorId) {
                         alert("Você precisa estar logado para adicionar itens ao carrinho.");
