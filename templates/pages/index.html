@@ -33,7 +33,15 @@
     <div class="hero-images-index">
       <div class="image-stack-index">
         <img src="{{ url_for('static', filename='images/lixos001.png') }}" alt="Latinhas de alumínio" class="hero-img-index front">
+        <div class="price-overlay-index">
+          <span class="weight-index">2kg</span>
+          <span class="price-index">R$ 11,90</span>
+        </div>
         <img src="{{ url_for('static', filename='images/lixos002.png') }}" alt="Garrafas plásticas" class="hero-img-index back">
+        <div class="price-overlay-index back-overlay-index">
+          <span class="weight-index">kg</span>
+          <span class="price-index">R$</span>
+        </div>
       </div>
     </div>
   </section>
@@ -41,8 +49,7 @@
   <section class="middle-section-index">
     <div class="middle-content-index">
       <div class="titles-index">
-        <h2 id="fraseBanner" >A ARTE DE VENDER,<br>COMPRAR E RECICLAR</h2>
-        
+        <h2 id="fraseBanner">A ARTE DE VENDER,<br>COMPRAR E RECICLAR</h2>
       </div>
       <div class="features-index">
         <div class="feature-index">
@@ -61,7 +68,7 @@
     <h2>Marketplace</h2>
     <div id="anunciosContainer">
       <div id="cardTemplate" class="card" style="display:none;">
-          <img src="" alt="Imagem do produto" class="card-img">
+          <img src="/static/images/residuos1.jpg" alt="Imagem do produto" class="card-img">
 
           <div class="infoCard">
               <h3 class="card_titulo">Título</h3>
@@ -71,7 +78,7 @@
                       {% set corBotao = 'black' %}
                       {% set textoBotao = '<img src="/static/images/icons/carrinhoCompraBranco.png" alt="Carrinho" id="carrinhoBotao" />' %}
                       {% set path = 'home' %}
-                      {% set id = 'carrinhoBotao' %}
+                      {% set id = 'botaoCard' %}
                       {% include "components/button.html" with context %}
 
                       {% set corBotao = 'white' %}
@@ -87,9 +94,26 @@
       <button class="btn-ver-mais-index">Ver mais</button>
     </div>
   </section>
+
   {% set id = 'indexFooter' %}
   {% include "components/footer.html" with context %}
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../../static/js/mostrarAnuncios.js"></script>
+
+  <!-- Script para rolar até o Marketplace ao clicar em "Explorar" -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btnExplorar = document.querySelector('.btn-explorar');
+      const marketplaceSection = document.querySelector('.marketplace-index');
+
+      if (btnExplorar && marketplaceSection) {
+        btnExplorar.addEventListener('click', function (e) {
+          e.preventDefault();
+          marketplaceSection.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../../static/js/mostrarAnuncios.js"></script>
 </html>
