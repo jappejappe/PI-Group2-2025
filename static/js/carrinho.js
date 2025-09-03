@@ -1,7 +1,8 @@
-document.addEventListener("DOMContentLoaded", async() => {
+document.addEventListener("DOMContentLoaded", async () => {
     const compradorId = localStorage.getItem("compradorId");
     if (!compradorId) {
-        document.querySelector(".produtos-lista").innerHTML = "<p>Você precisa estar logado para ver o carrinho. <a href='/login'>Fazer login</a></p>";
+        document.querySelector(".produtos-lista").innerHTML =
+            "<p>Você precisa estar logado para ver o carrinho. <a href='/login'>Fazer login</a></p>";
         return;
     }
 
@@ -49,6 +50,94 @@ document.addEventListener("DOMContentLoaded", async() => {
 
     } catch (err) {
         console.error("Erro ao carregar carrinho:", err);
-        document.querySelector(".produtos-lista").innerHTML = "<p>Erro ao carregar o carrinho. Tente novamente.</p>";
+        document.querySelector(".produtos-lista").innerHTML =
+            "<p>Erro ao carregar o carrinho. Tente novamente.</p>";
+    }
+});
+
+function diminuirQuantidade(produtoId) {
+    const input = document.getElementById(`qtd${produtoId}`);
+    if (input.value > 1) {
+        input.value--;
+        atualizarPreco(produtoId);
+    }
+}
+
+function aumentarQuantidade(produtoId) {
+    const input = document.getElementById(`qtd${produtoId}`);
+    input.value++;
+    atualizarPreco(produtoId);
+}
+
+function atualizarPreco(produtoId) {
+    const quantidade = parseInt(document.getElementById(`qtd${produtoId}`).value);
+    const precoUnitario = parseFloat(
+        document.getElementById(`preco${produtoId}`).getAttribute("data-preco-unitario")
+    );
+    const precoTotal = quantidade * precoUnitario;
+
+    document.getElementById(`preco${produtoId}`).textContent = `R$ ${precoTotal
+        .toFixed(2)
+        .replace(".", ",")}`;
+    atualizarTotalCarrinho();
+}
+
+async function removerProduto(produtoId) {
+    try {
+        const compradorId = localStorage.getItem("compradorId");
+        if (!compradorId) {
+            alert("Você precisa estar logado para remover itens do carrinho.");
+            return;
+        }
+
+        const resp = await fetch("/removerDoCarrinho", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id_comprador: compradorId, id_produto: produtoId })
+        });
+
+        const json = await resp.json();
+        if (!resp.ok || (json && json.status !== "ok")) {
+            console.error("Erro ao remover:", json);
+            alert("Não foi possível remover o item.");
+            return;
+        }
+
+        const produto = document.getElementById(`produto${produtoId}`);
+        if (produto) produto.remove();
+        atualizarTotalCarrinho();
+
+    } catch (e) {
+        console.error(e);
+        alert("Erro ao comunicar com o servidor.");
+    }
+}
+
+function atualizarTotalCarrinho() {
+    const produtos = document.querySelectorAll(".produto-item");
+    let total = 0;
+    let totalItens = 0;
+
+    produtos.forEach(produto => {
+        const checkbox = produto.querySelector("input[type='checkbox']");
+        if (checkbox && checkbox.checked) {
+            const quantidade = parseInt(produto.querySelector(".quantidade-input").value);
+            const precoUnitario = parseFloat(
+                produto.querySelector(".preco-valor").getAttribute("data-preco-unitario")
+            );
+            total += quantidade * precoUnitario;
+            totalItens += quantidade;
+        }
+    });
+
+    document.getElementById("totalItens").textContent = `Total de itens: ${totalItens}`;
+    document.getElementById("subtotal").textContent = `Subtotal: R$ ${total
+        .toFixed(2)
+        .replace(".", ",")}`;
+}
+
+document.addEventListener("change", function (e) {
+    if (e.target.type === "checkbox" && e.target.closest(".produto-item")) {
+        atualizarTotalCarrinho();
     }
 });
