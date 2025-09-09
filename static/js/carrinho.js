@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="produto-checkbox"><input type="checkbox" checked></div>
         <div class="produto-imagem"><div class="imagem-placeholder"><img scr="${item.imagem}"></div></div>
         <div class="produto-info"><p class="produto-descricao">${item.titulo}</p></div>
-        <div class="produto-info"><p class="produto-descricao">${item.vendedor}</p></div>
+        <div class="produto-info"><p class="produto-descricao">De: ${item.vendedor}</p></div>
         <div class="produto-quantidade">
           <div class="quantidade-controles">
             <button class="btn-quantidade" onclick="diminuirQuantidade(${item.id})">-</button>
