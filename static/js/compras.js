@@ -42,6 +42,7 @@
     function finalizarCompra() {
     const btnFinalizar = document.getElementById("botao-finalizar");
     btnFinalizar.disabled = true;
+    
 
     setTimeout(() => {
         document.getElementById('modalConfirmacao').style.display = 'flex';
@@ -86,9 +87,9 @@
   const modalConfirmacao = document.getElementById("modalConfirmacao");
 
   const camposPagamento = {
-    numeroCartao: document.getElementById("numero do Cartao"),
-    nomeCartao: document.getElementById("nome no Cartao"),
-    validadeCartao: document.getElementById("validade do Cartao"),
+    numeroCartao: document.getElementById("numeroCartao"),
+    nomeCartao: document.getElementById("nomeCartao"),
+    validadeCartao: document.getElementById("validadeCartao"),
     cvv: document.getElementById("cvv"),
   };
 
@@ -108,16 +109,9 @@
 
     if (!valido) {
       alert("Por favor, corrija os erros:\n\n" + mensagens.join("\n"));
-      return false; 
+      return false;
     }
 
     return valido
   }
-
-  botaoFinalizar.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (validarCampos()) {
-      modalConfirmacao.style.display = "flex";
-    }
-  });
 });
