@@ -1501,7 +1501,7 @@ form{
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  align-items: center;
+  
   justify-items: center;
   background: white;
   border: 1px solid #888;
@@ -1859,7 +1859,7 @@ input[type=number] {
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-self: center;
+    
     margin-top: 8px;
     background: #fafafa;
     cursor: pointer;
