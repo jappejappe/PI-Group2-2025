@@ -30,8 +30,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             produto.innerHTML = `
         <div class="produto-checkbox"><input type="checkbox" checked></div>
-        <div class="produto-imagem"><div class="imagem-placeholder"></div></div>
+        <div class="produto-imagem"><div class="imagem-placeholder"><img scr="${item.imagem}"></div></div>
         <div class="produto-info"><p class="produto-descricao">${item.titulo}</p></div>
+        <div class="produto-info"><p class="produto-descricao">${item.vendedor}</p></div>
         <div class="produto-quantidade">
           <div class="quantidade-controles">
             <button class="btn-quantidade" onclick="diminuirQuantidade(${item.id})">-</button>
@@ -42,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="produto-preco"><span class="preco-valor" id="preco${item.id}" data-preco-unitario="${item.preco}">R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</span></div>
         <div class="produto-acoes"><button class="btn-remover" onclick="removerProduto(${item.id})">×</button></div>
       `;
-
             lista.appendChild(produto);
         });
 
