@@ -42,11 +42,13 @@
     function finalizarCompra() {
     const btnFinalizar = document.getElementById("botao-finalizar");
     btnFinalizar.disabled = true;
-    
-
-    setTimeout(() => {
+    validarCampos()
+      if (valido) {
+        setTimeout(() => {
         document.getElementById('modalConfirmacao').style.display = 'flex';
-    }, 100);
+      }, 100);
+      }
+    
     }
 
 
