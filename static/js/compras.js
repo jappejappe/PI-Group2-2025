@@ -79,3 +79,45 @@
     document.addEventListener('DOMContentLoaded', function() {
       atualizarParcelas();
     });
+
+// parte de inserir dados cartão
+    document.addEventListener("DOMContentLoaded", () => {
+  const botaoFinalizar = document.getElementById("botao-finalizar");
+  const modalConfirmacao = document.getElementById("modalConfirmacao");
+
+  const camposPagamento = {
+    numeroCartao: document.getElementById("numero do Cartao"),
+    nomeCartao: document.getElementById("nome no Cartao"),
+    validadeCartao: document.getElementById("validade do Cartao"),
+    cvv: document.getElementById("cvv"),
+  };
+
+  function validarCampos() {
+    let valido = true;
+    let mensagens = [];
+
+    for (const [campo, input] of Object.entries(camposPagamento)) {
+      if (input.value.trim() === "") {
+        valido = false;
+        mensagens.push(`Preencha o campo: ${campo}`);
+        input.classList.add("erro");
+      } else {
+        input.classList.remove("erro");
+      }
+    }
+
+    if (!valido) {
+      alert("Por favor, corrija os erros:\n\n" + mensagens.join("\n"));
+      return false; 
+    }
+
+    return valido
+  }
+
+  botaoFinalizar.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (validarCampos()) {
+      modalConfirmacao.style.display = "flex";
+    }
+  });
+});
